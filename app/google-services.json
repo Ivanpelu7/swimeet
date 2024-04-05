@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "322485711867",
+    "project_id": "swimeet-17ed0",
+    "storage_bucket": "swimeet-17ed0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322485711867:android:a89dd054f3b83e7073515e",
+        "android_client_info": {
+          "package_name": "com.example.swimeet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCgBODwoDXnQk0-wabtXfa4jOvrgkwSxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
