@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Swimeet</string>
+    <string-array name="categorias_edades_natacion">
+        <item>Seleccionar categoría</item>
+        <item>Infantil</item>
+        <item>Juvenil</item>
+        <item>Adulto</item>
+    </string-array>
 </resources>

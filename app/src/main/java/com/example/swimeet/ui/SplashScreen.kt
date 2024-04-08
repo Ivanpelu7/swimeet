@@ -19,22 +19,20 @@ class SplashScreen : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
-    private fun comprobarSesion() {
+    private fun checkCurrentSesion() {
         if (Firebase.auth.currentUser != null) {
             FirebaseUtil.getCurrentUserDocumentRef()
                 .get()
                 .addOnSuccessListener {
-                    val nombre = it.getString("nombre")
 
-                    val intent = Intent(this, RecentChatsActivity::class.java)
-                    intent.putExtra("nombre", nombre)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
 
 
         } else {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -42,6 +40,6 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        comprobarSesion()
+        checkCurrentSesion()
     }
 }
