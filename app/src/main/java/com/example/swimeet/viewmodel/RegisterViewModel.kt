@@ -11,17 +11,30 @@ class RegisterViewModel : ViewModel() {
 
     private val authRepository = AuthRepository()
 
-    private var _isLoading = MutableLiveData(false)
+    private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    private var _isCreated = MutableLiveData(false)
+    private val _isCreated = MutableLiveData(false)
     val isCreated: LiveData<Boolean> get() = _isCreated
+
+    private val _isLoginCorrect = MutableLiveData<Boolean>()
+    val isLoginCorrect: LiveData<Boolean> get() = _isLoginCorrect
 
     fun signUp(email: String, username: String, password: String, name: String, category: String) {
         viewModelScope.launch {
             _isLoading.value = true
             authRepository.signUp(email, username, password, name, category) {
                 _isCreated.value = it
+            }
+            _isLoading.value = false
+        }
+    }
+
+    fun signIn(email: String, password: String) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            authRepository.signIn(email, password) {
+                _isLoginCorrect.value = it
             }
             _isLoading.value = false
         }

@@ -1,18 +1,12 @@
 package com.example.swimeet.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.R
-import com.example.swimeet.databinding.ActivityLoginBinding
+import com.example.swimeet.adapter.SpinnerAdapter
 import com.example.swimeet.databinding.ActivityRegisterBinding
 import com.example.swimeet.viewmodel.RegisterViewModel
 
@@ -43,7 +37,19 @@ class RegisterActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
-                // TODO: Poner error de que no se ha creado el usuario 
+                Toast.makeText(
+                    baseContext,
+                    "Error al crear el usuario",
+                    Toast.LENGTH_SHORT,
+                ).show()
+
+                binding.btnRegister.text = "REGISTRAR"
+            }
+        }
+
+        registerViewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.btnRegister.text = "REGISTRANDO USUARIO..."
             }
         }
     }
@@ -51,8 +57,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.btnRegister.setOnClickListener {
             if ((binding.etRegisterEmail.text.toString() != "") && (binding.etRegisterPassword.text.toString() != "")
-                    && (binding.etName.text.toString() != "") && (binding.etUsername.text.toString() != "")
-                    && (binding.spinnerCategories.selectedItem.toString() != "Seleccionar categoria")) {
+                && (binding.etName.text.toString() != "") && (binding.etUsername.text.toString() != "")
+                && (binding.spinnerCategories.selectedItem.toString() != "Seleccionar categoria")
+            ) {
 
                 val email = binding.etRegisterEmail.text.toString()
                 val password = binding.etRegisterPassword.text.toString()
@@ -63,15 +70,31 @@ class RegisterActivity : AppCompatActivity() {
                 registerViewModel.signUp(email, username, password, name, category)
 
             } else {
-
+                Toast.makeText(
+                    baseContext,
+                    "Rellene todos los campos",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
+        }
+
+        binding.tvIniciaSesion.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
     private fun initSpinner() {
         val categories = resources.getStringArray(R.array.categorias_edades_natacion)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
+        val adapter = SpinnerAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            categories,
+            "poppins_medium.ttf",
+            18f
+        )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategories.adapter = adapter
+
     }
 }

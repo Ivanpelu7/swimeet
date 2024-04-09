@@ -1,12 +1,12 @@
 package com.example.swimeet.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityLoginBinding
+import com.example.swimeet.viewmodel.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -15,18 +15,13 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private val registerViewModel: RegisterViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         initUI()
     }
@@ -34,9 +29,56 @@ class LoginActivity : AppCompatActivity() {
     private fun initUI() {
         auth = Firebase.auth
         initListeners()
+        initObservers()
+    }
+
+    private fun initObservers() {
+        registerViewModel.isLoginCorrect.observe(this) { isLoginCorrect ->
+            if (isLoginCorrect) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+
+            } else {
+                Toast.makeText(
+                    baseContext,
+                    "Datos introducidos incorrectos",
+                    Toast.LENGTH_SHORT,
+                ).show()
+
+                binding.btnLogin.text = "ENTRAR"
+
+            }
+        }
+
+        registerViewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.btnLogin.text = "ENTRANDO..."
+            }
+        }
     }
 
     private fun initListeners() {
+        binding.tvRegistrate.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnLogin.setOnClickListener {
+            if ((binding.etLoginEmail.text.toString() != "") && (binding.etLoginPassword.text.toString() != "")) {
+                val email = binding.etLoginEmail.text.toString()
+                val password = binding.etLoginPassword.text.toString()
+
+                registerViewModel.signIn(email, password)
+            } else {
+                Toast.makeText(
+                    baseContext,
+                    "Rellene todos los campos",
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
+        }
 
     }
 }

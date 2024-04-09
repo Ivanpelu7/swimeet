@@ -38,4 +38,17 @@ class AuthRepository {
     private fun saveUser(user: User) {
         Firebase.firestore.collection("users").document(user.userId!!).set(user)
     }
+
+    suspend fun signIn(email: String, password: String, callback: (Boolean) -> Unit) {
+        withContext(Dispatchers.IO) {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        callback(true)
+                    } else {
+                        callback(false)
+                    }
+                }
+        }
+    }
 }
