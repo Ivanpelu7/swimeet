@@ -2,8 +2,12 @@
     <string name="app_name">Swimeet</string>
     <string-array name="categorias_edades_natacion">
         <item>Seleccionar categoría</item>
+        <item>Benjamín</item>
+        <item>Alevín</item>
         <item>Infantil</item>
-        <item>Juvenil</item>
-        <item>Adulto</item>
+        <item>Junior</item>
+        <item>Absoluto</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

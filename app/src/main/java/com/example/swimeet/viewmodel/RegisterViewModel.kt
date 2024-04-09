@@ -14,7 +14,7 @@ class RegisterViewModel : ViewModel() {
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    private val _isCreated = MutableLiveData(false)
+    private val _isCreated = MutableLiveData<Boolean>()
     val isCreated: LiveData<Boolean> get() = _isCreated
 
     private val _isLoginCorrect = MutableLiveData<Boolean>()
