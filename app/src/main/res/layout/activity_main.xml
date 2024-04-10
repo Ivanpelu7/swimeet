@@ -25,9 +25,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu"
+        android:background="@color/blDue"
+        app:itemTextColor="@color/bottom_nav_selector"
         app:itemIconTint="@color/bottom_nav_selector"
-        app:itemTextColor="@color/white"
-        android:background="@color/blDue" />
+        app:itemActiveIndicatorStyle="@null"/>
 
     <LinearLayout
         android:id="@+id/header"

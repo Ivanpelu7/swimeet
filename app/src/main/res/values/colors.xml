@@ -2,16 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#0B3954</color>
-    <color name="blue2">#087E8B</color>
-    <color name="blue3">#BFD7EA</color>
-    <color name="red">#FF5A6F</color>
-    <color name="red2">#C81D25</color>
+    <color name="blue">#FFA500</color>
+    <color name="blue2">#FF4500</color>
+    <color name="blue3">#4D76A1 </color>
+    <color name="red">#001F4E</color>
+    <color name="red2">#004B8D</color>
     <color name="blDue">#002B5C</color>
     <color name="bSlue">#004C99</color>
     <color name="blDFue">#0081C7</color>
     <color name="blWERue">#00BBE6</color>
-    <color name="blSSue">#BDE4E5</color>
+    <color name="blSSue">#00599C</color>
 
 
 </resources>
