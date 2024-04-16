@@ -22,14 +22,15 @@
         android:id="@+id/bottomMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_menu"
         android:background="@color/primary"
-        app:itemTextColor="@color/bottom_nav_selector"
+        app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/bottom_nav_selector"
-        app:itemActiveIndicatorStyle="@null"/>
+        app:itemTextColor="@color/bottom_nav_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
     <LinearLayout
         android:id="@+id/header"
@@ -49,7 +50,7 @@
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="36sp"
+            android:textSize="46sp"
             android:textStyle="bold" />
 
     </LinearLayout>
