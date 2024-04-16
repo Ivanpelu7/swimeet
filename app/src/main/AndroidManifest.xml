@@ -22,6 +22,12 @@
             android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.ChatRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UsersListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SplashScreen"
             android:exported="true">
             <intent-filter>

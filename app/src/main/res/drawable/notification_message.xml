@@ -1,0 +1,6 @@
+<!-- rounded_purple_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="500dp" />
+    <solid android:color="@color/primary" /> <!-- Fondo morado, puedes ajustar el color según tu preferencia -->
+</shape>
