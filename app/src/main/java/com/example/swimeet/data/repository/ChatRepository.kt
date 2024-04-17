@@ -73,7 +73,6 @@ class ChatRepository {
             FirebaseUtil.getChatsRef()
                 .document(chatId)
                 .update(updates)
-                .await()
         }
     }
 }

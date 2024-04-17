@@ -7,4 +7,8 @@
     </style>
 
     <style name="Theme.Swimeet" parent="Base.Theme.Swimeet" />
+
+    <style name="SplashTheme" parent="Theme.Swimeet">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>

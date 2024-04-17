@@ -27,7 +27,7 @@ class MessageRepository {
 
     suspend fun addMessage(chatId: String, message: Message) {
         withContext(Dispatchers.IO) {
-            FirebaseUtil.getMessagesRef(chatId).add(message).await()
+            FirebaseUtil.getMessagesRef(chatId).add(message)
         }
     }
 }

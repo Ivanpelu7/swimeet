@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityLoginBinding
+import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -14,20 +16,20 @@ import com.google.firebase.ktx.Firebase
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
     private val registerViewModel: RegisterViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Swimeet)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        checkCurrentSesion()
         initUI()
     }
 
     private fun initUI() {
-        auth = Firebase.auth
         initListeners()
         initObservers()
     }
@@ -81,4 +83,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun checkCurrentSesion() {
+        if (Firebase.auth.currentUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
 }

@@ -12,19 +12,24 @@ import com.google.firebase.ktx.Firebase
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
 
         Firebase.firestore.clearPersistence()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        checkCurrentSesion()
     }
 
-    private fun checkCurrentSesion() {
+    private fun checkCurrentSesion(): Boolean {
+        var check: Boolean = false
+
         if (Firebase.auth.currentUser != null) {
             FirebaseUtil.getCurrentUserDocumentRef()
                 .get()
                 .addOnSuccessListener {
-
+                    check = true
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -36,10 +41,6 @@ class SplashScreen : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        checkCurrentSesion()
+        return check
     }
 }
