@@ -1,14 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Swimeet" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Swimeet" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:statusBarColor">@color/primary</item>
-    </style>
 
-    <style name="Theme.Swimeet" parent="Base.Theme.Swimeet" />
-
-    <style name="SplashTheme" parent="Theme.Swimeet">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>

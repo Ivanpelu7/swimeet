@@ -1,7 +1,11 @@
 package com.example.swimeet.ui
 
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.animation.AnticipateInterpolator
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +23,8 @@ class LoginActivity : AppCompatActivity() {
     private val registerViewModel: RegisterViewModel by viewModels()
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Swimeet)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
