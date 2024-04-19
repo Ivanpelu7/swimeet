@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         initNavigation()
-        loadAvatarImage("https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1")
+        loadAvatarImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6qH7tD9ciKXsWO59t7OOqfgvnsa1ljgr5q1_lVof_JQ&s")
     }
 
     private fun loadAvatarImage(imageUrl: String) {
