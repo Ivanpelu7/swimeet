@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityMainBinding
 import com.example.swimeet.util.FirebaseUtil
@@ -29,6 +31,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         initNavigation()
+        loadAvatarImage()
+    }
+
+    private fun loadAvatarImage() {
+        val imageUrl = "https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1"
+
+        Glide.with(this)
+            .load(imageUrl)
+            .transform(CircleCrop())
+            .into(binding.avatar);
     }
 
     private fun initNavigation() {
