@@ -31,16 +31,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         initNavigation()
-        loadAvatarImage()
+        loadAvatarImage("https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1")
     }
 
-    private fun loadAvatarImage() {
-        val imageUrl = "https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1"
-
+    private fun loadAvatarImage(imageUrl: String) {
         Glide.with(this)
             .load(imageUrl)
             .transform(CircleCrop())
-            .into(binding.avatar);
+            .into(binding.avatar)
     }
 
     private fun initNavigation() {
