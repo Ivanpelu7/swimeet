@@ -25,7 +25,7 @@ class AuthRepository {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val user = User(auth.uid, username, email, name, category)
+                        val user = User(auth.uid, false, username, email, name, category)
                         saveUser(user)
                         callback(true)
                     } else {
