@@ -25,7 +25,6 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) : Recycle
 
     class EventsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val eventName: TextView = itemView.findViewById(R.id.tvNameEvent)
-        private val eventSite: TextView = itemView.findViewById(R.id.tvSitioVar)
         private val eventDate: TextView = itemView.findViewById(R.id.tvFechaVar)
         private val participants: TextView = itemView.findViewById(R.id.tvParticipantsVar)
         private val iconEvent: ImageView = itemView.findViewById(R.id.ivEventIcon)
@@ -37,7 +36,6 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) : Recycle
             }
 
             eventName.text = event.name
-            eventSite.text = event.site
             eventDate.text = event.date.toString()
             participants.text = event.participants.size.toString()
         }

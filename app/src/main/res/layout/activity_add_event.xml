@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.AddEventActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutActionBar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCompetitionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nuevo Evento"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
+
+
+
+            <Spinner
+                android:id="@+id/spinnerType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:padding="10dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etEventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Nombre evento/competición"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/spinnerType" />
+
+            <EditText
+                android:id="@+id/etUbi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Ubicación"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etEventName" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_edit_location_alt_24"
+                app:layout_constraintBottom_toBottomOf="@id/etUbi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etUbi" />
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Fecha"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etUbi" />
+
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/etDate"
+            app:layout_constraintStart_toStartOf="@+id/etDate"
+            app:layout_constraintTop_toTopOf="@+id/etDate"
+            tools:text="12/04/2024"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="8dp"/>
+
+
+
+
+
+
+            <ImageView
+                android:id="@+id/ivCalendar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_calendar_month_24"
+                app:layout_constraintBottom_toBottomOf="@id/etDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etDate" />
+
+            <EditText
+                android:id="@+id/etTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Hora"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etDate" />
+
+        <TextView
+            android:id="@+id/tvHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/etTime"
+            app:layout_constraintStart_toStartOf="@+id/etTime"
+            app:layout_constraintTop_toTopOf="@id/etTime"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="Hola que tal"
+            android:layout_marginStart="8dp"/>
+
+            <ImageView
+                android:id="@+id/ivTime"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_access_time_24"
+                app:layout_constraintBottom_toBottomOf="@id/etTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etTime" />
+
+        <EditText
+            android:id="@+id/etDistance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/edit_text_auth"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Distancia"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTime"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+        <Button
+            android:id="@+id/btnAddEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="8dp"
+            android:text="AÑADIR EVENTO"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

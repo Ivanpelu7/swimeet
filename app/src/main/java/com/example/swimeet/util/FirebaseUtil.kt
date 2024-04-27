@@ -35,6 +35,10 @@ object FirebaseUtil {
         return SimpleDateFormat("HH:mm", Locale.getDefault()).format(timestamp.toDate())
     }
 
+    fun timestampToStringDate(timestamp: Timestamp): String {
+        return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(timestamp.toDate())
+    }
+
     fun getOtherUserFromChat(userIds: List<String>): DocumentReference {
         if (userIds[0] == getCurrentUserID()) {
             return getUsersRef().document(userIds[1])
@@ -42,6 +46,10 @@ object FirebaseUtil {
         } else {
             return getUsersRef().document(userIds[0])
         }
+    }
+
+    fun getCompetitionsRef(): CollectionReference {
+        return Firebase.firestore.collection("competitions")
     }
 
 

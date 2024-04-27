@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,25 +20,30 @@
         android:theme="@style/Theme.Swimeet"
         tools:targetApi="31">
         <activity
+            android:name=".ui.AddEventActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBfGyy-1MXE5I9Vpv4vFB08cxK5R_Kq9Sc" />
+
+        <activity
+            android:name=".ui.CompetitionDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
-            android:exported="false">
-
-
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.ChatRoomActivity"
@@ -41,10 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"
-            android:exported="false">
-
-
-        </activity>
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
