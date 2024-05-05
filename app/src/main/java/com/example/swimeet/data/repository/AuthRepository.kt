@@ -3,12 +3,15 @@ package com.example.swimeet.data.repository
 
 import android.content.Context
 import android.net.Uri
+import androidx.core.graphics.drawable.toDrawable
+import com.example.swimeet.R
 import com.example.swimeet.data.model.User
 import com.example.swimeet.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -31,14 +34,21 @@ class AuthRepository {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user = User(auth.uid, false, username, email, name, category)
-                        val packageName = context.packageName
-                        val profileUpdates = UserProfileChangeRequest.Builder()
-                            .setDisplayName(username)
-                            .setPhotoUri(Uri.parse("android.resource://$packageName/drawable/nadador.png"))
-                            .build()
-                        auth.currentUser?.updateProfile(profileUpdates)
-                        saveUser(user)
-                        callback(true)
+
+                        var storage = FirebaseStorage.getInstance()
+                        val storageRef = storage.reference.child("usuario.png")
+
+                        storageRef.downloadUrl.addOnSuccessListener { uri ->
+                            val profileUpdates = UserProfileChangeRequest.Builder()
+                                .setDisplayName(username)
+                                .setPhotoUri(uri)
+                                .build()
+
+                            auth.currentUser?.updateProfile(profileUpdates)
+                            saveUser(user)
+                            callback(true)
+                        }
+
                     } else {
                         callback(false)
                     }

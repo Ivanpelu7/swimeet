@@ -1,10 +1,8 @@
 package com.example.swimeet.ui
 
-import android.content.Intent
+
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
-import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,9 +11,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityMainBinding
-import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,13 +25,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Firebase.auth.signOut()
 
         initUI()
     }
 
     private fun initUI() {
         initNavigation()
-        Firebase.auth.currentUser?.photoUrl?.let { loadAvatarImage(it) }
+        loadAvatarImage(Firebase.auth.currentUser!!.photoUrl!!)
     }
 
     private fun loadAvatarImage(imageUrl: Uri) {
@@ -47,6 +46,5 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
         binding.bottomMenu.setupWithNavController(navController)
-
     }
 }
