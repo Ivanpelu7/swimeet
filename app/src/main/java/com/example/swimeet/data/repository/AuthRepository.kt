@@ -1,18 +1,14 @@
 package com.example.swimeet.data.repository
 
 
-import android.content.Context
-import android.net.Uri
-import androidx.core.graphics.drawable.toDrawable
-import com.example.swimeet.R
 import com.example.swimeet.data.model.User
-import com.example.swimeet.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class AuthRepository {
@@ -24,37 +20,34 @@ class AuthRepository {
         username: String,
         password: String,
         name: String,
-        category: String,
-        context: Context,
-        callback: (Boolean) -> Unit
-    ) {
-
+        category: String
+    ): Boolean {
+        var b = false
         withContext(Dispatchers.IO) {
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = User(auth.uid, false, username, email, name, category)
+            auth.createUserWithEmailAndPassword(email, password).await()
 
-                        var storage = FirebaseStorage.getInstance()
-                        val storageRef = storage.reference.child("usuario.png")
 
-                        storageRef.downloadUrl.addOnSuccessListener { uri ->
-                            val profileUpdates = UserProfileChangeRequest.Builder()
-                                .setDisplayName(username)
-                                .setPhotoUri(uri)
-                                .build()
+            if (auth.currentUser != null) {
+                val user = User(auth.uid, false, username, email, name, category)
 
-                            auth.currentUser?.updateProfile(profileUpdates)
-                            saveUser(user)
-                            callback(true)
-                        }
+                val storage = FirebaseStorage.getInstance()
+                val storageRef = storage.reference.child("usuario.png")
 
-                    } else {
-                        callback(false)
-                    }
-                }
+                val url = storageRef.downloadUrl.await()
+                user.photo = url.toString()
+                val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setDisplayName(username)
+                    .setPhotoUri(url)
+                    .build()
+
+                auth.currentUser?.updateProfile(profileUpdates)!!.await()
+                saveUser(user)
+                b = true
+            }
         }
+        return b
     }
+
 
     private fun saveUser(user: User) {
         Firebase.firestore.collection("users").document(user.userId!!).set(user)

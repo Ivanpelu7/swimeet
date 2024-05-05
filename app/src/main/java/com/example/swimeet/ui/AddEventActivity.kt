@@ -52,7 +52,7 @@ class AddEventActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item,
             types,
             "poppins_medium.ttf",
-            14f
+            16f
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerType.adapter = adapter

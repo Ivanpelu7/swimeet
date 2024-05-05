@@ -33,7 +33,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Nuevo Evento"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBack"
@@ -72,11 +72,12 @@
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
                 android:hint="Nombre evento/competición"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/spinnerType" />
 
             <EditText
@@ -91,8 +92,9 @@
                 android:hint="Ubicación"
                 android:inputType="text"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etEventName" />
@@ -119,7 +121,8 @@
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etUbi" />
@@ -161,10 +164,11 @@
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Hora"
+                android:textColor="@color/black"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etDate" />
@@ -178,7 +182,7 @@
             app:layout_constraintTop_toTopOf="@id/etTime"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             tools:text="Hola que tal"
             android:layout_marginStart="8dp"/>
 
@@ -201,10 +205,11 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppins_medium"
             android:hint="Distancia"
+            android:textColor="@color/black"
             android:inputType="number"
             android:padding="10dp"
             android:textColorHint="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etTime"
             app:layout_constraintEnd_toEndOf="parent"/>

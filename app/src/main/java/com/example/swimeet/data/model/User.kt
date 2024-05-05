@@ -7,4 +7,5 @@ data class User(
     var email: String = "",
     var name: String = "",
     var category: String = "",
+    var photo: String = "",
 )

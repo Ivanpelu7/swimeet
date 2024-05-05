@@ -5,6 +5,7 @@ import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
 import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.toObject
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
@@ -66,5 +67,16 @@ class CompetitionRepository {
                 onEventAdded(false)
             }
         }
+    }
+
+    suspend fun getCompetitionInfo(id: String): Competition? {
+        var comp: Competition?
+
+        withContext(Dispatchers.IO) {
+            val compDocu = FirebaseUtil.getCompetitionsRef().document(id).get().await()
+            comp = compDocu.toObject(Competition::class.java)
+        }
+
+        return comp
     }
 }

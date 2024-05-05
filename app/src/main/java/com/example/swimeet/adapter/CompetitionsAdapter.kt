@@ -46,6 +46,7 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CompetitionDetailActivity::class.java)
                 intent.putExtra("id", competition.eventId)
+                intent.putExtra("name", competition.name)
                 itemView.context.startActivity(intent)
             }
 

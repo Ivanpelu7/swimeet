@@ -27,11 +27,10 @@
 
         <ImageView
             android:id="@+id/ivAvatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginStart="14dp"
-            android:src="@drawable/avatar" />
+            android:layout_marginStart="14dp"/>
 
 
         <TextView
@@ -40,9 +39,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="22sp"
             android:textStyle="bold"
-            tools:text="Ivan" />
+            tools:text="Ivan"
+            android:layout_marginStart="6dp"/>
 
     </LinearLayout>
 
@@ -75,10 +76,13 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:hint="Mensaje"
+            android:textColorHint="@color/black"
             android:background="@drawable/edit_text_rounded"
             android:padding="14dp"
+            android:fontFamily="@font/poppins_medium"
             android:inputType="textCapSentences"
             android:layout_weight="1"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <ImageView

@@ -105,6 +105,12 @@ class MainFragment : Fragment() {
             activity?.finish()
         }
 
+        binding.tvSalir.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.tvAdd.setOnClickListener {
             val intent = Intent(requireContext(), AddEventActivity::class.java)
             startActivity(intent)

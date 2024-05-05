@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.data.model.Message
 import com.example.swimeet.adapter.MessagesAdapter
@@ -19,6 +21,7 @@ class ChatRoomActivity : AppCompatActivity() {
     private val chatRoomViewModel: ChatRoomViewModel by viewModels()
     private lateinit var otherUserId: String
     private lateinit var otherUsername: String
+    private lateinit var otherUserImage: String
     private lateinit var chatId: String
     private var isChatOpen: Boolean = true
 
@@ -35,6 +38,10 @@ class ChatRoomActivity : AppCompatActivity() {
         initObservers()
         checkIfChatExists()
         binding.tvNombreUsuario.text = otherUsername
+        Glide.with(this)
+            .load(otherUserImage)
+            .transform(CircleCrop())
+            .into(binding.ivAvatar)
         initListeners()
         setUpRecyclerView()
     }
@@ -61,6 +68,7 @@ class ChatRoomActivity : AppCompatActivity() {
     private fun getIntents() {
         otherUsername = intent.getStringExtra("otherUsername").toString()
         otherUserId = intent.getStringExtra("otherUserId").toString()
+        otherUserImage = intent.getStringExtra("otherUserImage").toString()
     }
 
     private fun initListeners() {

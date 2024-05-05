@@ -4,10 +4,14 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Chat
 import com.example.swimeet.data.model.User
@@ -46,9 +50,14 @@ class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
         private val tvTimestamp: TextView = itemView.findViewById(R.id.tvTimestamp)
         private val tvLastMessage: TextView = itemView.findViewById(R.id.tvLastMessage)
         private val tvNotification: TextView = itemView.findViewById(R.id.notificacion)
+        private val ivImage: ImageView = itemView.findViewById(R.id.ivAvatar)
 
         fun render(chat: Chat, user: User) {
             tvName.text = user.username
+            Glide.with(tvName.context)
+                .load(user.photo.toUri())
+                .transform(CircleCrop())
+                .into(ivImage)
 
             if (chat.lastMessage != "" && chat.lastMessageTimestamp != null) {
                 tvTimestamp.text =
@@ -93,6 +102,7 @@ class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
                 val intent = Intent(itemView.context, ChatRoomActivity::class.java)
                 intent.putExtra("otherUsername", user.username)
                 intent.putExtra("otherUserId", user.userId)
+                intent.putExtra("otherUserImage", user.photo)
                 itemView.context.startActivity(intent)
             }
         }

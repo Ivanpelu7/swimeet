@@ -18,7 +18,6 @@ class SplashScreen : AppCompatActivity() {
 
         Firebase.firestore.clearPersistence()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
         checkCurrentSesion()
     }
 

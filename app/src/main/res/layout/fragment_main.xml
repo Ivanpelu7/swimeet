@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:progressTint="@color/primary"
+        android:indeterminate="true"
         android:visibility="invisible"/>
 
     <androidx.core.widget.NestedScrollView
@@ -48,6 +50,17 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tvTablon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvTablon" />
+
+            <TextView
+                android:id="@+id/tvSalir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Añadir"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAddAdvertisement"
+                app:layout_constraintEnd_toStartOf="@+id/tvAddAdvertisement" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"

@@ -24,9 +24,7 @@ class RegisterViewModel : ViewModel() {
     fun signUp(email: String, username: String, password: String, name: String, category: String, context: Context) {
         viewModelScope.launch {
             _isLoading.value = true
-            authRepository.signUp(email, username, password, name, category, context) {
-                _isCreated.value = it
-            }
+            _isCreated.value = authRepository.signUp(email, username, password, name, category)
             _isLoading.value = false
         }
     }

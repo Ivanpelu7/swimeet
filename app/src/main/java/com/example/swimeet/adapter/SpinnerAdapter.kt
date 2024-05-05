@@ -21,6 +21,7 @@ class SpinnerAdapter(
         val view = super.getView(position, convertView, parent) as TextView
         applyFont(view)
         view.textSize = textSize
+        view.setTextColor(view.context.getColor(R.color.black))
         return view
     }
 
@@ -28,6 +29,7 @@ class SpinnerAdapter(
         val view = super.getDropDownView(position, convertView, parent) as TextView
         applyFont(view)
         view.textSize = textSize
+        view.setTextColor(view.context.getColor(R.color.white))
         return view
     }
 
