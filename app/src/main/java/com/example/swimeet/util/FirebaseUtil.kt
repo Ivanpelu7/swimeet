@@ -52,5 +52,11 @@ object FirebaseUtil {
         return Firebase.firestore.collection("competitions")
     }
 
+    fun getEventsRef(): CollectionReference {
+        return Firebase.firestore.collection("events")
+    }
 
+    fun getAdvertisementsRef(): CollectionReference {
+        return Firebase.firestore.collection("advertisements")
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.swimeet.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
@@ -26,15 +27,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         initUI()
     }
 
     private fun initUI() {
         initNavigation()
-        loadAvatarImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6qH7tD9ciKXsWO59t7OOqfgvnsa1ljgr5q1_lVof_JQ&s")
+        Firebase.auth.currentUser?.photoUrl?.let { loadAvatarImage(it) }
     }
 
-    private fun loadAvatarImage(imageUrl: String) {
+    private fun loadAvatarImage(imageUrl: Uri) {
         Glide.with(this)
             .load(imageUrl)
             .transform(CircleCrop())

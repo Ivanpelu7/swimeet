@@ -26,6 +26,7 @@ class MainFragment : Fragment() {
     private val mainViewModel = MainViewModel()
     private lateinit var competitionsAdapter: CompetitionsAdapter
     private lateinit var eventsAdapter: EventsAdapter
+    private lateinit var vpAdapter: ViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initUI() {
+        mainViewModel.init()
         initObservers()
         initListeners()
         initRecyclerViews()
@@ -63,6 +65,14 @@ class MainFragment : Fragment() {
         mainViewModel.competitionList.observe(viewLifecycleOwner) { competitions ->
             competitionsAdapter.updateList(competitions)
         }
+
+        mainViewModel.eventList.observe(viewLifecycleOwner) { events ->
+            eventsAdapter.updateList(events)
+        }
+
+        mainViewModel.advList.observe(viewLifecycleOwner) { adv ->
+            vpAdapter.updateList(adv)
+        }
     }
 
     private fun initRecyclerViews() {
@@ -81,33 +91,10 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun competitionsProvider(): List<Competition> {
-        return listOf(
-            Competition(type = "Travesía", name = "XI Travessía Canal de Nado Gandía", location = GeoPoint(39.00955556293781, -0.1655901822236689), distance = 3),
-            Competition(type = "Competición", name = "Campeonato Nacional Infantil de Verano"),
-            Competition(type = "Competición", name = "5º Control Master"),
-            Competition(type = "Travesía", name = "II Travesía por parejas Burriana", distance = 2),
-            Competition(type = "Travesía", name = "IV Travessía Clara Morales", distance = 1)
-        )
-    }
-
-    private fun eventsProvider(): List<Event> {
-        return listOf(
-            Event(type = "Comida", name = "Cena Navidad 2025"),
-            Event(type = "Fiesta", name = "Sauvage"),
-            Event(type = "Comida", name = "Comida post competición"),
-            Event(type = "Quedada", name = "Nadar en Cullera"),
-            Event(type = "Quedada", name = "Nadar en el rio Antella")
-        )
-    }
-
     private fun initViewPager() {
-        val advertisementList = mutableListOf<Advertisement>()
-        advertisementList.add(Advertisement(authorUsername = "Ivanpelu7", message = "Hola que tal", title = "Primer mensaje en el tablón"))
-        advertisementList.add(Advertisement(authorUsername = "UsuarioInventado", message = "Mensaje de prueba", title = "Segundo mensaje en el tablón"))
 
-        val adapter = ViewPagerAdapter(advertisementList)
-        binding.viewPager.adapter = adapter
+        vpAdapter = ViewPagerAdapter()
+        binding.viewPager.adapter = vpAdapter
     }
 
     private fun initListeners() {
@@ -120,6 +107,16 @@ class MainFragment : Fragment() {
 
         binding.tvAdd.setOnClickListener {
             val intent = Intent(requireContext(), AddEventActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvAddEvent.setOnClickListener {
+            val intent = Intent(requireContext(), AddEventActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvAddAdvertisement.setOnClickListener {
+            val intent = Intent(requireContext(), AddAdvertisementActivity::class.java)
             startActivity(intent)
         }
     }

@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
+import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
+import com.example.swimeet.util.FirebaseUtil
 
 class EventsAdapter(private var eventsList: List<Event> = emptyList()) : RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
 
@@ -15,6 +18,12 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) : Recycle
         return EventsViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
         )
+    }
+
+    fun updateList(newList: List<Event>) {
+        val diffResult = DiffUtil.calculateDiff(EventsDiffUtil(eventsList, newList))
+        eventsList = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun getItemCount(): Int = eventsList.size
@@ -36,7 +45,7 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) : Recycle
             }
 
             eventName.text = event.name
-            eventDate.text = event.date.toString()
+            eventDate.text = FirebaseUtil.timestampToStringDate(event.date!!)
             participants.text = event.participants.size.toString()
         }
 

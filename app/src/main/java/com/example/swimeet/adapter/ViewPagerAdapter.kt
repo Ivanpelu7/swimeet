@@ -8,10 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Advertisement
 
-class ViewPagerAdapter(private val advertisementsList: List<Advertisement>) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
+class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emptyList()) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.advertisement_item, parent, false)
         return ViewPagerViewHolder(view)
+    }
+
+    fun updateList(newList: List<Advertisement>) {
+        advertisementsList = newList
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {

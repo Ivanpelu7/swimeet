@@ -1,5 +1,6 @@
 package com.example.swimeet.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,10 +21,10 @@ class RegisterViewModel : ViewModel() {
     private val _isLoginCorrect = MutableLiveData<Boolean>()
     val isLoginCorrect: LiveData<Boolean> get() = _isLoginCorrect
 
-    fun signUp(email: String, username: String, password: String, name: String, category: String) {
+    fun signUp(email: String, username: String, password: String, name: String, category: String, context: Context) {
         viewModelScope.launch {
             _isLoading.value = true
-            authRepository.signUp(email, username, password, name, category) {
+            authRepository.signUp(email, username, password, name, category, context) {
                 _isCreated.value = it
             }
             _isLoading.value = false

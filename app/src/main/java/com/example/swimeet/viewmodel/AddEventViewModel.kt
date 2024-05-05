@@ -16,9 +16,15 @@ class AddEventViewModel: ViewModel() {
 
     private val _competitionAdded = MutableLiveData<Boolean>()
     val competitionAdded: LiveData<Boolean> get() = _competitionAdded
+    private val _eventAdded = MutableLiveData<Boolean>()
+    val eventAdded: LiveData<Boolean> get() = _eventAdded
 
     fun addEvent(event: Event) {
-
+        viewModelScope.launch {
+            competitionRepository.addEvent(event) { state ->
+                _eventAdded.value = state
+            }
+        }
     }
 
     fun addCompetition(competition: Competition) {

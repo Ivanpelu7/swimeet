@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Swimeet"
         tools:targetApi="31">
         <activity
+            android:name=".ui.AddAdvertisementActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.AddEventActivity"
             android:exported="false" />
 

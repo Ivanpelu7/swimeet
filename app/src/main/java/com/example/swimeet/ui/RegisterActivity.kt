@@ -67,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
                 val category = binding.spinnerCategories.selectedItem.toString()
                 val username = binding.etUsername.text.toString()
 
-                registerViewModel.signUp(email, username, password, name, category)
+                registerViewModel.signUp(email, username, password, name, category, applicationContext)
 
             } else {
                 Toast.makeText(

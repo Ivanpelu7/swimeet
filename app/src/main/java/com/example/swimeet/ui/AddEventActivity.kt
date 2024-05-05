@@ -88,6 +88,19 @@ class AddEventActivity : AppCompatActivity() {
                 binding.btnAddEvent.text = "AÑADIENDO..."
             }
         }
+
+        addEventViewModel.eventAdded.observe(this) {
+            if (it) {
+                Toast.makeText(applicationContext, "Evento añadido con éxito", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+
+            } else {
+                binding.btnAddEvent.text = "AÑADIENDO..."
+            }
+        }
     }
 
     private fun setListeners() {
@@ -168,8 +181,13 @@ class AddEventActivity : AppCompatActivity() {
                 val competition = Competition(type = type, name = name, date = Timestamp(calendar.time), distance = distance)
                 addEventViewModel.addCompetition(competition)
             } else {
-                val event = Event()
+                val event = Event(type = type, name = name, date = Timestamp(calendar.time))
+                addEventViewModel.addEvent(event)
             }
+        }
+
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
     }
