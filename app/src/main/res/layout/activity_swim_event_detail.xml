@@ -69,14 +69,15 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvBenjamin"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMasc">
+                app:layout_constraintTop_toBottomOf="@+id/tvMasc"
+                app:layout_constraintEnd_toStartOf="@+id/cardViewAlevin">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -126,14 +127,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
-                android:layout_width="190dp"
+                android:id="@+id/cardViewAlevin"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
                 android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvBenjamin"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -185,14 +187,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="190dp"
+                android:id="@+id/cardViewInfantil"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="14dp"
-                app:cardCornerRadius="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="8dp"
                 android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvBenjamin">
 
@@ -246,15 +249,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
                 app:cardCornerRadius="8dp"
                 android:backgroundTint="@color/white"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+                app:layout_constraintStart_toEndOf="@+id/cardViewInfantil"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewAlevin">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -306,15 +310,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvAbsoluto"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintStart_toStartOf="parent"
-                android:backgroundTint="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2">
+                app:layout_constraintTop_toBottomOf="@+id/cardViewInfantil">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -379,7 +384,7 @@
                 android:id="@+id/tvFem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/bebas_neue"
                 android:padding="12dp"
                 android:text="FEMENINO"
@@ -393,12 +398,13 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvBenjaminFem"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
                 android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem">
 
@@ -451,14 +457,15 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:backgroundTint="@color/white"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvFem">
+                app:layout_constraintTop_toBottomOf="@+id/tvFem"
+                app:layout_constraintStart_toEndOf="@+id/cvBenjaminFem">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -510,15 +517,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvInfantil"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:backgroundTint="@color/white"
-                android:layout_marginStart="8dp"
+                android:layout_marginHorizontal="8dp"
                 app:cardCornerRadius="8dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
                 app:cardElevation="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem">
+                app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem"
+                app:layout_constraintEnd_toStartOf="@+id/cvJuniorFem">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -569,15 +577,17 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="190dp"
+                android:id="@+id/cvJuniorFem"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginHorizontal="8dp"
                 app:cardCornerRadius="8dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4">
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"
+                app:layout_constraintStart_toEndOf="@+id/cvInfantil">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -629,15 +639,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvAbs"
-                android:layout_width="190dp"
+                android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvInfantil">
+                app:layout_constraintTop_toBottomOf="@+id/cvInfantil"
+                app:layout_constraintEnd_toEndOf="@id/cvInfantil">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
