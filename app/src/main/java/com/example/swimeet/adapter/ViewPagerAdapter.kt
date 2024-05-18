@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Advertisement
+import com.example.swimeet.util.FirebaseUtil
 
 class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emptyList()) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
@@ -29,11 +30,19 @@ class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emp
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvMessage: TextView = itemView.findViewById(R.id.tvMessage)
         private val tvAuthor: TextView = itemView.findViewById(R.id.tvAuthor)
+        private val tvNone: TextView = itemView.findViewById(R.id.tvSinAnuncios)
+        private val tvHace: TextView = itemView.findViewById(R.id.tvHace)
 
         fun render(advertisement: Advertisement) {
-            tvTitle.text = advertisement.title
-            tvMessage.text = advertisement.message
-            tvAuthor.text = advertisement.authorUsername
+            if (advertisement.message == "") {
+                tvNone.visibility = View.VISIBLE
+            } else {
+                tvNone.visibility = View.GONE
+                tvTitle.text = advertisement.title
+                tvMessage.text = advertisement.message
+                tvAuthor.text = advertisement.authorUsername
+                tvHace.text = FirebaseUtil.parseAdvTime(advertisement.date)
+            }
         }
     }
 }

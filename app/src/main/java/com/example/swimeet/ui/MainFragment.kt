@@ -2,21 +2,18 @@ package com.example.swimeet.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.adapter.CompetitionsAdapter
 import com.example.swimeet.adapter.EventsAdapter
 import com.example.swimeet.adapter.ViewPagerAdapter
 import com.example.swimeet.data.model.Advertisement
-import com.example.swimeet.data.model.Competition
-import com.example.swimeet.data.model.Event
 import com.example.swimeet.databinding.FragmentMainBinding
 import com.example.swimeet.viewmodel.MainViewModel
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.ktx.Firebase
 
 class MainFragment : Fragment() {
@@ -71,7 +68,13 @@ class MainFragment : Fragment() {
         }
 
         mainViewModel.advList.observe(viewLifecycleOwner) { adv ->
-            vpAdapter.updateList(adv)
+            if (adv.isEmpty()) {
+                val dummyList = listOf(Advertisement())
+                vpAdapter.updateList(dummyList)
+            } else {
+                vpAdapter.updateList(adv)
+            }
+
         }
     }
 

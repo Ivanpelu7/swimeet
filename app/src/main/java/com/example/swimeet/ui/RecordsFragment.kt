@@ -1,6 +1,8 @@
 package com.example.swimeet.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import com.example.swimeet.adapter.SwimEventsAdapter
 import com.example.swimeet.data.model.SwimEvent
 import com.example.swimeet.databinding.FragmentMainBinding
 import com.example.swimeet.databinding.FragmentRecordsBinding
+import java.util.Locale.filter
 
 class RecordsFragment : Fragment() {
 
@@ -31,10 +34,34 @@ class RecordsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+
     }
 
     private fun initUI() {
         setupRecyclerView()
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.etFiltrarPruebas.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                //
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filter(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                //
+            }
+
+        })
+    }
+
+    private fun filter(s: String) {
+        val filteredList = getSwimEventsList().filter { it.name.contains(s, ignoreCase = true) }
+        swimAdapter.updateList(filteredList)
     }
 
     private fun setupRecyclerView() {

@@ -10,5 +10,6 @@ data class Competition(
     var date: Timestamp? = null,
     var distance: Int? = null,
     var location: GeoPoint? = null,
-    var participants: List<String> = emptyList()
+    var participants: List<String> = emptyList(),
+    var finished: Boolean = false
 )

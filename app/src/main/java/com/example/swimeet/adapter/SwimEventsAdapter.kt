@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
+import com.example.swimeet.data.model.Record
 import com.example.swimeet.data.model.SwimEvent
 import com.example.swimeet.ui.SwimEventDetailActivity
 
@@ -29,6 +30,11 @@ class SwimEventsAdapter(private var swimEventsList: List<SwimEvent> = emptyList(
     }
 
     override fun getItemCount(): Int = swimEventsList.size
+
+    fun updateList(newList: List<SwimEvent>) {
+        swimEventsList = newList
+        notifyDataSetChanged()
+    }
 
     class SwimEventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.tvName)

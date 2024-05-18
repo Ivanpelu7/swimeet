@@ -59,4 +59,32 @@ object FirebaseUtil {
     fun getAdvertisementsRef(): CollectionReference {
         return Firebase.firestore.collection("advertisements")
     }
+
+    fun getRecordsRef(): CollectionReference {
+        return Firebase.firestore.collection("records")
+    }
+
+    fun milisecondsToSwimTime(ms: Long): String {
+        val totalSegundos = ms / 1000
+        val minutos = totalSegundos / 60
+        val segundos = totalSegundos % 60
+        val decimas = (ms % 1000) / 10
+
+        return String.format("%02d:%02d.%02d", minutos, segundos, decimas)
+    }
+
+    fun parseAdvTime(date: Timestamp): String {
+        val timeInMillis = date.toDate().time
+        val currentDate = Timestamp.now().toDate().time
+        val diferenciaMinutos = ((currentDate - timeInMillis) / (1000 * 60)).toInt()
+
+        return if (diferenciaMinutos < 60) {
+            // Mostrar en minutos si han pasado menos de 1 hora
+            "hace $diferenciaMinutos m"
+        } else {
+            // Mostrar en horas si han pasado 1 hora o más
+            val horas = diferenciaMinutos / 60
+            "hace $horas h"
+        }
+    }
 }

@@ -2,10 +2,12 @@ package com.example.swimeet.data.repository
 
 import com.example.swimeet.data.model.Advertisement
 import com.example.swimeet.util.FirebaseUtil
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.util.Calendar
 
 class AdvertisementRepository {
 
@@ -25,6 +27,8 @@ class AdvertisementRepository {
     suspend fun getAdvertisements(): List<Advertisement> {
         val advList = mutableListOf<Advertisement>()
 
+        deleteAdvertisements()
+
         withContext(Dispatchers.IO) {
             val result = FirebaseUtil.getAdvertisementsRef().orderBy("date", Query.Direction.DESCENDING).get().await()
 
@@ -35,5 +39,19 @@ class AdvertisementRepository {
         }
 
         return advList
+    }
+
+    suspend fun deleteAdvertisements() {
+        val fechaActual = Calendar.getInstance()
+        fechaActual.add(Calendar.DAY_OF_YEAR, -1)
+
+        withContext(Dispatchers.IO) {
+            val result = FirebaseUtil.getAdvertisementsRef().whereLessThanOrEqualTo("date", fechaActual.time)
+                .get().await()
+
+            for (document in result.documents) {
+                document.reference.delete()
+            }
+        }
     }
 }

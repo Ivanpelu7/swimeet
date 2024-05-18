@@ -22,20 +22,11 @@ class MainViewModel : ViewModel() {
     private val _eventList = MutableLiveData<List<Event>>(emptyList())
     val eventList: LiveData<List<Event>> get() = _eventList
 
-    private val _advList = MutableLiveData<List<Advertisement>>(emptyList())
+    private val _advList = MutableLiveData<List<Advertisement>>()
     val advList: LiveData<List<Advertisement>> get() = _advList
 
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean> get() = _loading
-
-    /*
-    init {
-        getCompetitions()
-        getEvents()
-        getAdvertisements()
-    }
-
-     */
 
     fun init() {
         getCompetitions()

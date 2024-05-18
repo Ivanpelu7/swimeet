@@ -9,5 +9,6 @@ data class Event(
     var name: String = "",
     var date: Timestamp? = null,
     var location: GeoPoint? = null,
-    var participants: List<String> = emptyList()
+    var participants: List<String> = emptyList(),
+    var finished: Boolean = false
 )
