@@ -13,14 +13,7 @@ class RecentChatsViewModel : ViewModel() {
     private val _recentChats = MutableLiveData<List<Chat>>()
     val recentChats: LiveData<List<Chat>> get() = _recentChats
 
-    private var _isLoading = MutableLiveData(true)
-    val isLoading: LiveData<Boolean> get() = _isLoading
-
     private val chatRepository = ChatRepository()
-
-    init {
-        getRecentChats()
-    }
 
 
     fun getRecentChats() {
@@ -28,7 +21,6 @@ class RecentChatsViewModel : ViewModel() {
             chatRepository.getMyChats() { chats ->
                 _recentChats.value = chats
             }
-            _isLoading.value = false
         }
     }
 }

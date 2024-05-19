@@ -91,7 +91,7 @@ class ChatRoomActivity : AppCompatActivity() {
             otherUserId
         ).sorted()
 
-        chatRoomViewModel.checkIfChatExists(chatUsersId)
+        chatRoomViewModel.checkIfChatExists(chatUsersId, otherUsername, otherUserImage)
     }
 
     private fun setUpRecyclerView() {

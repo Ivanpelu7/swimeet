@@ -44,13 +44,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
 
-
+        <androidx.cardview.widget.CardView
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
                 android:id="@+id/spinnerType"
@@ -58,172 +66,166 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
-                android:padding="10dp"
+                android:padding="12dp"
                 android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/etEventNameCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner">
+
             <EditText
                 android:id="@+id/etEventName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
                 android:hint="Nombre evento/competición"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="12dp"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/spinnerType" />
 
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/etUbiCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEventNameCv">
+
             <EditText
                 android:id="@+id/etUbi"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Ubicación"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="12dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etEventName" />
+                android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/baseline_edit_location_alt_24"
-                app:layout_constraintBottom_toBottomOf="@id/etUbi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etUbi" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/etDateCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etUbiCv">
 
             <EditText
                 android:id="@+id/etDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Fecha"
                 android:inputType="text"
-                android:padding="10dp"
-                android:textColorHint="@color/black"
+                android:padding="12dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etUbi" />
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tvFecha"
-            android:layout_width="wrap_content"
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/etTimeCv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/etDate"
-            app:layout_constraintStart_toStartOf="@+id/etDate"
-            app:layout_constraintTop_toTopOf="@+id/etDate"
-            tools:text="12/04/2024"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginStart="8dp"/>
-
-
-
-
-
-
-            <ImageView
-                android:id="@+id/ivCalendar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/baseline_calendar_month_24"
-                app:layout_constraintBottom_toBottomOf="@id/etDate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etDate" />
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDateCv">
 
             <EditText
                 android:id="@+id/etTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/edit_text_auth"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Hora"
-                android:textColor="@color/black"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="12dp"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etDate" />
 
-        <TextView
-            android:id="@+id/tvHora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/etTime"
-            app:layout_constraintStart_toStartOf="@+id/etTime"
-            app:layout_constraintTop_toTopOf="@id/etTime"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            tools:text="Hola que tal"
-            android:layout_marginStart="8dp"/>
+        </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/ivTime"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/baseline_access_time_24"
-                app:layout_constraintBottom_toBottomOf="@id/etTime"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etTime" />
 
-        <EditText
-            android:id="@+id/etDistance"
-            android:layout_width="0dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/etDistanceCv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/edit_text_auth"
+            android:layout_margin="8dp"
             android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="Distancia"
-            android:textColor="@color/black"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColorHint="@color/black"
-            android:textSize="16sp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etTime"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/etTimeCv">
 
+            <EditText
+                android:id="@+id/etDistance"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_auth"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Distancia"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
+
+        </androidx.cardview.widget.CardView>
 
 
         <Button
             android:id="@+id/btnAddEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:backgroundTint="@color/primary"
             android:fontFamily="@font/poppins_medium"
             android:padding="8dp"
+            android:layout_margin="8dp"
             android:text="AÑADIR EVENTO"
             android:textColor="@color/white"
             android:textSize="18sp"

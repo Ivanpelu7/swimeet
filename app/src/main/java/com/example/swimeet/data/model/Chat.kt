@@ -8,6 +8,10 @@ data class Chat(
     var lastMessageTimestamp: Timestamp? = Timestamp.now(),
     var lastMessageSenderId: String = "",
     var lastMessage: String = "",
-    var unreadMessages: Int = 0
+    var unreadMessages: Int = 0,
+    var username1: String = "",
+    var username2: String = "",
+    var photoUser1: String = "",
+    var photoUser2: String = "",
 )
 

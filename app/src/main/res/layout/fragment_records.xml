@@ -26,7 +26,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppins_medium"
             android:hint="Buscar prueba"
-            android:drawableLeft="@drawable/lupa"
+            android:drawableLeft="@drawable/buscar"
             android:drawablePadding="6dp"
             android:padding="14dp"
             android:inputType="textCapSentences"

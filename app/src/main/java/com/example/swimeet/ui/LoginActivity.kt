@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             if (isLoginCorrect) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish()
+                finishAffinity()
 
             } else {
                 Toast.makeText(

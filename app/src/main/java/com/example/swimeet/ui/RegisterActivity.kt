@@ -36,6 +36,7 @@ class RegisterActivity : AppCompatActivity() {
             if (isCreated) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finishAffinity()
             } else {
                 Toast.makeText(
                     baseContext,

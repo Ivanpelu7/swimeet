@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.swimeet.data.model.Message
 import com.example.swimeet.data.repository.ChatRepository
 import com.example.swimeet.data.repository.MessageRepository
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
 class ChatRoomViewModel : ViewModel() {
@@ -29,9 +31,19 @@ class ChatRoomViewModel : ViewModel() {
         }
     }
 
-    fun checkIfChatExists(chatUsersId: List<String>) {
+    fun checkIfChatExists(
+        chatUsersId: List<String>,
+        otherUsername: String,
+        otherUserImage: String
+    ) {
         viewModelScope.launch {
-            _chatId.value = chatRepository.checkIfChatExists(chatUsersId)
+            _chatId.value = chatRepository.checkIfChatExists(
+                chatUsersId,
+                otherUserImage,
+                otherUsername,
+                Firebase.auth.currentUser!!.displayName,
+                Firebase.auth.currentUser!!.photoUrl.toString()
+            )
         }
     }
 

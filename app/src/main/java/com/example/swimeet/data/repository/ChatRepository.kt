@@ -38,7 +38,13 @@ class ChatRepository {
         }
     }
 
-    suspend fun checkIfChatExists(chatUsersId: List<String>): String {
+    suspend fun checkIfChatExists(
+        chatUsersId: List<String>,
+        otherUserImage: String,
+        otherUsername: String,
+        displayName: String?,
+        toString: String
+    ): String {
         var chatId: String
 
         withContext(Dispatchers.IO) {
@@ -47,7 +53,7 @@ class ChatRepository {
                 .get().await()
 
             chatId = if (result.isEmpty) {
-                createChat(chatUsersId)
+                createChat(chatUsersId, otherUserImage, otherUsername, displayName, toString)
             } else {
                 result.documents[0].id
             }
@@ -56,12 +62,25 @@ class ChatRepository {
         return chatId
     }
 
-    suspend fun createChat(chatUsersId: List<String>): String {
+    suspend fun createChat(
+        chatUsersId: List<String>,
+        otherUserImage: String,
+        otherUsername: String,
+        displayName: String?,
+        toString: String
+    ): String {
         var newChatId: String
         withContext(Dispatchers.IO) {
             newChatId = FirebaseUtil.getChatsRef().document().id
             Log.d("newchat", newChatId)
-            val newChat = Chat(newChatId, chatUsersId)
+            val newChat = Chat(
+                newChatId,
+                chatUsersId,
+                username1 = otherUsername,
+                username2 = displayName!!,
+                photoUser1 = otherUserImage,
+                photoUser2 = toString
+            )
             FirebaseUtil.getChatsRef().document(newChatId).set(newChat).await()
         }
 

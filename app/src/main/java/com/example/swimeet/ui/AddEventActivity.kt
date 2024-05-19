@@ -104,7 +104,7 @@ class AddEventActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.ivCalendar.setOnClickListener {
+        binding.etDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
@@ -116,7 +116,7 @@ class AddEventActivity : AppCompatActivity() {
                     // Aquí puedes manejar la fecha seleccionada
                     val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$year"
                     binding.etDate.hint = ""
-                    binding.tvFecha.text = selectedDate
+                    binding.etDate.setText(selectedDate)
                 },
                 year,
                 month,
@@ -126,14 +126,14 @@ class AddEventActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        binding.ivTime.setOnClickListener {
+        binding.etTime.setOnClickListener {
             val calendar = Calendar.getInstance()
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
             val minute = calendar.get(Calendar.MINUTE)
 
             val timePickerDialog = TimePickerDialog(
                 this,
-                TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
+                { _: TimePicker, hourOfDay: Int, minute: Int ->
                     // Aquí puedes manejar la hora seleccionada
                     var selectedTime = ""
                     selectedTime = if (minute == 0) {
@@ -144,7 +144,7 @@ class AddEventActivity : AppCompatActivity() {
                     }
 
                     binding.etTime.hint = ""
-                    binding.tvHora.text = selectedTime
+                    binding.etTime.setText(selectedTime)
                 },
                 hour,
                 minute,
@@ -159,13 +159,13 @@ class AddEventActivity : AppCompatActivity() {
             val name = binding.etEventName.text.toString()
             val ubi = binding.etUbi
 
-            val date = binding.tvFecha.text.toString()
+            val date = binding.etDate.text.toString()
             val dateArray = date.split("/")
             val day = dateArray[0].toInt()
             val month = dateArray[1].toInt() - 1
             val year = dateArray[2].toInt()
 
-            val time = binding.tvHora.text
+            val time = binding.etTime.text
             val timeArray = time.split(":")
             val hour = timeArray[0].toInt()
             val minutes = timeArray[1].toInt()

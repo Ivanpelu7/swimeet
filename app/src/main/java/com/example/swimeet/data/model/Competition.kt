@@ -11,5 +11,6 @@ data class Competition(
     var distance: Int? = null,
     var location: GeoPoint? = null,
     var participants: List<String> = emptyList(),
-    var finished: Boolean = false
+    var finished: Boolean = false,
+    var link: String = ""
 )

@@ -1,9 +1,12 @@
 package com.example.swimeet.ui
 
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -24,6 +27,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    companion object {
+        const val REQUEST_CODE_UPDATE_PROFILE = 100
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,9 +39,27 @@ class MainActivity : AppCompatActivity() {
         initUI()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_UPDATE_PROFILE && resultCode == Activity.RESULT_OK) {
+            val newPhotoUrl = data?.getStringExtra("newPhotoUrl")
+            newPhotoUrl?.let {
+                loadAvatarImage(it.toUri())
+            }
+        }
+    }
+
     private fun initUI() {
+        setListeners()
         initNavigation()
         loadAvatarImage(Firebase.auth.currentUser!!.photoUrl!!)
+    }
+
+    private fun setListeners() {
+        binding.avatar.setOnClickListener {
+            val intent = Intent(this, PerfilActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadAvatarImage(imageUrl: Uri) {

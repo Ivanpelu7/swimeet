@@ -18,6 +18,8 @@ import com.example.swimeet.data.model.User
 import com.example.swimeet.data.repository.UserRepository
 import com.example.swimeet.ui.ChatRoomActivity
 import com.example.swimeet.util.FirebaseUtil
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {

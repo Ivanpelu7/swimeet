@@ -49,8 +49,8 @@ class MainFragment : Fragment() {
     }
 
     private fun initObservers() {
-        mainViewModel.loading.observe(viewLifecycleOwner) { loading ->
-            if (loading) {
+        mainViewModel.loadCompleted.observe(viewLifecycleOwner) { loadCompleted ->
+            if (!loadCompleted) {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.mainLayout.visibility = View.GONE
             } else {
@@ -105,7 +105,7 @@ class MainFragment : Fragment() {
             Firebase.auth.signOut()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
-            activity?.finish()
+            activity?.finishAffinity()
         }
 
         binding.tvSalir.setOnClickListener {

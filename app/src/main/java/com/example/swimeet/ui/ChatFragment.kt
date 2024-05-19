@@ -2,10 +2,10 @@ package com.example.swimeet.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.adapter.ChatAdapter
@@ -32,6 +32,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun initUI() {
+        recentChatsViewModel.getRecentChats()
         setUpRecyclerView()
         initObservers()
         initListeners()
@@ -46,12 +47,14 @@ class ChatFragment : Fragment() {
 
     private fun initObservers() {
         recentChatsViewModel.recentChats.observe(viewLifecycleOwner) { recentChats ->
+            binding.layoutMain.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
             recyclerAdapter.updateList(recentChats)
+            binding.layoutMain.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
         }
 
-        recentChatsViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            if (!isLoading) binding.progressBar.visibility = View.GONE
-        }
+
     }
 
     private fun setUpRecyclerView() {
@@ -60,3 +63,9 @@ class ChatFragment : Fragment() {
         binding.rvChats.adapter = recyclerAdapter
     }
 }
+
+
+
+
+
+

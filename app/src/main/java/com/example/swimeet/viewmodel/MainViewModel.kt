@@ -25,28 +25,36 @@ class MainViewModel : ViewModel() {
     private val _advList = MutableLiveData<List<Advertisement>>()
     val advList: LiveData<List<Advertisement>> get() = _advList
 
-    private val _loading = MutableLiveData(false)
-    val loading: LiveData<Boolean> get() = _loading
+    private val _loadCompleted = MutableLiveData(false)
+    val loadCompleted: LiveData<Boolean> get() = _loadCompleted
 
     fun init() {
-        getCompetitions()
-        getEvents()
-        getAdvertisements()
+        getData()
     }
 
+    private fun getData() {
+        viewModelScope.launch {
+            _advList.value = advRepository.getAdvertisements()
+            _eventList.value = competitionRepository.getEvents()
+            _competitionList.value = competitionRepository.getCompetitions()
+
+            _loadCompleted.value = true
+        }
+    }
+/*
     private fun getAdvertisements() {
         viewModelScope.launch {
-            _loading.value = true
+            _loadingAdv.value = true
             _advList.value = advRepository.getAdvertisements()
-            _loading.value = false
+            _loadingAdv.value = false
         }
     }
 
     private fun getEvents() {
         viewModelScope.launch {
-            _loading.value = true
+            _loadingAdv.value = true
             _eventList.value = competitionRepository.getEvents()
-            _loading.value = false
+            _loadingAdv.value = false
         }
     }
 
@@ -57,4 +65,6 @@ class MainViewModel : ViewModel() {
             _loading.value = false
         }
     }
+
+ */
 }

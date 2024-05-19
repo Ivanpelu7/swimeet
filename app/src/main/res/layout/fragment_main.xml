@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:progressTint="@color/primary"
+        android:indeterminateTint="@color/primary"
         android:indeterminate="true"
         android:visibility="invisible"/>
 
@@ -33,6 +33,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/bebas_neue"
                 android:text="Tablón anuncios"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 app:layout_constraintBottom_toTopOf="@+id/viewPager"
@@ -82,6 +83,7 @@
                 android:text="Próximas competiciones"
                 android:textColor="@color/black"
                 android:textSize="26sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewPager" />
@@ -121,6 +123,7 @@
                 android:text="Próximos eventos"
                 android:textColor="@color/black"
                 android:textSize="26sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvNextEvents" />
