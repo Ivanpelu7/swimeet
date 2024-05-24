@@ -60,11 +60,24 @@ class MainFragment : Fragment() {
         }
 
         mainViewModel.competitionList.observe(viewLifecycleOwner) { competitions ->
-            competitionsAdapter.updateList(competitions)
+            if (competitions.isEmpty()) {
+                competitionsAdapter.updateList(competitions)
+                binding.tvNoCompetitions.visibility = View.VISIBLE
+            } else {
+                competitionsAdapter.updateList(competitions)
+                binding.tvNoCompetitions.visibility = View.GONE
+            }
+
         }
 
         mainViewModel.eventList.observe(viewLifecycleOwner) { events ->
-            eventsAdapter.updateList(events)
+            if (events.isEmpty()) {
+                eventsAdapter.updateList(events)
+                binding.tvNoEvents.visibility = View.VISIBLE
+            } else {
+                eventsAdapter.updateList(events)
+                binding.tvNoEvents.visibility = View.GONE
+            }
         }
 
         mainViewModel.advList.observe(viewLifecycleOwner) { adv ->
@@ -101,18 +114,6 @@ class MainFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.buttonLogOut.setOnClickListener {
-            Firebase.auth.signOut()
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            startActivity(intent)
-            activity?.finishAffinity()
-        }
-
-        binding.tvSalir.setOnClickListener {
-            Firebase.auth.signOut()
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            startActivity(intent)
-        }
 
         binding.tvAdd.setOnClickListener {
             val intent = Intent(requireContext(), AddEventActivity::class.java)

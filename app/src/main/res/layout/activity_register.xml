@@ -37,62 +37,81 @@
             android:textStyle="bold" />
 
 
-        <EditText
-            android:id="@+id/etRegisterEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField"
+            style="@style/loginFields"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="Correo Electrónico"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:layout_height="wrap_content"
+            android:hint="Correo electrónico"
+            app:startIconDrawable="@drawable/email"
+            >
 
-        <EditText
-            android:id="@+id/etUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/loginFields"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_height="wrap_content"
             android:hint="Nombre de usuario"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            app:startIconDrawable="@drawable/user"
+            >
 
-        <EditText
-            android:id="@+id/etRegisterPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPassword"
+            style="@style/passwordField"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="Contraseña (min 6 caracteres)"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="Nombre completo"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:hint="Contraseña"
+            app:startIconDrawable="@drawable/password"
+            >
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/loginFields"
+            android:layout_marginBottom="14dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            app:startIconDrawable="@drawable/name"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+<!--
         <Spinner
             android:id="@+id/spinnerCategories"
             android:layout_width="match_parent"
@@ -102,20 +121,48 @@
             android:backgroundTint="@color/white"
             android:padding="10dp"
             android:spinnerMode="dialog" />
+            -->
+
+        <com.google.android.material.textfield.TextInputLayout
+
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black"
+            app:endIconTint="@color/black"
+            app:startIconDrawable="@drawable/category"
+            app:startIconTint="@color/black"
+            app:boxStrokeColor="@color/black">
+
+        <AutoCompleteTextView
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:hint="Categoría"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
             android:fontFamily="@font/poppins_medium"
-            android:padding="8dp"
+            android:padding="16dp"
             android:text="REGISTRARSE"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/white"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"

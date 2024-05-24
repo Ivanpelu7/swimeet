@@ -40,6 +40,7 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
         private val eventName: TextView = itemView.findViewById(R.id.tvNameCompetition)
         private val eventDate: TextView = itemView.findViewById(R.id.tvFechaVar)
         private val eventDistanceVar: TextView = itemView.findViewById(R.id.tvDistance)
+        private val eventPlace: TextView = itemView.findViewById(R.id.tvSitioVar)
         private val participants: TextView = itemView.findViewById(R.id.tvParticipantsVar)
         private val iconEvent: ImageView = itemView.findViewById(R.id.ivCompetitionIcon)
         fun render(competition: Competition) {
@@ -47,6 +48,8 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
                 val intent = Intent(itemView.context, CompetitionDetailActivity::class.java)
                 intent.putExtra("id", competition.eventId)
                 intent.putExtra("name", competition.name)
+                intent.putExtra("latitude", competition.location!!.latitude.toString())
+                intent.putExtra("longitude", competition.location!!.longitude.toString())
                 itemView.context.startActivity(intent)
             }
 
@@ -67,6 +70,8 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
             eventName.text = competition.name
             eventDate.text = FirebaseUtil.timestampToStringDate(competition.date!!)
             participants.text = competition.participants.size.toString()
+            eventPlace.text = competition.place
+
         }
 
     }

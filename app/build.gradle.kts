@@ -63,9 +63,11 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.fragment:fragment-ktx:1.5.6")
     implementation("com.github.bumptech.glide:glide:4.12.0")
-    implementation("com.viewpagerindicator:library:2.4.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("org.ocpsoft.prettytime:prettytime:5.0.2.Final")
+    implementation("com.google.android.libraries.places:places:3.1.0")
 }

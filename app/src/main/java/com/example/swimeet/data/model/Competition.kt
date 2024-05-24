@@ -10,6 +10,7 @@ data class Competition(
     var date: Timestamp? = null,
     var distance: Int? = null,
     var location: GeoPoint? = null,
+    var place: String = "",
     var participants: List<String> = emptyList(),
     var finished: Boolean = false,
     var link: String = ""

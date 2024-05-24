@@ -74,7 +74,7 @@
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc"
                 app:layout_constraintEnd_toStartOf="@+id/cardViewAlevin">
@@ -133,7 +133,7 @@
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvBenjamin"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc">
@@ -194,7 +194,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvBenjamin">
@@ -255,7 +255,7 @@
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="8dp"
                 android:backgroundTint="@color/white"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewAlevin">
@@ -316,7 +316,7 @@
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewInfantil">
@@ -405,7 +405,7 @@
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem">
@@ -464,7 +464,7 @@
                 android:backgroundTint="@color/white"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem"
                 app:layout_constraintStart_toEndOf="@+id/cvBenjaminFem">
@@ -525,7 +525,7 @@
                 android:layout_marginHorizontal="8dp"
                 app:cardCornerRadius="8dp"
                 android:layout_marginTop="16dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem"
                 app:layout_constraintEnd_toStartOf="@+id/cvJuniorFem">
@@ -586,7 +586,7 @@
                 app:cardCornerRadius="8dp"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView4"
                 app:layout_constraintStart_toEndOf="@+id/cvInfantil">
@@ -647,7 +647,7 @@
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
+                app:cardElevation="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvInfantil"
                 app:layout_constraintEnd_toEndOf="@id/cvInfantil">

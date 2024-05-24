@@ -5,7 +5,6 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
 import android.widget.DatePicker
@@ -18,21 +17,52 @@ import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
 import com.example.swimeet.databinding.ActivityAddEventBinding
 import com.example.swimeet.viewmodel.AddEventViewModel
-import com.example.swimeet.viewmodel.ChatRoomViewModel
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.GeoPoint
 
 import java.util.Calendar
+import java.util.logging.Logger
 
 class AddEventActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddEventBinding
     private val addEventViewModel: AddEventViewModel by viewModels()
     private lateinit var calendar: Calendar
+    private lateinit var geoPoint: GeoPoint
+    private lateinit var placeName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (!Places.isInitialized()) {
+            Places.initialize(applicationContext, "AIzaSyBfGyy-1MXE5I9Vpv4vFB08cxK5R_Kq9Sc")
+        }
+
+        val autocompleteFragment = supportFragmentManager
+            .findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment
+        autocompleteFragment.setHint("Ubicación")
+        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                place.latLng?.let {
+                    val lat = place.latLng?.latitude
+                    val long = place.latLng?.longitude
+                    placeName = place.name!!
+                    place.address
+                    geoPoint = GeoPoint(lat!!, long!!)
+                }
+            }
+
+            override fun onError(status: com.google.android.gms.common.api.Status) {
+                //<--
+            }
+        })
 
         initUI()
 
@@ -157,7 +187,7 @@ class AddEventActivity : AppCompatActivity() {
         binding.btnAddEvent.setOnClickListener {
             val type = binding.spinnerType.selectedItem.toString()
             val name = binding.etEventName.text.toString()
-            val ubi = binding.etUbi
+            // val ubi = binding.etUbi
 
             val date = binding.etDate.text.toString()
             val dateArray = date.split("/")
@@ -178,10 +208,10 @@ class AddEventActivity : AppCompatActivity() {
             parseDateTime(day, hour, minutes, year, month)
 
             if ((type == "Travesía") || (type == "Competición")) {
-                val competition = Competition(type = type, name = name, date = Timestamp(calendar.time), distance = distance)
+                val competition = Competition(place = placeName, location = geoPoint, type = type, name = name, date = Timestamp(calendar.time), distance = distance)
                 addEventViewModel.addCompetition(competition)
             } else {
-                val event = Event(type = type, name = name, date = Timestamp(calendar.time))
+                val event = Event(place = placeName, location = geoPoint, type = type, name = name, date = Timestamp(calendar.time))
                 addEventViewModel.addEvent(event)
             }
         }

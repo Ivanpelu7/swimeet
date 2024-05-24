@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Advertisement
 import com.example.swimeet.util.FirebaseUtil
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.Locale
 
 class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emptyList()) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
@@ -32,6 +34,7 @@ class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emp
         private val tvAuthor: TextView = itemView.findViewById(R.id.tvAuthor)
         private val tvNone: TextView = itemView.findViewById(R.id.tvSinAnuncios)
         private val tvHace: TextView = itemView.findViewById(R.id.tvHace)
+        private val prettyTime: PrettyTime = PrettyTime()
 
         fun render(advertisement: Advertisement) {
             if (advertisement.message == "") {
@@ -41,7 +44,10 @@ class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emp
                 tvTitle.text = advertisement.title
                 tvMessage.text = advertisement.message
                 tvAuthor.text = advertisement.authorUsername
-                tvHace.text = FirebaseUtil.parseAdvTime(advertisement.date)
+
+                // Mostrar el tiempo relativo
+                prettyTime.locale = Locale("es")
+                tvHace.text = prettyTime.format(advertisement.date.toDate())
             }
         }
     }

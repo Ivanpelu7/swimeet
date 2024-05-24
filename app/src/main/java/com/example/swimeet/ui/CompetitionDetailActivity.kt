@@ -19,6 +19,8 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private val compDetailViewModel = CompetitionDetailViewModel()
     private lateinit var id: String
     private lateinit var name: String
+    private lateinit var longitude: String
+    private lateinit var latitude: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCompetitionDetailBinding.inflate(layoutInflater)
@@ -45,6 +47,8 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getIntents() {
         id = intent.getStringExtra("id").toString()
         name = intent.getStringExtra("name").toString()
+        longitude = intent.getStringExtra("longitude").toString()
+        latitude = intent.getStringExtra("latitude").toString()
     }
 
     private fun initObservers() {
@@ -68,9 +72,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val ubi = LatLng(39.00955556293781, -0.1655901822236689)
+        val ubi = LatLng(latitude.toDouble(), longitude.toDouble())
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 13f))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 15f))
         googleMap.addMarker(MarkerOptions().position(ubi))
     }
 }

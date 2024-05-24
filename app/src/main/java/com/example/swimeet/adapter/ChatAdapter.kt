@@ -18,8 +18,13 @@ import com.example.swimeet.data.model.User
 import com.example.swimeet.data.repository.UserRepository
 import com.example.swimeet.ui.ChatRoomActivity
 import com.example.swimeet.util.FirebaseUtil
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Timestamp
+import org.ocpsoft.prettytime.PrettyTime
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.temporal.ChronoUnit
+import java.util.Locale
 
 class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
@@ -53,6 +58,7 @@ class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
         private val tvLastMessage: TextView = itemView.findViewById(R.id.tvLastMessage)
         private val tvNotification: TextView = itemView.findViewById(R.id.notificacion)
         private val ivImage: ImageView = itemView.findViewById(R.id.ivAvatar)
+        private val prettyTime: PrettyTime = PrettyTime(Locale("es"))
 
         fun render(chat: Chat, user: User) {
             tvName.text = user.username
@@ -62,8 +68,14 @@ class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
                 .into(ivImage)
 
             if (chat.lastMessage != "" && chat.lastMessageTimestamp != null) {
-                tvTimestamp.text =
-                    FirebaseUtil.timestampToString(chat.lastMessageTimestamp!!)
+
+                if ((isBeforeMidnight(chat.lastMessageTimestamp!!)) && (hasPassedOneDay(chat.lastMessageTimestamp!!))) {
+                    tvTimestamp.text = "Ayer"
+                } else if (!hasPassedOneDay(chat.lastMessageTimestamp!!)) {
+                    tvTimestamp.text = prettyTime.format(chat.lastMessageTimestamp!!.toDate())
+                } else {
+                    tvTimestamp.text = FirebaseUtil.timestampToString(chat.lastMessageTimestamp!!)
+                }
 
                 if (chat.lastMessage.length > 20) {
                     val shortString =
@@ -107,6 +119,38 @@ class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
                 intent.putExtra("otherUserImage", user.photo)
                 itemView.context.startActivity(intent)
             }
+        }
+
+        private fun hasPassedOneDay(timestamp: Timestamp): Boolean {
+            // Convertir el timestamp de Firebase a Instant
+            val timestampInstant = timestamp.toDate().toInstant()
+
+            // Obtener el instante actual
+            val nowInstant = Instant.now()
+
+            // Calcular la diferencia en días entre el timestamp y ahora
+            val daysBetween = ChronoUnit.DAYS.between(timestampInstant, nowInstant)
+
+            // Comprobar si ha pasado más de un día
+            return daysBetween < 2
+        }
+
+        private fun isBeforeMidnight(timestamp: Timestamp): Boolean {
+            // Obtener el instante actual
+            val nowInstant = Instant.now()
+
+            // Convertir el timestamp de Firebase a un instante
+            val timestampInstant = timestamp.toDate().toInstant()
+
+            // Obtener la fecha actual en la zona horaria predeterminada
+            val currentDate = LocalDate.now(ZoneId.systemDefault())
+
+            // Establecer la hora a 00:00:00 para comparar solo las fechas
+            val startOfDay = currentDate.atStartOfDay()
+                .toInstant(ZoneId.systemDefault().rules.getOffset(nowInstant))
+
+            // Comparar el timestamp con la fecha de inicio del día actual
+            return timestampInstant.isBefore(startOfDay)
         }
     }
 }

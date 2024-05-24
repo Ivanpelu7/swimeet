@@ -108,14 +108,21 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/etUbiCv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_margin="8dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="4dp"
             app:cardElevation="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEventNameCv">
+            app:layout_constraintTop_toBottomOf="@+id/etEventNameCv"
+            style="@style/MyAutocompleteFragmentStyle">
 
+            <fragment
+                android:id="@+id/autocomplete_fragment"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+<!--
             <EditText
                 android:id="@+id/etUbi"
                 android:layout_width="match_parent"
@@ -128,7 +135,10 @@
                 android:padding="12dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp" >
+
+            </EditText>
+-->
 
         </androidx.cardview.widget.CardView>
 
@@ -218,14 +228,16 @@
         </androidx.cardview.widget.CardView>
 
 
+
+
         <Button
             android:id="@+id/btnAddEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:backgroundTint="@color/primary"
             android:fontFamily="@font/poppins_medium"
             android:padding="8dp"
-            android:layout_margin="8dp"
             android:text="AÑADIR EVENTO"
             android:textColor="@color/white"
             android:textSize="18sp"

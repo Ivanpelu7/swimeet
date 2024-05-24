@@ -48,6 +48,13 @@ class PerfilActivity : AppCompatActivity() {
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(intent, PICK_IMAGE_REQUEST)
         }
+
+        binding.btnCloseSesion.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finishAffinity()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -31,31 +31,79 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
+            android:text="Mi Perfil"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBack"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Mi Perfil" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar"
-        android:layout_marginTop="60dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutActionBar"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/lapiz"
-        app:layout_constraintStart_toEndOf="@id/ivPhoto"
-        app:layout_constraintTop_toTopOf="@id/ivPhoto"
-        android:padding="4dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivPhoto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="4dp"
+                android:src="@drawable/lapiz"
+                app:layout_constraintStart_toEndOf="@id/ivPhoto"
+                app:layout_constraintTop_toTopOf="@id/ivPhoto" />
+
+            <Button
+                style="@style/closeSesionButton"
+                android:id="@+id/btnCloseSesion"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                app:icon="@drawable/logout"
+                app:iconTint="@color/red"
+                app:iconSize="24dp"
+                android:paddingVertical="12dp"
+                app:iconGravity="textStart"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivPhoto"
+                android:layout_margin="8dp"
+                />
+
+            <Button
+                style="@style/deleteUserButton"
+                android:id="@+id/btnDeleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingVertical="12dp"
+                app:icon="@drawable/delete"
+                app:iconTint="@color/white"
+                app:iconSize="24dp"
+                app:iconGravity="textStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnCloseSesion"
+                android:layout_margin="8dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
