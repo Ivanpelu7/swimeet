@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/md_theme_surface"
     tools:context=".ui.SwimEventDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutActionBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/md_theme_surfaceContainerHigh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,15 +24,16 @@
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onSurface" />
 
         <TextView
             android:id="@+id/tvCompetitionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textColor="@color/md_theme_onSurface"
+            android:textSize="18sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBack"
@@ -45,8 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainLayout"
@@ -58,10 +59,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bebas_neue"
-                android:padding="12dp"
+                android:padding="8dp"
                 android:text="MASCULINO"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/md_theme_onSurface"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +73,11 @@
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardViewAlevin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMasc"
-                app:layout_constraintEnd_toStartOf="@+id/cardViewAlevin">
+                app:layout_constraintTop_toBottomOf="@+id/tvMasc">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -91,8 +91,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="BENJAMÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +104,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -117,8 +117,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvBenjaminTime"
                         tools:text="Martagp19" />
 
@@ -131,9 +131,8 @@
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvBenjamin"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc">
@@ -150,8 +149,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ALEVÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -163,7 +162,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -176,8 +175,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAlevinTime"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -190,11 +189,10 @@
                 android:id="@+id/cardViewInfantil"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="8dp"
-                android:backgroundTint="@color/white"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvBenjamin">
@@ -211,8 +209,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="INFANTIL"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -224,7 +222,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView8"
@@ -237,8 +235,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvInfantilTime"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -253,9 +251,8 @@
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewAlevin">
@@ -272,8 +269,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="JUNIOR"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -285,7 +282,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView10"
@@ -298,8 +295,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvJuniorTime"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -314,9 +311,8 @@
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewInfantil">
@@ -333,8 +329,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ABSOLUTO"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -346,7 +342,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -359,8 +355,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAbsolutoTime"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -373,12 +369,11 @@
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
-                android:backgroundTint="@color/white"
                 android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/md_theme_onSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:indeterminateTint="@color/primary"
-                android:indeterminate="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -388,10 +383,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/bebas_neue"
-                android:padding="12dp"
+                android:padding="8dp"
                 android:text="FEMENINO"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/md_theme_onSurface"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -403,9 +398,8 @@
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem">
@@ -422,8 +416,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="BENJAMÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -435,7 +429,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView4Fem"
@@ -448,8 +442,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvBenjaminTimeFem"
                         tools:text="Martagp19" />
 
@@ -461,13 +455,12 @@
                 android:id="@+id/cardView4"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:backgroundTint="@color/white"
                 android:layout_margin="8dp"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvFem"
-                app:layout_constraintStart_toEndOf="@+id/cvBenjaminFem">
+                app:layout_constraintStart_toEndOf="@+id/cvBenjaminFem"
+                app:layout_constraintTop_toBottomOf="@+id/tvFem">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -481,8 +474,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ALEVÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -494,7 +487,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView14"
@@ -507,8 +500,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAlevinTimeFem"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -521,14 +514,13 @@
                 android:id="@+id/cvInfantil"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:backgroundTint="@color/white"
                 android:layout_marginHorizontal="8dp"
-                app:cardCornerRadius="8dp"
                 android:layout_marginTop="16dp"
-                app:cardElevation="1dp"
+                android:backgroundTint="@color/md_theme_primaryContainer"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/cvJuniorFem"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem"
-                app:layout_constraintEnd_toStartOf="@+id/cvJuniorFem">
+                app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -542,8 +534,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="INFANTIL"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -555,7 +547,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView17"
@@ -568,8 +560,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvInfantilTimeFem"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -583,13 +575,12 @@
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
-                app:cardCornerRadius="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="1dp"
+                android:backgroundTint="@color/md_theme_primaryContainer"
+                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4"
-                app:layout_constraintStart_toEndOf="@+id/cvInfantil">
+                app:layout_constraintStart_toEndOf="@+id/cvInfantil"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -603,8 +594,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="JUNIOR"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -616,7 +607,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView16"
@@ -629,8 +620,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvJuniorTimeFem"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -645,12 +636,11 @@
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="1dp"
+                app:layout_constraintEnd_toEndOf="@id/cvInfantil"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvInfantil"
-                app:layout_constraintEnd_toEndOf="@id/cvInfantil">
+                app:layout_constraintTop_toBottomOf="@+id/cvInfantil">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -664,8 +654,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ABSOLUTO"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -677,7 +667,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -690,8 +680,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAbsolutoTimeFem"
                         tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
@@ -704,7 +694,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/cvAbs"/>
+                app:layout_constraintTop_toBottomOf="@+id/cvAbs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

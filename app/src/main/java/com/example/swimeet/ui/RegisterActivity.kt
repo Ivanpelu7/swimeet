@@ -86,20 +86,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun initSpinner() {
-        val categories = resources.getStringArray(R.array.categorias_edades_natacion)
-        val adapter = SpinnerAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            categories,
-            "poppins_medium.ttf",
-            18f
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //binding.spinnerCategories.adapter = adapter
-
-    }
-
     private fun initDropDownMenu() {
         val items = resources.getStringArray(R.array.categorias_edades_natacion).toList()
         val adapter = ArrayAdapter(applicationContext, R.layout.list_item, items)

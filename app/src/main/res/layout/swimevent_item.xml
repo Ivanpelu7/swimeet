@@ -5,10 +5,8 @@
     android:id="@+id/swimEventLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginHorizontal="8dp"
-    android:backgroundTint="@color/white"
-    app:cardElevation="1dp"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/md_theme_primaryContainer"
     app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +21,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/dinner" />
+            tools:src="@drawable/dinner"
+            app:tint="@color/md_theme_onPrimaryContainer"/>
 
         <TextView
             android:id="@+id/tvName"
@@ -31,7 +30,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/ivSwimEvent"

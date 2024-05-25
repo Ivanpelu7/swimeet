@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
+    android:background="@color/md_theme_surface"
     tools:context=".ui.RegisterActivity">
 
     <LinearLayout
@@ -22,7 +22,8 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ocean" />
+            android:src="@drawable/ocean"
+            app:tint="@color/md_theme_onSurface"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -32,7 +33,7 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_onSurface"
             android:textSize="60sp"
             android:textStyle="bold" />
 
@@ -128,14 +129,14 @@
         style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
             android:layout_marginBottom="16dp"
-            android:textColorHint="@color/black"
-            app:hintTextColor="@color/black"
-            app:endIconTint="@color/black"
+            android:textColorHint="@color/md_theme_onSurfaceVariant"
+            app:hintTextColor="@color/md_theme_onSurfaceVariant"
+            app:endIconTint="@color/md_theme_onSurfaceVariant"
             app:startIconDrawable="@drawable/category"
-            app:startIconTint="@color/black"
-            app:boxStrokeColor="@color/black">
+            app:startIconTint="@color/md_theme_onSurfaceVariant"
+            app:boxStrokeColor="@color/md_theme_onSurfaceVariant">
 
         <AutoCompleteTextView
             android:id="@+id/spinner"
@@ -143,7 +144,7 @@
             android:layout_height="wrap_content"
             android:inputType="none"
             android:hint="Categoría"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:fontFamily="@font/poppins_medium"
             />
 
@@ -155,12 +156,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:padding="16dp"
             android:text="REGISTRARSE"
             app:strokeWidth="1dp"
-            app:strokeColor="@color/white"
+            app:strokeColor="@color/md_theme_primary"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_primary"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -178,7 +178,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="¿Ya tienes una cuenta?"
                 android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:textColor="@color/md_theme_onSurface" />
 
             <TextView
                 android:id="@+id/tvIniciaSesion"
@@ -188,7 +188,7 @@
                 android:padding="4dp"
                 android:text="Inicia sesión"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/md_theme_primary"
                 android:textStyle="bold" />
         </LinearLayout>
 

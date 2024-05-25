@@ -5,35 +5,35 @@
     android:id="@+id/competitionLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="1dp"
     app:cardCornerRadius="4dp"
-    app:cardBackgroundColor="@color/white"
-    android:layout_marginBottom="8dp">
+    app:cardBackgroundColor="@color/md_theme_primaryContainer"
+    android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp">
 
         <ImageView
             android:id="@+id/ivCompetitionIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             tools:src="@drawable/sea"
+            android:layout_marginHorizontal="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onPrimaryContainer" />
 
         <TextView
             android:id="@+id/tvNameCompetition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_medium"
-            android:maxLines="1"
             tools:text="Campeonato Nacional Larga Distancia"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="16sp"
+            android:layout_marginStart="12dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivCompetitionIcon"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,11 +42,10 @@
             android:id="@+id/tvFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Fecha:"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@id/tvNameCompetition" />
 
@@ -56,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvFecha"
             app:layout_constraintStart_toEndOf="@+id/tvFecha"
             app:layout_constraintTop_toTopOf="@+id/tvFecha"
@@ -69,8 +68,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Lugar:"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
 
@@ -79,8 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvSitio"
             app:layout_constraintStart_toEndOf="@+id/tvSitio"
@@ -93,7 +92,7 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_medium"
             tools:text="1,5KM"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onPrimaryContainer"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvSitioVar"
@@ -106,8 +105,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Participantes:"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvSitio"
             app:layout_constraintTop_toBottomOf="@+id/tvSitio" />
 
@@ -117,8 +116,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvParticipants"
             app:layout_constraintStart_toEndOf="@+id/tvParticipants"
             tools:text="14" />

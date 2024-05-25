@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/md_theme_surface"
     tools:context=".ui.RecordsFragment">
 
     <androidx.cardview.widget.CardView
@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardElevation="1dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/md_theme_primaryContainer"
         app:cardCornerRadius="100dp"
         android:layout_margin="12dp">
 
@@ -23,15 +22,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="?attr/colorSurfaceContainerHigh"
             android:fontFamily="@font/poppins_medium"
             android:hint="Buscar prueba"
             android:drawableLeft="@drawable/buscar"
+            app:drawableTint="@color/md_theme_onPrimaryContainer"
             android:drawablePadding="6dp"
             android:padding="14dp"
             android:inputType="textCapSentences"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColorHint="@color/md_theme_onPrimaryContainer"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

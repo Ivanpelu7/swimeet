@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/md_theme_surface"
     tools:context=".ui.AddEventActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutActionBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/md_theme_surfaceContainerHigh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +24,8 @@
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onSurface" />
 
         <TextView
             android:id="@+id/tvCompetitionName"
@@ -32,8 +33,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Nuevo Evento"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textColor="@color/md_theme_onSurface"
+            android:textSize="18sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBack"
@@ -49,201 +50,174 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/spinner"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/category">
 
-            <Spinner
-                android:id="@+id/spinnerType"
+            <AutoCompleteTextView
+                android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:padding="12dp"
-                android:spinnerMode="dialog"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Categoría"
+                android:inputType="none" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/etEventNameCv"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            android:hint="Nombre evento/competición"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner">
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:startIconDrawable="@drawable/swimmer">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEventName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Nombre evento/competición"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/spinnerType" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/etUbiCv"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etUbiParent"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            android:hint="Ubicación"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEventNameCv"
-            style="@style/MyAutocompleteFragmentStyle">
+            app:layout_constraintTop_toBottomOf="@id/outlinedTextField"
+            app:startIconDrawable="@drawable/calendar">
 
-            <fragment
-                android:id="@+id/autocomplete_fragment"
-                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-<!--
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUbi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Ubicación"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp" >
+                android:fontFamily="@font/poppins_medium" />
 
-            </EditText>
--->
 
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/etDateCv"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/etUbiParent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etUbiCv">
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <EditText
+
+        <fragment
+            android:id="@+id/autocomplete_fragment"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etDateParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Fecha"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/calendar">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Fecha"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/etTimeCv"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etTimeParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            android:hint="Hora inicio"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDateCv">
+            app:layout_constraintTop_toBottomOf="@id/etDateParent"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/time">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTime"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Hora"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etDate" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/etDistanceCv"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etDistanceParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="10dp"
+            android:hint="Distancia"
+            android:visibility="gone"
+            app:endIconMode="clear_text"
+            app:helperText="Introduce el valor en metros"
+            app:helperTextEnabled="true"
+            app:helperTextTextAppearance="@style/HelperTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etTimeCv">
+            app:layout_constraintTop_toBottomOf="@id/etTimeParent"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/distance">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDistance"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/edit_text_auth"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Distancia"
-                android:inputType="number"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
 
-        </androidx.cardview.widget.CardView>
-
-
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
             android:id="@+id/btnAddEvent"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/primary"
             android:fontFamily="@font/poppins_medium"
-            android:padding="8dp"
             android:text="AÑADIR EVENTO"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/md_theme_primary" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

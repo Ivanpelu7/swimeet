@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/md_theme_primaryContainer"
     android:layout_marginHorizontal="10dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="10dp">
+    app:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,9 +25,9 @@
             android:id="@+id/tvUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onPrimaryContainer"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_marginStart="8dp"
             android:layout_gravity="center_vertical"/>
 

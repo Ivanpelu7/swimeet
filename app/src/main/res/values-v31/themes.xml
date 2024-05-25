@@ -3,18 +3,18 @@
 
     <style name="Theme.Swimeet" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:statusBarColor">@color/md_theme_onPrimaryFixed</item>
 
-        <item name="android:windowSplashScreenBackground">@color/primary</item>
+        <item name="android:windowSplashScreenBackground">@color/md_theme_primary</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ocean</item>
 
     </style>
 
-    <style name="MyAutocompleteFragmentStyle" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/black</item>
+    <style name="MyAutocompleteFragmentStyle" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/md_theme_onSurface</item>
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/poppins_medium</item>
         <!-- Otros estilos que desees aplicar -->
     </style>
+
 </resources>
