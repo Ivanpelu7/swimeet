@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.adapter.ChatAdapter
 import com.example.swimeet.databinding.FragmentChatBinding
 import com.example.swimeet.viewmodel.RecentChatsViewModel
+import java.lang.ref.WeakReference
 
 class ChatFragment : Fragment() {
 
@@ -37,10 +38,10 @@ class ChatFragment : Fragment() {
     }
 
     private fun initUI() {
-        recentChatsViewModel.getRecentChats()
         setUpRecyclerView()
         initObservers()
         initListeners()
+        recentChatsViewModel.getRecentChats()
     }
 
     private fun initListeners() {
@@ -51,19 +52,26 @@ class ChatFragment : Fragment() {
     }
 
     private fun initObservers() {
+        recentChatsViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.layoutMain.visibility = View.INVISIBLE
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.layoutMain.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+            }
+        }
+
         recentChatsViewModel.recentChats.observe(viewLifecycleOwner) { recentChats ->
-            binding.layoutMain.visibility = View.GONE
-            binding.progressBar.visibility = View.VISIBLE
             recyclerAdapter.updateList(recentChats)
-            binding.layoutMain.visibility = View.VISIBLE
-            binding.progressBar.visibility = View.GONE
+
         }
 
 
     }
 
     private fun setUpRecyclerView() {
-        recyclerAdapter = ChatAdapter()
+        recyclerAdapter = ChatAdapter(fragmentRef = WeakReference(this))
         binding.rvChats.layoutManager = LinearLayoutManager(requireContext())
         binding.rvChats.adapter = recyclerAdapter
 

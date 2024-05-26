@@ -31,6 +31,10 @@ object FirebaseUtil {
         return Firebase.firestore.collection("chats").document(chatId).collection("messages")
     }
 
+    fun getCommentsRef(eventId: String, type: String): CollectionReference {
+        return Firebase.firestore.collection(type).document(eventId).collection("comments")
+    }
+
     fun timestampToString(timestamp: Timestamp): String {
         return SimpleDateFormat("HH:mm", Locale.getDefault()).format(timestamp.toDate())
     }

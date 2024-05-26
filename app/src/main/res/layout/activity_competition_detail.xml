@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/md_theme_onSurface"/>
+            app:tint="@color/md_theme_onSurface" />
 
         <TextView
             android:id="@+id/tvCompetitionName"
@@ -46,173 +46,245 @@
         android:id="@+id/prgbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:progressTint="@color/primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:indeterminate="true"
-        android:indeterminateTint="@color/md_theme_onSurface"
-        app:layout_constraintTop_toBottomOf="@+id/layoutActionBar" />
+        style="?attr/progressBarStyle"
+        android:visibility="visible" />
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:id="@+id/card"
-        app:layout_constraintTop_toBottomOf="@id/layoutActionBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+        android:layout_height="0dp"
+        android:id="@+id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp">
 
-            <fragment
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:paddingVertical="16dp"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/map"
+                        tools:text="Autonómico Verano Master" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dividerInsetEnd="8dp"
+                        app:dividerInsetStart="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+                    <TextView
+                        android:id="@+id/tvFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawableStart="@drawable/calendar"
+                        android:drawablePadding="6dp"
+                        android:drawableTint="@color/md_theme_onSurfaceVariant"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                        tools:text="12 de junio de 2024" />
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:drawableStart="@drawable/distance"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/md_theme_onSurfaceVariant"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                        tools:text="Port Saplaya" />
+
+                    <Button
+                        android:id="@+id/enlace"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:padding="0dp"
+                        android:text="Enlace de interés"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:icon="@drawable/link"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/asistirSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        android:drawableStart="@drawable/asistir"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/md_theme_onSurfaceVariant"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Asistir"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/enlace"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/enlace" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvParticipantes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Participantes"
+                android:textColor="@color/md_theme_onSurface"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card" />
+
+            <TextView
+                android:id="@+id/tvNoParticipantes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/md_theme_primary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/map"
-                android:layout_margin="8dp"
                 android:paddingVertical="16dp"
-                android:textStyle="bold"
-                android:textSize="32sp"
-                tools:text="Autonómico Verano Master" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                app:dividerInsetStart="8dp"
-                app:dividerInsetEnd="8dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                android:text="No hay participantes"
+                android:textAlignment="center"
+                android:textColor="@color/md_theme_onSurface"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvParticipantes" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvParticipantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvParticipantes"
+                android:nestedScrollingEnabled="false"
+
                 />
 
             <TextView
-                android:id="@+id/tvFecha"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvComentarios"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Comentarios"
+                android:textColor="@color/md_theme_onSurface"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvParticipantes" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComentarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvComentarios"
+                android:nestedScrollingEnabled="false"
+
+                />
+
+            <EditText
+                android:id="@+id/etComment"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_rounded"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/md_theme_onSurfaceVariant"
-                android:textSize="18sp"
-                android:drawableStart="@drawable/calendar"
-                android:drawableTint="@color/md_theme_onSurfaceVariant"
-                android:drawablePadding="6dp"
+                android:hint="Mensaje"
+                android:inputType="textCapSentences"
+                android:padding="14dp"
+                android:textColor="@color/md_theme_onSurface"
+                android:textColorHint="@color/md_theme_onSurface"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/ivSendComment"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
-                tools:text="12 de junio de 2024" />
-
-            <TextView
-                android:id="@+id/tvLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="8dp"
-                android:drawablePadding="8dp"
-                android:drawableStart="@drawable/distance"
-                android:drawableTint="@color/md_theme_onSurfaceVariant"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/md_theme_onSurfaceVariant"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                tools:text="Port Saplaya" />
+                app:layout_constraintTop_toBottomOf="@id/rvComentarios" />
 
             <Button
-                android:id="@+id/enlace"
-                style="?attr/borderlessButtonStyle"
+                android:id="@+id/ivSendComment"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Enlace de interés"
-                android:textStyle="bold"
-                android:padding="0dp"
-                android:textSize="18sp"
-                android:layout_marginStart="8dp"
-                app:icon="@drawable/link"
-                app:layout_constraintStart_toStartOf="parent"
-
-                app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
-
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/asistirSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:text="Publicar"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Asistir"
-                android:drawableStart="@drawable/asistir"
-                android:drawablePadding="8dp"
-                android:drawableTint="@color/md_theme_onSurfaceVariant"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/enlace"
+                android:padding="0dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/enlace" />
+
+                app:layout_constraintTop_toTopOf="@id/etComment" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/tvParticipantes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Participantes"
-        android:textColor="@color/md_theme_onSurface"
-        android:textSize="28sp"
-        android:layout_marginTop="32dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card"/>
-
-    <TextView
-        android:id="@+id/tvNoParticipantes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:paddingVertical="16dp"
-        android:text="No hay participantes"
-        android:textAlignment="center"
-        android:textColor="@color/md_theme_onSurface"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvParticipantes" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:id="@+id/rvParticipantes"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvParticipantes"
-
-        />
-
-
-
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

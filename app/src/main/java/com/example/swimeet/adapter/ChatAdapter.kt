@@ -16,17 +16,22 @@ import com.example.swimeet.R
 import com.example.swimeet.data.model.Chat
 import com.example.swimeet.data.model.User
 import com.example.swimeet.data.repository.UserRepository
+import com.example.swimeet.ui.ChatFragment
 import com.example.swimeet.ui.ChatRoomActivity
 import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.Timestamp
 import org.ocpsoft.prettytime.PrettyTime
+import java.lang.ref.WeakReference
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit
 import java.util.Locale
 
-class ChatAdapter(private var chatList: List<Chat> = emptyList()) :
+class ChatAdapter(
+    private var chatList: List<Chat> = emptyList(),
+    private val fragmentRef: WeakReference<ChatFragment>
+) :
     RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     fun updateList(newList: List<Chat>) {

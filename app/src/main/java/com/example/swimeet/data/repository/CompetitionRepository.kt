@@ -1,6 +1,7 @@
 package com.example.swimeet.data.repository
 
 
+import com.example.swimeet.data.model.Comment
 import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
 import com.example.swimeet.util.FirebaseUtil
@@ -126,5 +127,22 @@ class CompetitionRepository {
         }
 
         return ev
+    }
+
+    suspend fun getComments(type: String, eventId: String, onGetComments: (List<Comment>) -> Unit) {
+        withContext(Dispatchers.IO) {
+            FirebaseUtil.getCommentsRef(eventId, type)
+                .orderBy("timestamp", Query.Direction.ASCENDING).get()
+                .addOnSuccessListener { result ->
+                    val comments = mutableListOf<Comment>()
+                    for (doc in result.documents) {
+                        val comment = doc.toObject(Comment::class.java)
+                        comments.add(comment!!)
+                    }
+
+                    onGetComments(comments)
+                }
+
+        }
     }
 }
