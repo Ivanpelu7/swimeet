@@ -16,10 +16,10 @@ class CompetitionDetailViewModel : ViewModel() {
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean> get() = _loading
 
-    private val _competition = MutableLiveData<Competition>()
+    private val _competition = MutableLiveData<Competition>(null)
     val competition: LiveData<Competition> get() = _competition
 
-    private val _event = MutableLiveData<Event>()
+    private val _event = MutableLiveData<Event>(null)
     val event: LiveData<Event> get() = _event
 
     fun getCompetitionInfo(id: String) {
@@ -30,7 +30,11 @@ class CompetitionDetailViewModel : ViewModel() {
         }
     }
 
-    fun init(id: String) {
-        getCompetitionInfo(id)
+    fun getEventInfo(id: String) {
+        viewModelScope.launch {
+            _loading.value = true
+            _event.value = compRepository.getEventInfo(id)
+            _loading.value = false
+        }
     }
 }

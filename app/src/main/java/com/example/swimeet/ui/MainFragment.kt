@@ -4,16 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
-import androidx.annotation.MenuRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.swimeet.R
 import com.example.swimeet.adapter.CompetitionsAdapter
 import com.example.swimeet.adapter.EventsAdapter
 import com.example.swimeet.adapter.ViewPagerAdapter
@@ -51,13 +48,17 @@ class MainFragment : Fragment() {
         initUI()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.init()
+    }
+
     private fun initUI() {
         mainViewModel.init()
         initObservers()
         initListeners()
         initRecyclerViews()
         initViewPager()
-
     }
 
     private fun initObservers() {
@@ -96,12 +97,19 @@ class MainFragment : Fragment() {
 
         mainViewModel.advList.observe(viewLifecycleOwner) { adv ->
             if (adv.isEmpty()) {
-                val dummyList = listOf(Advertisement())
+                val dummyList = emptyList<Advertisement>()
                 vpAdapter.updateList(dummyList)
+                binding.viewPager.visibility = View.GONE
+                val layoutParams =
+                    binding.tvNextEvents.layoutParams as ConstraintLayout.LayoutParams
+                layoutParams.topToBottom = binding.tvNoAdvertisements.id
+                binding.tvNextEvents.layoutParams = layoutParams
+                binding.tvNoAdvertisements.visibility = View.VISIBLE
             } else {
                 vpAdapter.updateList(adv)
+                binding.viewPager.visibility = View.VISIBLE
+                binding.tvNoAdvertisements.visibility = View.GONE
             }
-
         }
     }
 
@@ -134,7 +142,7 @@ class MainFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.mainLayout.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        binding.mainLayout.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, _, _, _ ->
             isScrolling = true
             binding.fabButton.shrink()
             handler.removeCallbacksAndMessages(null)

@@ -53,8 +53,6 @@ class AddEventActivity : AppCompatActivity() {
     private var selectedPlaceLatLng: Pair<Double, Double>? = null
     private var isSettingText: Boolean = false
 
-    private val AUTOCOMPLETE_REQUEST_CODE = 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEventBinding.inflate(layoutInflater)

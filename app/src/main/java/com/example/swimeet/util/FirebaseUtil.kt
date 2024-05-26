@@ -7,6 +7,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 object FirebaseUtil {
@@ -86,5 +87,14 @@ object FirebaseUtil {
             val horas = diferenciaMinutos / 60
             "hace $horas h"
         }
+    }
+
+    fun parseFirebaseTimestamp(timestamp: Timestamp): String {
+        // Convertir el timestamp a un objeto Date
+        val date = timestamp.toDate()
+
+        // Formatear la fecha
+        val format = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale.getDefault())
+        return format.format(date)
     }
 }

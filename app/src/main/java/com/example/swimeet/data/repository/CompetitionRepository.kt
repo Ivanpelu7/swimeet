@@ -116,4 +116,15 @@ class CompetitionRepository {
 
         return comp
     }
+
+    suspend fun getEventInfo(id: String): Event? {
+        var ev: Event?
+
+        withContext(Dispatchers.IO) {
+            val eventDoc = FirebaseUtil.getEventsRef().document(id).get().await()
+            ev = eventDoc.toObject(Event::class.java)
+        }
+
+        return ev
+    }
 }

@@ -33,15 +33,12 @@ class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emp
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvMessage: TextView = itemView.findViewById(R.id.tvMessage)
         private val tvAuthor: TextView = itemView.findViewById(R.id.tvAuthor)
-        private val tvNone: TextView = itemView.findViewById(R.id.tvSinAnuncios)
         private val tvHace: TextView = itemView.findViewById(R.id.tvHace)
         private val prettyTime: PrettyTime = PrettyTime()
 
         fun render(advertisement: Advertisement) {
             if (advertisement.message == "") {
-                tvNone.visibility = View.VISIBLE
             } else {
-                tvNone.visibility = View.GONE
                 tvTitle.text = advertisement.title
                 tvMessage.text = advertisement.message
                 tvAuthor.text = advertisement.authorUsername

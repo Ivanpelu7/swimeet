@@ -39,6 +39,7 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) :
         private val eventDate: TextView = itemView.findViewById(R.id.tvFechaVar)
         private val participants: TextView = itemView.findViewById(R.id.tvParticipantsVar)
         private val iconEvent: ImageView = itemView.findViewById(R.id.ivEventIcon)
+        private val eventPlace: TextView = itemView.findViewById(R.id.tvSitioVar)
         fun render(event: Event) {
             when (event.type) {
                 "Comida" -> iconEvent.setImageResource(R.drawable.dinner)
@@ -49,6 +50,7 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) :
             eventName.text = event.name
             eventDate.text = FirebaseUtil.timestampToStringDate(event.date!!)
             participants.text = event.participants.size.toString()
+            eventPlace.text = event.place
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CompetitionDetailActivity::class.java)
@@ -56,6 +58,7 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) :
                 intent.putExtra("name", event.name)
                 intent.putExtra("latitude", event.location!!.latitude.toString())
                 intent.putExtra("longitude", event.location!!.longitude.toString())
+                intent.putExtra("type", "1")
                 itemView.context.startActivity(intent)
             }
         }
