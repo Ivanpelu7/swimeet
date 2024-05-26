@@ -49,6 +49,7 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
                 intent.putExtra("latitude", competition.location!!.latitude.toString())
                 intent.putExtra("longitude", competition.location!!.longitude.toString())
                 intent.putExtra("type", "0")
+                intent.putExtra("link", competition.link)
                 itemView.context.startActivity(intent)
             }
 

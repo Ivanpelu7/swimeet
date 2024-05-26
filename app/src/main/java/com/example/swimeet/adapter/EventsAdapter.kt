@@ -59,6 +59,7 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) :
                 intent.putExtra("latitude", event.location!!.latitude.toString())
                 intent.putExtra("longitude", event.location!!.longitude.toString())
                 intent.putExtra("type", "1")
+                intent.putExtra("link", event.link)
                 itemView.context.startActivity(intent)
             }
         }

@@ -1,5 +1,7 @@
 package com.example.swimeet.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +36,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var longitude: String
     private lateinit var latitude: String
     private lateinit var type: String
+    private lateinit var link: String
     private var participants: MutableList<User> = mutableListOf()
     private var participantsAdapter = ParticipantsAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +48,12 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initUI() {
-        binding.prgbar.visibility = View.VISIBLE
         getIntents()
+
+        if (link == "") {
+            binding.enlace.isEnabled = false
+        }
+
         initRecyclerView()
 
         if (type == "0") {
@@ -93,6 +100,8 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                             previousSize,
                                             newSize - previousSize
                                         )
+
+                                        binding.tvNoParticipantes.visibility = View.GONE
                                     }
                                 }
                         }
@@ -115,6 +124,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                             previousSize,
                                             newSize - previousSize
                                         )
+
+                                        if (participants.size == 0) {
+                                            binding.tvNoParticipantes.visibility = View.VISIBLE
+                                        }
                                     }
                                 }
                         }
@@ -133,6 +146,8 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                     participants.removeAt(position)
                                     participantsAdapter.updateList(participants)
                                     participantsAdapter.notifyItemRemoved(position)
+
+                                    binding.tvNoParticipantes.visibility = View.GONE
                                     break
                                 }
                             }
@@ -151,6 +166,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                     participants.removeAt(position)
                                     participantsAdapter.updateList(participants)
                                     participantsAdapter.notifyItemRemoved(position)
+
+                                    if (participants.size == 0) {
+                                        binding.tvNoParticipantes.visibility = View.VISIBLE
+                                    }
                                     break
                                 }
                             }
@@ -158,6 +177,12 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
                 }
             }
+        }
+
+        binding.enlace.setOnClickListener {
+            val webpage: Uri = Uri.parse(link)
+            val intent = Intent(Intent.ACTION_VIEW, webpage)
+            startActivity(intent)
         }
     }
 
@@ -167,6 +192,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         longitude = intent.getStringExtra("longitude").toString()
         latitude = intent.getStringExtra("latitude").toString()
         type = intent.getStringExtra("type").toString()
+        link = intent.getStringExtra("link").toString()
     }
 
     private fun initObservers() {
@@ -214,8 +240,6 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         }
-
-
     }
 
     private fun obtenerArrayDeFirebase(competitionsRef: CollectionReference) {
@@ -231,6 +255,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                 participants.add(user)
                             }
 
+                            if (participants.size == 0) {
+                                binding.tvNoParticipantes.visibility = View.VISIBLE
+                            }
+
                             participantsAdapter.updateList(participants)
                         }
                     }
@@ -239,99 +267,6 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
             .addOnFailureListener { exception ->
                 // Manejar errores
             }
-        /*
-                binding.asistirSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-                    if (isChecked) {
-                        if (type == "0") {
-                            FirebaseUtil.getCompetitionsRef().document(id)
-                                .update(
-                                    "participants",
-                                    FieldValue.arrayUnion(FirebaseUtil.getCurrentUserID())
-                                )
-                                .addOnSuccessListener {
-                                    FirebaseUtil.getCurrentUserDocumentRef().get()
-                                        .addOnSuccessListener {
-                                            val user: User? = it.toObject(User::class.java)
-                                            if (!participants.contains(user)) {
-                                                val previousSize = participants.size
-                                                participants.add(user!!)
-                                                val newSize = participants.size
-                                                participantsAdapter.updateList(participants)
-                                                participantsAdapter.notifyItemRangeInserted(
-                                                    previousSize,
-                                                    newSize - previousSize
-                                                )
-                                            }
-                                        }
-                                }
-                        } else {
-                            FirebaseUtil.getEventsRef().document(id)
-                                .update(
-                                    "participants",
-                                    FieldValue.arrayUnion(FirebaseUtil.getCurrentUserID())
-                                )
-                                .addOnSuccessListener {
-                                    FirebaseUtil.getCurrentUserDocumentRef().get()
-                                        .addOnSuccessListener {
-                                            val user: User? = it.toObject(User::class.java)
-                                            if (!participants.contains(user)) {
-                                                val previousSize = participants.size
-                                                participants.add(user!!)
-                                                val newSize = participants.size
-                                                participantsAdapter.updateList(participants)
-                                                participantsAdapter.notifyItemRangeInserted(
-                                                    previousSize,
-                                                    newSize - previousSize
-                                                )
-                                            }
-                                        }
-                                }
-                        }
-
-
-                    } else {
-                        if (type == "0") {
-                            FirebaseUtil.getCompetitionsRef().document(id)
-                                .update(
-                                    "participants",
-                                    FieldValue.arrayRemove(FirebaseUtil.getCurrentUserID())
-                                )
-                                .addOnSuccessListener {
-                                    for (user in participants) {
-                                        if (user.userId == FirebaseUtil.getCurrentUserID()) {
-                                            val position = participants.indexOf(user)
-                                            participants.removeAt(position)
-                                            participantsAdapter.updateList(participants)
-                                            participantsAdapter.notifyItemRemoved(position)
-                                            break
-                                        }
-                                    }
-
-                                }
-                        } else {
-                            FirebaseUtil.getEventsRef().document(id)
-                                .update(
-                                    "participants",
-                                    FieldValue.arrayRemove(FirebaseUtil.getCurrentUserID())
-                                )
-                                .addOnSuccessListener {
-                                    for (user in participants) {
-                                        if (user.userId == FirebaseUtil.getCurrentUserID()) {
-                                            val position = participants.indexOf(user)
-                                            participants.removeAt(position)
-                                            participantsAdapter.updateList(participants)
-                                            participantsAdapter.notifyItemRemoved(position)
-                                            break
-                                        }
-                                    }
-
-                                }
-                        }
-
-                    }
-                }
-
-         */
     }
 
     private suspend fun obtenerUsuario(userId: String): User {

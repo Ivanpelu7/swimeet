@@ -113,6 +113,29 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="Enlace"
+                app:endIconMode="clear_text"
+                app:helperTextEnabled="true"
+                app:helperText="Opcional"
+                app:helperTextTextAppearance="@style/HelperTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/outlinedTextField"
+                app:startIconDrawable="@drawable/link">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etUbiParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,7 +144,7 @@
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/outlinedTextField"
+                app:layout_constraintTop_toBottomOf="@id/tf"
                 app:startIconDrawable="@drawable/distance">
 
                 <com.google.android.material.textfield.TextInputEditText

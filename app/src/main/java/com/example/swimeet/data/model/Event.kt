@@ -11,5 +11,6 @@ data class Event(
     var location: GeoPoint? = null,
     var place: String = "",
     var participants: List<String> = emptyList(),
-    var finished: Boolean = false
+    var finished: Boolean = false,
+    var link: String = ""
 )

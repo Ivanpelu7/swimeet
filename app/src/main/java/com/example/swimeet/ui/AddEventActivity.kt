@@ -251,7 +251,7 @@ class AddEventActivity : AppCompatActivity() {
         binding.btnAddEvent.setOnClickListener {
             val type = binding.spinner2.text.toString()
             val name = binding.etEventName.text.toString()
-            val ubi = binding.etUbi
+            val link = binding.etLink.text.toString()
 
             val date = binding.etDate.text.toString()
             val dateArray = date.split("/")
@@ -278,7 +278,8 @@ class AddEventActivity : AppCompatActivity() {
                     type = type,
                     name = name,
                     date = Timestamp(calendar.time),
-                    distance = distance
+                    distance = distance,
+                    link = link
                 )
                 addEventViewModel.addCompetition(competition)
             } else {
@@ -287,7 +288,8 @@ class AddEventActivity : AppCompatActivity() {
                     location = geoPoint,
                     type = type,
                     name = name,
-                    date = Timestamp(calendar.time)
+                    date = Timestamp(calendar.time),
+                    link = link
                 )
                 addEventViewModel.addEvent(event)
             }
