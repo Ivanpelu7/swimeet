@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/competitionLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp"
-    app:cardBackgroundColor="@color/md_theme_primaryContainer"
     android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="12dp">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/ivCompetitionIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             tools:src="@drawable/sea"
-            android:layout_marginHorizontal="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/md_theme_onPrimaryContainer" />
+            app:tint="@color/md_theme_onSurfaceVariant" />
 
         <TextView
             android:id="@+id/tvNameCompetition"
@@ -31,9 +29,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             tools:text="Campeonato Nacional Larga Distancia"
-            android:textColor="@color/md_theme_onPrimaryContainer"
-            android:textSize="16sp"
-            android:layout_marginStart="12dp"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:layout_marginStart="16dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivCompetitionIcon"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,8 +43,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Fecha:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@id/tvNameCompetition" />
 
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvFecha"
             app:layout_constraintStart_toEndOf="@+id/tvFecha"
@@ -68,7 +69,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Lugar:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
@@ -78,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             android:layout_marginStart="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvSitio"
@@ -92,7 +94,7 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_medium"
             tools:text="1,5KM"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvSitioVar"
@@ -105,8 +107,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Participantes:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tvSitio"
             app:layout_constraintTop_toBottomOf="@+id/tvSitio" />
 
@@ -116,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvParticipants"
             app:layout_constraintStart_toEndOf="@+id/tvParticipants"
@@ -124,4 +127,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

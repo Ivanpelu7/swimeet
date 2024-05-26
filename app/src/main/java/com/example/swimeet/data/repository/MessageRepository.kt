@@ -4,7 +4,6 @@ import com.example.swimeet.data.model.Message
 import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class MessageRepository {

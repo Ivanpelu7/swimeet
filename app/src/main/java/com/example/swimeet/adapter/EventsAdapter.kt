@@ -1,5 +1,6 @@
 package com.example.swimeet.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
-import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
+import com.example.swimeet.ui.CompetitionDetailActivity
 import com.example.swimeet.util.FirebaseUtil
 
-class EventsAdapter(private var eventsList: List<Event> = emptyList()) : RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
+class EventsAdapter(private var eventsList: List<Event> = emptyList()) :
+    RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
         return EventsViewHolder(
@@ -41,12 +43,21 @@ class EventsAdapter(private var eventsList: List<Event> = emptyList()) : Recycle
             when (event.type) {
                 "Comida" -> iconEvent.setImageResource(R.drawable.dinner)
                 "Fiesta" -> iconEvent.setImageResource(R.drawable.party)
-                "Quedada" -> iconEvent.setImageResource(R.drawable.group)
+                "Quedada" -> iconEvent.setImageResource(R.drawable.meeting)
             }
 
             eventName.text = event.name
             eventDate.text = FirebaseUtil.timestampToStringDate(event.date!!)
             participants.text = event.participants.size.toString()
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, CompetitionDetailActivity::class.java)
+                intent.putExtra("id", event.eventId)
+                intent.putExtra("name", event.name)
+                intent.putExtra("latitude", event.location!!.latitude.toString())
+                intent.putExtra("longitude", event.location!!.longitude.toString())
+                itemView.context.startActivity(intent)
+            }
         }
 
     }

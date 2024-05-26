@@ -11,7 +11,7 @@
         android:id="@+id/layoutActionBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/md_theme_surfaceContainerHigh"
+        android:background="@color/md_theme_surfaceContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,6 +45,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutActionBar">
@@ -68,13 +69,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvBenjamin"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardViewAlevin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc">
@@ -91,11 +90,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="BENJAMÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView4"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvBenjaminTime"
@@ -104,7 +110,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -117,22 +123,20 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvBenjaminTime"
                         tools:text="Martagp19" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewAlevin"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvBenjamin"
                 app:layout_constraintTop_toBottomOf="@+id/tvMasc">
@@ -149,11 +153,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ALEVÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvAlevinTime"
@@ -162,7 +173,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -175,24 +186,21 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAlevinTime"
-                        tools:layout_editor_absoluteX="6dp"
                         tools:text="Martagp19" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewInfantil"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvBenjamin">
@@ -209,11 +217,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="INFANTIL"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvInfantilTime"
@@ -222,7 +237,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView8"
@@ -235,7 +250,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvInfantilTime"
                         tools:layout_editor_absoluteX="6dp"
@@ -243,16 +258,14 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewAlevin">
@@ -269,11 +282,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="JUNIOR"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView10"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvJuniorTime"
@@ -282,7 +302,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView10"
@@ -295,7 +315,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvJuniorTime"
                         tools:layout_editor_absoluteX="6dp"
@@ -303,15 +323,14 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAbsoluto"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardViewInfantil"
                 app:layout_constraintStart_toStartOf="parent"
@@ -329,11 +348,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ABSOLUTO"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView12"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvAbsolutoTime"
@@ -342,7 +368,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -355,7 +381,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAbsolutoTime"
                         tools:layout_editor_absoluteX="6dp"
@@ -364,7 +390,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -393,13 +419,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvAbsoluto" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvBenjaminFem"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem">
@@ -416,11 +440,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="BENJAMÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView4Fem"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvBenjaminTimeFem"
@@ -429,7 +460,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView4Fem"
@@ -442,22 +473,20 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvBenjaminTimeFem"
                         tools:text="Martagp19" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView4"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvBenjaminFem"
                 app:layout_constraintTop_toBottomOf="@+id/tvFem">
@@ -474,11 +503,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ALEVÍN"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView14"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvAlevinTimeFem"
@@ -487,7 +523,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView14"
@@ -500,7 +536,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAlevinTimeFem"
                         tools:layout_editor_absoluteX="6dp"
@@ -508,16 +544,14 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvInfantil"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/cvJuniorFem"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvBenjaminFem">
@@ -534,11 +568,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="INFANTIL"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView17"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvInfantilTimeFem"
@@ -547,11 +588,10 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView17"
-                        tools:layout_editor_absoluteX="6dp"
                         tools:text="01:02.78" />
 
                     <TextView
@@ -560,7 +600,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvInfantilTimeFem"
                         tools:layout_editor_absoluteX="6dp"
@@ -568,16 +608,14 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvJuniorFem"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvInfantil"
                 app:layout_constraintTop_toBottomOf="@+id/cardView4">
@@ -594,11 +632,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="JUNIOR"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView16"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvJuniorTimeFem"
@@ -607,7 +652,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView16"
@@ -620,7 +665,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvJuniorTimeFem"
                         tools:layout_editor_absoluteX="6dp"
@@ -628,16 +673,14 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAbs"
                 android:layout_width="0dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/md_theme_primaryContainer"
-                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="@id/cvInfantil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvInfantil">
@@ -654,11 +697,18 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="ABSOLUTO"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/textView15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tvAbsolutoTimeFem"
@@ -667,7 +717,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:padding="12dp"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -680,7 +730,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAlignment="center"
-                        android:textColor="@color/md_theme_onPrimaryContainer"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="16sp"
                         app:layout_constraintTop_toBottomOf="@+id/tvAbsolutoTimeFem"
                         tools:layout_editor_absoluteX="6dp"
@@ -689,7 +739,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <FrameLayout
                 android:layout_width="match_parent"

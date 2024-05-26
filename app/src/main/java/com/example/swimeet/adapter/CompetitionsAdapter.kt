@@ -6,17 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Competition
-import com.example.swimeet.data.model.Message
 import com.example.swimeet.ui.CompetitionDetailActivity
-import com.example.swimeet.ui.MainActivity
 import com.example.swimeet.util.FirebaseUtil
 
-class CompetitionsAdapter(private var competitionsList: List<Competition> = emptyList()) : RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder>() {
+class CompetitionsAdapter(private var competitionsList: List<Competition> = emptyList()) :
+    RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompetitionsViewHolder {
         return CompetitionsViewHolder(
@@ -60,7 +58,8 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
             }
 
             if (competition.distance != null) {
-                val distanceFormated = String.format("%.1f", (competition.distance!! / 1000).toFloat())
+                val distanceFormated =
+                    String.format("%.1f", (competition.distance!! / 1000).toFloat())
                 eventDistanceVar.text = "${distanceFormated}KM"
 
             } else {

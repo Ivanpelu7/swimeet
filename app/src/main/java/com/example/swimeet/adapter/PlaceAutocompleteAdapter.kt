@@ -11,21 +11,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.google.android.libraries.places.api.model.AutocompletePrediction
 
-class PlaceAutocompleteAdapter(context: Context,
+class PlaceAutocompleteAdapter(
+    context: Context,
     private val onPlaceClick: (AutocompletePrediction) -> Unit
 ) : RecyclerView.Adapter<PlaceAutocompleteAdapter.ViewHolder>() {
 
     private var predictions: List<AutocompletePrediction> = emptyList()
+    private val customTypeface: Typeface?
+
+    init {
+        // Inicializa la fuente personalizada
+        customTypeface = ResourcesCompat.getFont(context, R.font.poppins_medium)
+    }
 
     fun setPredictions(predictions: List<AutocompletePrediction>) {
         this.predictions = predictions
         notifyDataSetChanged()
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(android.R.layout.simple_list_item_1, parent, false)
         return ViewHolder(view)
     }
 
@@ -43,5 +49,12 @@ class PlaceAutocompleteAdapter(context: Context,
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(android.R.id.text1)
+
+        init {
+            // Establece la fuente personalizada en el TextView si está disponible
+            customTypeface?.let {
+                textView.typeface = it
+            }
+        }
     }
 }

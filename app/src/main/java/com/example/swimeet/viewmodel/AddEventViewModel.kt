@@ -4,13 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.swimeet.data.model.Chat
 import com.example.swimeet.data.model.Competition
 import com.example.swimeet.data.model.Event
 import com.example.swimeet.data.repository.CompetitionRepository
 import kotlinx.coroutines.launch
 
-class AddEventViewModel: ViewModel() {
+class AddEventViewModel : ViewModel() {
 
     private val competitionRepository = CompetitionRepository()
 

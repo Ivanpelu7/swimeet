@@ -2,6 +2,8 @@ package com.example.swimeet.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +20,13 @@ class ChatFragment : Fragment() {
     private val binding get() = _binding!!
     private val recentChatsViewModel: RecentChatsViewModel by viewModels()
     private lateinit var recyclerAdapter: ChatAdapter
+    var isScrolling = false
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentChatBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -39,7 +44,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.addChat.setOnClickListener {
+        binding.fabButton.setOnClickListener {
             val intent = Intent(requireContext(), UsersListActivity::class.java)
             startActivity(intent)
         }
@@ -61,6 +66,22 @@ class ChatFragment : Fragment() {
         recyclerAdapter = ChatAdapter()
         binding.rvChats.layoutManager = LinearLayoutManager(requireContext())
         binding.rvChats.adapter = recyclerAdapter
+
+        binding.rvChats.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            isScrolling = true
+            binding.fabButton.shrink()
+            handler.removeCallbacksAndMessages(null)
+            handler.postDelayed({
+                if (isScrolling) {
+                    isScrolling = false
+                    onScrollStopped()
+                }
+            }, 300)
+        }
+    }
+
+    private fun onScrollStopped() {
+        binding.fabButton.extend()
     }
 }
 

@@ -51,7 +51,7 @@
         <item name="colorCustomColorContainer">@color/colorCustomColorContainer</item>
         <item name="colorOnCustomColorContainer">@color/colorOnCustomColorContainer</item>
 
-        <item name="android:statusBarColor">@color/md_theme_surfaceContainerHigh</item>
+        <item name="android:statusBarColor">@color/md_theme_surfaceContainer</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

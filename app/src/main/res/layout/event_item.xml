@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/eventLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/md_theme_primaryContainer"
     app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/dinner"
-            app:tint="@color/md_theme_onPrimaryContainer"/>
+            app:tint="@color/md_theme_onSurfaceVariant"/>
 
         <TextView
             android:id="@+id/tvNameEvent"
@@ -31,8 +30,8 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_medium"
             android:maxLines="1"
-            android:textColor="@color/md_theme_onPrimaryContainer"
-            android:textSize="16sp"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivEventIcon"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +44,8 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Fecha:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameEvent"
             app:layout_constraintTop_toBottomOf="@id/tvNameEvent" />
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvFecha"
             app:layout_constraintStart_toEndOf="@+id/tvFecha"
@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Lugar:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameEvent"
             app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
@@ -80,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvSitio"
             app:layout_constraintStart_toEndOf="@+id/tvSitio"
@@ -92,7 +93,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Participantes:"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tvNameEvent"
             app:layout_constraintTop_toBottomOf="@+id/tvSitio" />
@@ -103,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tvParticipants"
             app:layout_constraintStart_toEndOf="@+id/tvParticipants"
@@ -112,4 +114,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

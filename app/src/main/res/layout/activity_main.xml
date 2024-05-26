@@ -25,14 +25,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:backgroundTint="@color/md_theme_surfaceContainerHigh"
+        app:backgroundTint="@color/md_theme_surfaceContainer"
         app:menu="@menu/bottom_menu" />
 
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/md_theme_surfaceContainerHigh"
+        android:background="@color/md_theme_surfaceContainer"
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"

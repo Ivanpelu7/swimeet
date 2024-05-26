@@ -7,13 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Advertisement
-import com.example.swimeet.util.FirebaseUtil
 import org.ocpsoft.prettytime.PrettyTime
 import java.util.Locale
 
-class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emptyList()) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
+class ViewPagerAdapter(private var advertisementsList: List<Advertisement> = emptyList()) :
+    RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.advertisement_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.advertisement_item, parent, false)
         return ViewPagerViewHolder(view)
     }
 

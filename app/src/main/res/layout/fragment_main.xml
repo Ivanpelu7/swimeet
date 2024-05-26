@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +7,24 @@
     android:background="@color/md_theme_surface"
     tools:context=".ui.MainFragment">
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nuevo evento"
+        app:icon="@drawable/lapiz" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:indeterminateTint="@color/md_theme_onSurface"
         android:indeterminate="true"
-        android:visibility="invisible"/>
+        android:indeterminateTint="@color/md_theme_onSurface"
+        android:visibility="invisible" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/mainLayout"
@@ -32,23 +42,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/bebas_neue"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Tablón de anuncios"
                 android:textColor="@color/md_theme_onSurface"
-                android:textSize="26sp"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/viewPager"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvAddAdvertisement"
+            <Button
+                android:id="@+id/textButton"
+                style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Añadir"
-                android:textColor="@color/md_theme_onSurface"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvTablon"
+                android:text="Nuevo"
+                app:icon="@drawable/a_adir"
+                app:layout_constraintBottom_toBottomOf="@id/tvTablon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvTablon" />
 
@@ -56,7 +66,6 @@
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="128dp"
-                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTablon" />
@@ -67,42 +76,30 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Próximas competiciones"
                 android:textColor="@color/md_theme_onSurface"
-                android:textSize="26sp"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewPager" />
 
             <TextView
-                android:id="@+id/tvAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Añadir"
-                android:layout_marginEnd="8dp"
-                android:textColor="@color/md_theme_onSurface"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNextEvents"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvNextEvents" />
-
-            <TextView
                 android:id="@+id/tvNoCompetitions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingVertical="16dp"
                 android:text="No hay competiciones próximas"
-                android:visibility="gone"
                 android:textAlignment="center"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/md_theme_onSurface"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNextEvents"/>
+                app:layout_constraintTop_toBottomOf="@id/tvNextEvents" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNextEvents"
@@ -119,42 +116,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/bebas_neue"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Próximos eventos"
                 android:textColor="@color/md_theme_onSurface"
-                android:textSize="26sp"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvNextEvents" />
 
             <TextView
-                android:id="@+id/tvAddEvent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Añadir"
-                android:textColor="@color/md_theme_onSurface"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNextMeetings"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvNextMeetings" />
-
-            <TextView
                 android:id="@+id/tvNoEvents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/poppins_medium"
                 android:paddingVertical="16dp"
                 android:text="No hay eventos próximos"
-                android:visibility="gone"
                 android:textAlignment="center"
+                android:textColor="@color/md_theme_onSurfaceVariant"
                 android:textSize="16sp"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/md_theme_onSurface"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNextMeetings"/>
+                app:layout_constraintTop_toBottomOf="@id/tvNextMeetings" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNextMeetings"
@@ -172,4 +157,4 @@
     </androidx.core.widget.NestedScrollView>
 
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

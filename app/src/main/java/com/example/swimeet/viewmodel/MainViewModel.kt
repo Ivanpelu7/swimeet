@@ -41,30 +41,30 @@ class MainViewModel : ViewModel() {
             _loadCompleted.value = true
         }
     }
-/*
-    private fun getAdvertisements() {
-        viewModelScope.launch {
-            _loadingAdv.value = true
-            _advList.value = advRepository.getAdvertisements()
-            _loadingAdv.value = false
+    /*
+        private fun getAdvertisements() {
+            viewModelScope.launch {
+                _loadingAdv.value = true
+                _advList.value = advRepository.getAdvertisements()
+                _loadingAdv.value = false
+            }
         }
-    }
 
-    private fun getEvents() {
-        viewModelScope.launch {
-            _loadingAdv.value = true
-            _eventList.value = competitionRepository.getEvents()
-            _loadingAdv.value = false
+        private fun getEvents() {
+            viewModelScope.launch {
+                _loadingAdv.value = true
+                _eventList.value = competitionRepository.getEvents()
+                _loadingAdv.value = false
+            }
         }
-    }
 
-    fun getCompetitions() {
-        viewModelScope.launch {
-            _loading.value = true
-            _competitionList.value = competitionRepository.getCompetitions()
-            _loading.value = false
+        fun getCompetitions() {
+            viewModelScope.launch {
+                _loading.value = true
+                _competitionList.value = competitionRepository.getCompetitions()
+                _loading.value = false
+            }
         }
-    }
 
- */
+     */
 }

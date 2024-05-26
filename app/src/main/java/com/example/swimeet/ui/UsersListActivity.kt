@@ -6,8 +6,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.adapter.UsersAdapter
-import com.example.swimeet.viewmodel.UsersListViewModel
 import com.example.swimeet.databinding.ActivitySearchUsersBinding
+import com.example.swimeet.viewmodel.UsersListViewModel
 
 class UsersListActivity : AppCompatActivity() {
 

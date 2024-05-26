@@ -3,17 +3,14 @@ package com.example.swimeet.ui
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.swimeet.R
 import com.example.swimeet.adapter.SwimEventsAdapter
 import com.example.swimeet.data.model.SwimEvent
-import com.example.swimeet.databinding.FragmentMainBinding
 import com.example.swimeet.databinding.FragmentRecordsBinding
-import java.util.Locale.filter
 
 class RecordsFragment : Fragment() {
 
@@ -24,7 +21,7 @@ class RecordsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentRecordsBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -43,7 +40,7 @@ class RecordsFragment : Fragment() {
     }
 
     private fun setListeners() {
-        binding.etFiltrarPruebas.addTextChangedListener(object: TextWatcher {
+        binding.etFiltrarPruebas.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 //
             }
@@ -65,11 +62,11 @@ class RecordsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-       swimAdapter = SwimEventsAdapter(getSwimEventsList())
-       binding.rvSwimEvents.apply {
-           layoutManager = LinearLayoutManager(context)
-           adapter = swimAdapter
-       }
+        swimAdapter = SwimEventsAdapter(getSwimEventsList())
+        binding.rvSwimEvents.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = swimAdapter
+        }
     }
 
     private fun getSwimEventsList(): List<SwimEvent> {

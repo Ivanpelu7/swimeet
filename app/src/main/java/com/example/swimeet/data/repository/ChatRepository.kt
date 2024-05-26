@@ -19,7 +19,7 @@ class ChatRepository {
                     val chatList = mutableListOf<Chat>()
 
                     if (value != null) {
-                        for (document in value!!.documents) {
+                        for (document in value.documents) {
                             chatList.add(document.toObject(Chat::class.java)!!)
                         }
 

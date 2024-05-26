@@ -2,19 +2,24 @@ package com.example.swimeet.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.annotation.MenuRes
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swimeet.R
 import com.example.swimeet.adapter.CompetitionsAdapter
 import com.example.swimeet.adapter.EventsAdapter
 import com.example.swimeet.adapter.ViewPagerAdapter
 import com.example.swimeet.data.model.Advertisement
 import com.example.swimeet.databinding.FragmentMainBinding
 import com.example.swimeet.viewmodel.MainViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class MainFragment : Fragment() {
 
@@ -24,11 +29,18 @@ class MainFragment : Fragment() {
     private lateinit var competitionsAdapter: CompetitionsAdapter
     private lateinit var eventsAdapter: EventsAdapter
     private lateinit var vpAdapter: ViewPagerAdapter
+    private val handler = Handler(Looper.getMainLooper())
+    private var isScrolling = false
+
+
+    private fun onScrollStopped() {
+        binding.fabButton.extend()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -53,9 +65,11 @@ class MainFragment : Fragment() {
             if (!loadCompleted) {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.mainLayout.visibility = View.GONE
+                binding.fabButton.visibility = View.GONE
             } else {
                 binding.progressBar.visibility = View.INVISIBLE
                 binding.mainLayout.visibility = View.VISIBLE
+                binding.fabButton.visibility = View.VISIBLE
             }
         }
 
@@ -115,20 +129,26 @@ class MainFragment : Fragment() {
 
     private fun initListeners() {
 
-        binding.tvAdd.setOnClickListener {
-            val intent = Intent(requireContext(), AddEventActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.tvAddEvent.setOnClickListener {
-            val intent = Intent(requireContext(), AddEventActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.tvAddAdvertisement.setOnClickListener {
+        binding.textButton.setOnClickListener {
             val intent = Intent(requireContext(), AddAdvertisementActivity::class.java)
             startActivity(intent)
         }
-    }
 
+        binding.mainLayout.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            isScrolling = true
+            binding.fabButton.shrink()
+            handler.removeCallbacksAndMessages(null)
+            handler.postDelayed({
+                if (isScrolling) {
+                    isScrolling = false
+                    onScrollStopped()
+                }
+            }, 300)
+        })
+
+        binding.fabButton.setOnClickListener {
+            val intent = Intent(requireContext(), AddEventActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }

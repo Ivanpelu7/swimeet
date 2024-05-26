@@ -1,8 +1,8 @@
 package com.example.swimeet.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityCompetitionDetailBinding
 import com.example.swimeet.viewmodel.CompetitionDetailViewModel
@@ -57,7 +57,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                 binding.constraintLayout.visibility = View.VISIBLE
                 binding.prgbar.visibility = View.INVISIBLE
                 binding.tvCompetitionName.text = competition.name
-                binding.tvCompetitionNameDetail.text = competition.name
+                binding.tvTitle.text = competition.name
 
             } else {
                 binding.constraintLayout.visibility = View.INVISIBLE

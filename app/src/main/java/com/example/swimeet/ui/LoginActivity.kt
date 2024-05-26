@@ -1,19 +1,12 @@
 package com.example.swimeet.ui
 
-import android.animation.AnimatorSet
-import android.animation.ValueAnimator
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.animation.AnticipateInterpolator
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityLoginBinding
-import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.RegisterViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -21,7 +14,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val registerViewModel: RegisterViewModel by viewModels()
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

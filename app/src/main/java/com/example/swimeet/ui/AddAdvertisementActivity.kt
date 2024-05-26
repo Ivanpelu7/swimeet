@@ -1,17 +1,14 @@
 package com.example.swimeet.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.swimeet.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.data.model.Advertisement
 import com.example.swimeet.databinding.ActivityAddAdvertisementBinding
-import com.example.swimeet.databinding.ActivityAddEventBinding
 import com.example.swimeet.viewmodel.AddAdvertisementViewModel
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class AddAdvertisementActivity : AppCompatActivity() {
@@ -34,7 +31,11 @@ class AddAdvertisementActivity : AppCompatActivity() {
     private fun initObservers() {
         addAdvViewModel.advAdded.observe(this) {
             if (it) {
-                Toast.makeText(applicationContext, "Mensaje publicado con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Mensaje publicado con éxito",
+                    Toast.LENGTH_SHORT
+                ).show()
 
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
@@ -53,10 +54,16 @@ class AddAdvertisementActivity : AppCompatActivity() {
         }
 
         binding.btnPublishMessage.setOnClickListener {
-            if ((binding.etTitle.text.toString() != "") && (binding.etUbi.text.toString() != "")) {
+            if ((binding.etTitle.text.toString() != "") && (binding.etMessage.text.toString() != "")) {
                 val title = binding.etTitle.text.toString()
-                val message = binding.etUbi.text.toString()
-                val adv = Firebase.auth.currentUser?.displayName?.let { it -> Advertisement(authorUsername = it, title = title, message = message) }
+                val message = binding.etMessage.text.toString()
+                val adv = Firebase.auth.currentUser?.displayName?.let { it ->
+                    Advertisement(
+                        authorUsername = it,
+                        title = title,
+                        message = message
+                    )
+                }
                 if (adv != null) {
                     addAdvViewModel.addAdv(adv)
                 }

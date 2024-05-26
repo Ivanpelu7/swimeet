@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/md_theme_surface"
     tools:context=".ui.AddAdvertisementActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutActionBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/md_theme_surfaceContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +24,8 @@
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onSurface" />
 
         <TextView
             android:id="@+id/tvCompetitionName"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:text="Nuevo mensaje"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_onSurface"
             android:textSize="16sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,54 +52,61 @@
         app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
 
 
-        <EditText
-            android:id="@+id/etTitle"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etTimeParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_margin="8dp"
             android:hint="Título"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:textColorHint="@color/black"
-            android:textSize="16sp"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/title">
 
-        <EditText
-            android:id="@+id/etUbi"
-            android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_margin="8dp"
             android:hint="Mensaje"
-            android:inputType="textMultiLine"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="16sp"
+            app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etTitle" />
+            app:layout_constraintTop_toBottomOf="@id/etTimeParent"
+            app:startIconCheckable="true"
+            app:startIconDrawable="@drawable/message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
+            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/btnPublishMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/primary"
+            android:layout_margin="16dp"
             android:fontFamily="@font/poppins_medium"
-            android:padding="8dp"
             android:text="PUBLICAR"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_primary"
+            app:strokeColor="@color/md_theme_primary"
             android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

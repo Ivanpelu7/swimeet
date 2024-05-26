@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.R
-import com.example.swimeet.adapter.SpinnerAdapter
 import com.example.swimeet.databinding.ActivityRegisterBinding
 import com.example.swimeet.viewmodel.RegisterViewModel
 
@@ -69,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
                 //val category = binding.spinnerCategories.selectedItem.toString()
                 val username = binding.etUsername.text.toString()
 
-               // registerViewModel.signUp(email, username, password, name, category, applicationContext)
+                // registerViewModel.signUp(email, username, password, name, category, applicationContext)
 
             } else {
                 Toast.makeText(

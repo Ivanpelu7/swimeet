@@ -8,7 +8,7 @@ import com.example.swimeet.data.model.User
 import com.example.swimeet.data.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class UsersListViewModel : ViewModel(){
+class UsersListViewModel : ViewModel() {
 
     private val userRepository = UserRepository()
 

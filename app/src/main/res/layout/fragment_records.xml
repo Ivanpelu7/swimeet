@@ -7,13 +7,13 @@
     android:background="@color/md_theme_surface"
     tools:context=".ui.RecordsFragment">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/md_theme_primaryContainer"
+        style="@style/Widget.Material3.CardView.Filled"
         app:cardCornerRadius="100dp"
         android:layout_margin="12dp">
 
@@ -21,22 +21,21 @@
             android:id="@+id/etFiltrarPruebas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="?attr/colorSurfaceContainerHigh"
             android:fontFamily="@font/poppins_medium"
             android:hint="Buscar prueba"
-            android:drawableLeft="@drawable/buscar"
-            app:drawableTint="@color/md_theme_onPrimaryContainer"
+            android:background="@drawable/edit_text_auth"
+            android:drawableLeft="@drawable/search"
+            app:drawableTint="@color/md_theme_onSurfaceVariant"
             android:drawablePadding="6dp"
             android:padding="14dp"
             android:inputType="textCapSentences"
-            android:textColor="@color/md_theme_onPrimaryContainer"
-            android:textColorHint="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
+            android:textColorHint="@color/md_theme_onSurfaceVariant"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <androidx.recyclerview.widget.RecyclerView

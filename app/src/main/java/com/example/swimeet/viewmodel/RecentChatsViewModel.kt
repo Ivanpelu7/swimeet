@@ -18,7 +18,7 @@ class RecentChatsViewModel : ViewModel() {
 
     fun getRecentChats() {
         viewModelScope.launch {
-            chatRepository.getMyChats() { chats ->
+            chatRepository.getMyChats { chats ->
                 _recentChats.value = chats
             }
         }

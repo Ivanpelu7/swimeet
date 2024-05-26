@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swimEventLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:backgroundTint="@color/md_theme_primaryContainer"
     app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/ivSwimEvent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/dinner"
-            app:tint="@color/md_theme_onPrimaryContainer"/>
+            app:tint="@color/md_theme_onSurface"/>
 
         <TextView
             android:id="@+id/tvName"
@@ -30,7 +29,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:maxLines="1"
-            android:textColor="@color/md_theme_onPrimaryContainer"
+            android:textColor="@color/md_theme_onSurfaceVariant"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/ivSwimEvent"
@@ -42,4 +41,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -9,7 +9,7 @@ import com.example.swimeet.data.model.Event
 import com.example.swimeet.data.repository.CompetitionRepository
 import kotlinx.coroutines.launch
 
-class CompetitionDetailViewModel: ViewModel() {
+class CompetitionDetailViewModel : ViewModel() {
 
     private val compRepository = CompetitionRepository()
 

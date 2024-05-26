@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="5dp"
-    app:cardBackgroundColor="@color/md_theme_primaryContainer"
-    android:layout_marginHorizontal="10dp"
+    android:layout_margin="8dp"
     app:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingVertical="8dp">
+        android:paddingVertical="12dp">
 
         <ImageView
             android:id="@+id/ivAvatarUser"
@@ -25,14 +23,14 @@
             android:id="@+id/tvUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/md_theme_onPrimaryContainer"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="8dp"
-            android:layout_gravity="center_vertical"/>
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

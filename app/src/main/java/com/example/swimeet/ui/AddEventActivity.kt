@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.adapter.PlaceAutocompleteAdapter
+import com.example.swimeet.data.model.Competition
+import com.example.swimeet.data.model.Event
 import com.example.swimeet.databinding.ActivityAddEventBinding
 import com.example.swimeet.viewmodel.AddEventViewModel
 import com.google.android.libraries.places.api.Places
@@ -27,11 +29,10 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FetchPlaceRequest
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
 import com.google.android.libraries.places.api.net.PlacesClient
-import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.GeoPoint
 import java.util.Calendar
 
@@ -83,25 +84,12 @@ class AddEventActivity : AppCompatActivity() {
                 Place.Field.LAT_LNG
             )
         )
-        /*
-                autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
-                    override fun onPlaceSelected(place: Place) {
-                        // Handle the selected place
-                        autocompleteText.setText(place.name)
-                    }
-
-                    override fun onError(status: com.google.android.gms.common.api.Status) {
-                        // Handle the error
-                    }
-                })
-
-         */
 
         autocompleteText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!isSettingText) {
-                    if (s != null && s.isNotEmpty()) {
+                    if (!s.isNullOrEmpty()) {
                         performAutocompleteQuery(s.toString())
                     } else {
                         adapter.setPredictions(emptyList())
@@ -131,17 +119,8 @@ class AddEventActivity : AppCompatActivity() {
                 selectedPlaceLatLng = place.latLng?.let { Pair(it.latitude, it.longitude) }
                 recyclerView.visibility = View.GONE
                 isSettingText = false
-                // Puedes manejar los datos de latitud y longitud como lo necesites
-                // Por ejemplo, puedes guardar selectedPlaceLatLng en ViewModel o pasarlo a otro fragmento/actividad
-                Toast.makeText(
-                    this,
-                    "Place: ${place.name}, LatLng: ${selectedPlaceLatLng}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT)
-                    .show()
+                placeName = place.name
+                geoPoint = GeoPoint(selectedPlaceLatLng!!.first, selectedPlaceLatLng!!.second)
             }
     }
 
@@ -272,9 +251,9 @@ class AddEventActivity : AppCompatActivity() {
         }
 
         binding.btnAddEvent.setOnClickListener {
-            //val type = binding.spinnerType.selectedItem.toString()
+            val type = binding.spinner2.text.toString()
             val name = binding.etEventName.text.toString()
-            // val ubi = binding.etUbi
+            val ubi = binding.etUbi
 
             val date = binding.etDate.text.toString()
             val dateArray = date.split("/")
@@ -283,26 +262,37 @@ class AddEventActivity : AppCompatActivity() {
             val year = dateArray[2].toInt()
 
             val time = binding.etTime.text
-            //val timeArray = time.split(":")
-            //val hour = timeArray[0].toInt()
-            //val minutes = timeArray[1].toInt()
+            val timeArray = time!!.split(":")
+            val hour = timeArray[0].toInt()
+            val minutes = timeArray[1].toInt()
 
             var distance: Int? = null
             if (binding.etDistance.text.toString() != "") {
                 distance = binding.etDistance.text.toString().toInt()
             }
 
-            // parseDateTime(day, hour, minutes, year, month)
-            /*
-                        if ((type == "Travesía") || (type == "Competición")) {
-                            val competition = Competition(place = placeName, location = geoPoint, type = type, name = name, date = Timestamp(calendar.time), distance = distance)
-                            addEventViewModel.addCompetition(competition)
-                        } else {
-                            val event = Event(place = placeName, location = geoPoint, type = type, name = name, date = Timestamp(calendar.time))
-                            addEventViewModel.addEvent(event)
-                        }
+            parseDateTime(day, hour, minutes, year, month)
 
-             */
+            if ((type == "Travesía") || (type == "Competición")) {
+                val competition = Competition(
+                    place = placeName,
+                    location = geoPoint,
+                    type = type,
+                    name = name,
+                    date = Timestamp(calendar.time),
+                    distance = distance
+                )
+                addEventViewModel.addCompetition(competition)
+            } else {
+                val event = Event(
+                    place = placeName,
+                    location = geoPoint,
+                    type = type,
+                    name = name,
+                    date = Timestamp(calendar.time)
+                )
+                addEventViewModel.addEvent(event)
+            }
         }
 
         binding.btnBack.setOnClickListener {
@@ -310,7 +300,6 @@ class AddEventActivity : AppCompatActivity() {
         }
 
     }
-
 
     private fun parseDateTime(day: Int, hour: Int, minutes: Int, year: Int, month: Int) {
         calendar = Calendar.getInstance()

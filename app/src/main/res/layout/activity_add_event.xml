@@ -11,7 +11,7 @@
         android:id="@+id/layoutActionBar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/md_theme_surfaceContainerHigh"
+        android:background="@color/md_theme_surfaceContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -102,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/outlinedTextField"
-            app:startIconDrawable="@drawable/calendar">
+            app:startIconDrawable="@drawable/distance">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUbi"
@@ -194,7 +194,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etTimeParent"
             app:startIconCheckable="true"
-            app:startIconDrawable="@drawable/distance">
+            app:startIconDrawable="@drawable/distancia">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDistance"
@@ -210,11 +210,11 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             android:fontFamily="@font/poppins_medium"
             android:text="AÑADIR EVENTO"
             android:textColor="@color/md_theme_primary"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:strokeColor="@color/md_theme_primary" />
