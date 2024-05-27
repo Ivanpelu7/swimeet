@@ -29,9 +29,10 @@ class PerfilActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        loadPhoto(Firebase.auth.currentUser!!.photoUrl!!)
-        loadData()
         setListeners()
+        loadPhoto(Firebase.auth.currentUser!!.photoUrl.toString())
+        loadData()
+
     }
 
     private fun loadData() {
@@ -47,7 +48,7 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadPhoto(uri: Uri) {
+    private fun loadPhoto(uri: String) {
         Glide.with(this)
             .load(uri)
             .transform(CircleCrop())
@@ -79,7 +80,7 @@ class PerfilActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             imageUri = data.data!!
-            loadPhoto(imageUri)
+            loadPhoto(imageUri.toString())
             uploadImageToFirebase()
         }
     }

@@ -132,7 +132,7 @@ class CompetitionRepository {
     suspend fun getComments(type: String, eventId: String, onGetComments: (List<Comment>) -> Unit) {
         withContext(Dispatchers.IO) {
             FirebaseUtil.getCommentsRef(eventId, type)
-                .orderBy("timestamp", Query.Direction.ASCENDING).get()
+                .orderBy("timestamp", Query.Direction.DESCENDING).get()
                 .addOnSuccessListener { result ->
                     val comments = mutableListOf<Comment>()
                     for (doc in result.documents) {

@@ -1,9 +1,11 @@
 package com.example.swimeet.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.R
@@ -54,11 +56,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initUI() {
+        binding.prgbar.visibility = View.VISIBLE
+        binding.constraintLayout.visibility = View.INVISIBLE
         getIntents()
-
-        if (link == "") {
-            binding.enlace.isEnabled = false
-        }
         initRecyclerView()
         initObservers()
         initListeners()
@@ -71,6 +71,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
             compDetailViewModel.getEventInfo(id)
             compDetailViewModel.getComments("events", id)
         }
+
+        if (link == "") {
+            binding.enlace.isEnabled = false
+        }
     }
 
     private fun initRecyclerView() {
@@ -81,7 +85,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.rvComentarios.apply {
             commentsAdapter = CommentsAdapter()
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(applicationContext).apply {
+                reverseLayout = true
+            }
             adapter = commentsAdapter
         }
     }
@@ -106,7 +112,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                     userId = FirebaseUtil.getCurrentUserID(),
                     message = message,
                     username = Firebase.auth.currentUser!!.displayName!!,
-                    userPhoto = photo
+                    userPhoto = Firebase.auth.currentUser!!.photoUrl.toString()
                 )
 
                 FirebaseUtil.getCommentsRef(id, if (type == "0") "competitions" else "events")
@@ -234,18 +240,16 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         link = intent.getStringExtra("link").toString()
     }
 
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
     private fun initObservers() {
-
-        compDetailViewModel.loading.observe(this) { isLoading ->
-            if (isLoading) {
-                binding.prgbar.visibility = View.VISIBLE
-                binding.constraintLayout.visibility = View.INVISIBLE
-            }
-        }
-
         compDetailViewModel.comment.observe(this) { comments ->
             commentsAdapter.updateList(comments)
-            binding.rvComentarios.scrollToPosition(commentsAdapter.itemCount - 1)
+            binding.rvComentarios.scrollToPosition(comments.size - 1)
+            hideKeyboard(binding.etComment)
         }
 
         if (type == "0") {
@@ -274,23 +278,14 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     obtenerArrayDeFirebase(FirebaseUtil.getEventsRef())
 
-                    binding.constraintLayout.visibility = View.VISIBLE
-                    binding.prgbar.visibility = View.INVISIBLE
-
                     binding.asistirSwitch.isChecked =
                         event.participants.contains(FirebaseUtil.getCurrentUserID())
-
-                } else {
-                    binding.constraintLayout.visibility = View.INVISIBLE
-                    binding.prgbar.visibility = View.VISIBLE
                 }
             }
         }
     }
 
     private fun obtenerArrayDeFirebase(competitionsRef: CollectionReference) {
-        binding.prgbar.visibility = View.VISIBLE
-        binding.constraintLayout.visibility = View.INVISIBLE
         competitionsRef.document(id).get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -330,18 +325,14 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setMap() {
-        binding.prgbar.visibility = View.VISIBLE
-        binding.constraintLayout.visibility = View.INVISIBLE
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         val ubi = LatLng(latitude.toDouble(), longitude.toDouble())
-
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 15f))
         googleMap.addMarker(MarkerOptions().position(ubi))
-        binding.prgbar.visibility = View.INVISIBLE
-        binding.constraintLayout.visibility = View.VISIBLE
+
     }
 }
