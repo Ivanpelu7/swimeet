@@ -121,6 +121,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 binding.etComment.setText("")
+                hideKeyboard(binding.etComment)
             }
         }
 
@@ -192,7 +193,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                     participantsAdapter.updateList(participants)
                                     participantsAdapter.notifyItemRemoved(position)
 
-                                    binding.tvNoParticipantes.visibility = View.GONE
+                                    if (participants.size == 0) {
+                                        binding.tvNoParticipantes.visibility = View.VISIBLE
+                                    }
                                     break
                                 }
                             }
@@ -249,7 +252,6 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         compDetailViewModel.comment.observe(this) { comments ->
             commentsAdapter.updateList(comments)
             binding.rvComentarios.scrollToPosition(comments.size - 1)
-            hideKeyboard(binding.etComment)
         }
 
         if (type == "0") {

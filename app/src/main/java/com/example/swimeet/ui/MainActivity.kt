@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.navigation.NavController
@@ -14,8 +15,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityMainBinding
+import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +38,27 @@ class MainActivity : AppCompatActivity() {
         initUI()
     }
 
+    private fun initUI() {
+        setListeners()
+        initNavigation()
+        loadAvatarImage(Firebase.auth.currentUser!!.photoUrl!!)
+        FirebaseUtil.subscribeToTopic("all")
+        getToken()
+    }
+
+    private fun getToken() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val token = task.result
+                    Log.d("mytoken", "Token: $token")
+                    // Aquí puedes enviar el token a tu servidor o hacer cualquier otra acción necesaria
+                } else {
+                    Log.e("mytoken", "Error al obtener el token: ${task.exception}")
+                }
+            }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_UPDATE_PROFILE && resultCode == Activity.RESULT_OK) {
@@ -43,12 +67,6 @@ class MainActivity : AppCompatActivity() {
                 loadAvatarImage(it.toUri())
             }
         }
-    }
-
-    private fun initUI() {
-        setListeners()
-        initNavigation()
-        loadAvatarImage(Firebase.auth.currentUser!!.photoUrl!!)
     }
 
     private fun setListeners() {

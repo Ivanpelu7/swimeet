@@ -1,11 +1,13 @@
 package com.example.swimeet.util
 
+import android.util.Log
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -99,5 +101,16 @@ object FirebaseUtil {
         // Formatear la fecha
         val format = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale.getDefault())
         return format.format(date)
+    }
+
+    fun subscribeToTopic(topic: String) {
+        FirebaseMessaging.getInstance().subscribeToTopic(topic)
+            .addOnCompleteListener { task ->
+                var msg = "Subscribed to $topic"
+                if (!task.isSuccessful) {
+                    msg = "Subscription failed"
+                }
+                Log.d("suscripcion", msg)
+            }
     }
 }
