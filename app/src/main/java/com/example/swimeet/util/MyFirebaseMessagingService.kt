@@ -1,14 +1,11 @@
 package com.example.swimeet.util
 
 import android.Manifest
-import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
-import androidx.activity.result.registerForActivityResult
 import android.content.pm.PackageManager
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -33,19 +30,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getActivity(
+            applicationContext, 0, intent,
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+        )
 
         val channelId = "default_channel"
-        val defaultSoundUri = android.provider.Settings.System.DEFAULT_NOTIFICATION_URI
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ocean)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)
-            .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
 
         val notificationManager = NotificationManagerCompat.from(this)
 
@@ -53,7 +51,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channel = NotificationChannel(
             channelId,
             "Default Channel",
-            NotificationManager.IMPORTANCE_DEFAULT
+            NotificationManager.IMPORTANCE_HIGH
         )
         notificationManager.createNotificationChannel(channel)
 
@@ -62,16 +60,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            ActivityCompat.requestPermissions(, arrayOf(Manifest.permission.POST_NOTIFICATIONS), PERMISSION_REQUEST_CODE)
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            notificationManager.notify(0, notificationBuilder.build())
+            return
         }
+        notificationManager.notify(0, notificationBuilder.build())
 
     }
 }

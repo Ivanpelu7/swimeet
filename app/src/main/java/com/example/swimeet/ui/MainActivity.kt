@@ -1,12 +1,17 @@
 package com.example.swimeet.ui
 
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -42,8 +47,41 @@ class MainActivity : AppCompatActivity() {
         setListeners()
         initNavigation()
         loadAvatarImage(Firebase.auth.currentUser!!.photoUrl!!)
-        FirebaseUtil.subscribeToTopic("all")
+        askForPermission()
         getToken()
+    }
+
+    private fun askForPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Solicita el permiso
+                requestNotificationPermission()
+            } else {
+                FirebaseUtil.subscribeToTopic("all")
+            }
+        }
+    }
+
+    private fun requestNotificationPermission() {
+        // Este es el método recomendado para solicitar permisos
+        val requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                FirebaseUtil.subscribeToTopic("all")
+
+            } else {
+                // El usuario denegó el permiso
+                // Aquí puedes manejar la denegación del permiso
+            }
+        }
+
+        // Lanza la solicitud de permiso
+        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
     private fun getToken() {
