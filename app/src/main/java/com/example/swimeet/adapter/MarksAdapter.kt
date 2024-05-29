@@ -35,7 +35,7 @@ class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
 
     class MarksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvSwimEvent: TextView = itemView.findViewById(R.id.tvEventName)
-        private val tvLocation: TextView = itemView.findViewById(R.id.tvLocation)
+        private val tvLocation: TextView = itemView.findViewById(R.id.tvCompetition)
         private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
         private val tvMark: TextView = itemView.findViewById(R.id.tvMark)
         fun render(mark: Mark) {
