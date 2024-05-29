@@ -1,7 +1,9 @@
 package com.example.swimeet.data.repository
 
+import com.example.swimeet.data.model.Mark
 import com.example.swimeet.data.model.User
 import com.example.swimeet.util.FirebaseUtil
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -31,5 +33,25 @@ class UserRepository {
                 val otherUser = user.toObject(User::class.java)!!
                 onComplete(otherUser)
             }
+    }
+
+    suspend fun getUserMarks(onComplete: (List<Mark>) -> Unit) {
+        val listMarks: MutableList<Mark> = mutableListOf()
+
+        withContext(Dispatchers.IO) {
+            val result = FirebaseUtil.getMarksRef().orderBy("date", Query.Direction.DESCENDING)
+                .get().await()
+
+            if (!result.isEmpty) {
+                for (doc in result.documents) {
+                    val mark = doc.toObject(Mark::class.java)
+                    if (mark != null) {
+                        listMarks.add(mark)
+                    }
+                }
+            }
+
+            onComplete(listMarks)
+        }
     }
 }

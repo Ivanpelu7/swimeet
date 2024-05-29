@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.R
+import androidx.activity.viewModels
 import com.example.swimeet.adapter.CommentsAdapter
 import com.example.swimeet.adapter.ParticipantsAdapter
 import com.example.swimeet.data.model.Comment
@@ -36,7 +37,7 @@ import kotlinx.coroutines.withContext
 class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityCompetitionDetailBinding
-    private val compDetailViewModel = CompetitionDetailViewModel()
+    private val compDetailViewModel: CompetitionDetailViewModel by viewModels()
     private lateinit var id: String
     private lateinit var name: String
     private lateinit var longitude: String

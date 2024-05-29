@@ -37,6 +37,10 @@ object FirebaseUtil {
         return Firebase.firestore.collection(type).document(eventId).collection("comments")
     }
 
+    fun getMarksRef(): CollectionReference {
+        return Firebase.firestore.collection("users").document(FirebaseUtil.getCurrentUserID()).collection("marks")
+    }
+
     fun timestampToString(timestamp: Timestamp): String {
         return SimpleDateFormat("HH:mm", Locale.getDefault()).format(timestamp.toDate())
     }

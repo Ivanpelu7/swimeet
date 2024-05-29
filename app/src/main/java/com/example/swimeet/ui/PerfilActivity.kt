@@ -5,11 +5,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.example.swimeet.adapter.MarksAdapter
 import com.example.swimeet.databinding.ActivityPerfilBinding
 import com.example.swimeet.util.FirebaseUtil
+import com.example.swimeet.viewmodel.PerfilViewModel
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,8 +22,10 @@ import com.google.firebase.storage.ktx.storage
 class PerfilActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPerfilBinding
+    private lateinit var marksAdapter: MarksAdapter
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var imageUri: Uri
+    private val perfilViewModel: PerfilViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
@@ -30,22 +36,43 @@ class PerfilActivity : AppCompatActivity() {
 
     private fun initUI() {
         setListeners()
+        initRecyclerView()
+        initObservers()
         loadPhoto(Firebase.auth.currentUser!!.photoUrl.toString())
         loadData()
+    }
 
+    private fun initRecyclerView() {
+        marksAdapter = MarksAdapter()
+        binding.rvLastMarks.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = marksAdapter
+        }
+    }
+
+    private fun initObservers() {
+        perfilViewModel.markList.observe(this) {
+            marksAdapter.updateList(it)
+        }
+
+        perfilViewModel.loading.observe(this) {
+            if (it) {
+                binding.progressCircular.visibility = View.INVISIBLE
+                binding.mainLayout.visibility = View.INVISIBLE
+            } else {
+                binding.progressCircular.visibility = View.INVISIBLE
+                binding.mainLayout.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun loadData() {
-        binding.progressCircular.visibility = View.VISIBLE
-        binding.mainLayout.visibility = View.GONE
-
-        FirebaseUtil.getUsersRef().document(FirebaseUtil.getCurrentUserID()).get().addOnSuccessListener {
-            val name = it.get("name").toString()
-            binding.progressCircular.visibility = View.GONE
-            binding.tvDisplayName.text = name
-            binding.tvUsername.text = Firebase.auth.currentUser!!.displayName
-            binding.mainLayout.visibility = View.VISIBLE
-        }
+        FirebaseUtil.getUsersRef().document(FirebaseUtil.getCurrentUserID()).get()
+            .addOnSuccessListener {
+                val name = it.get("name").toString()
+                binding.tvDisplayName.text = name
+                binding.tvUsername.text = Firebase.auth.currentUser!!.displayName
+            }
     }
 
     private fun loadPhoto(uri: String) {

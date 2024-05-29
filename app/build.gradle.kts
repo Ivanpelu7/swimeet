@@ -44,6 +44,7 @@ dependencies {
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.firebase:firebase-storage:21.0.0")
+    implementation("com.google.firebase:firebase-messaging-ktx:24.0.0")
 
     val navVersion = "2.7.1"
 

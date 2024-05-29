@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvEventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100 Mariposa"
+            android:textColor="@color/md_theme_onSurfaceVariant"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@id/tvEventName"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tvCompetition"
+           app:layout_constraintTop_toBottomOf="@id/divider"
+           android:drawableStart="@drawable/trophy"
+           android:drawablePadding="4dp"
+           android:drawableTint="@color/md_theme_onSurfaceVariant"
+           tools:text="Campeonato Autonómico Verano"
+           android:fontFamily="@font/poppins_medium"
+           android:layout_marginTop="8dp"
+           android:textColor="@color/md_theme_onSurfaceVariant"
+           android:textSize="12sp"
+           app:layout_constraintStart_toStartOf="parent"
+           />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@id/tvCompetition"
+            android:drawableStart="@drawable/calendar"
+            android:drawableTint="@color/md_theme_onSurfaceVariant"
+            tools:text="01 de junio de 2024"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/md_theme_onSurfaceVariant"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvMark"
+            app:layout_constraintTop_toTopOf="@id/tvCompetition"
+            tools:text="01:10.26"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvDate"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

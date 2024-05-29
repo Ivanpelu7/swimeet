@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.adapter.CompetitionsAdapter
 import com.example.swimeet.adapter.EventsAdapter
@@ -22,7 +23,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val mainViewModel = MainViewModel()
+    private val mainViewModel: MainViewModel by viewModels()
     private lateinit var competitionsAdapter: CompetitionsAdapter
     private lateinit var eventsAdapter: EventsAdapter
     private lateinit var vpAdapter: ViewPagerAdapter
