@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Mark
@@ -11,7 +12,6 @@ import com.example.swimeet.util.FirebaseUtil
 
 class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
     RecyclerView.Adapter<MarksAdapter.MarksViewHolder>() {
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,9 +26,11 @@ class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
     }
 
     override fun getItemCount(): Int = marksList.size
+
     fun updateList(newList: List<Mark>) {
+        val diffResult = DiffUtil.calculateDiff(MarksDiffUtil(marksList, newList))
         marksList = newList
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class MarksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
