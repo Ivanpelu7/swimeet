@@ -27,22 +27,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etDateParent"
+        android:id="@+id/etPruebaParent"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner"
-        app:startIconCheckable="true"
-        app:startIconDrawable="@drawable/calendar">
+        app:startIconDrawable="@drawable/swimmer">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDate"
+        <AutoCompleteTextView
+            android:id="@+id/etPrueba"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium" />
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Prueba"
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,8 +57,9 @@
         app:helperTextTextColor="@color/md_theme_onSurfaceVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDateParent"
-        app:startIconDrawable="@drawable/swimmer">
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/etPruebaParent"
+        app:startIconDrawable="@drawable/records">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etMark"
@@ -67,5 +68,20 @@
             android:fontFamily="@font/poppins_medium" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnAccept"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="ACEPTAR"
+        android:textColor="@color/md_theme_primary"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/outlinedTextField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/md_theme_primary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

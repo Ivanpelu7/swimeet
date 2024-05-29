@@ -8,6 +8,7 @@
         <item name="android:windowSplashScreenBackground">@color/md_theme_primary</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ocean</item>
 
+
     </style>
 
     <style name="MyAutocompleteFragmentStyle" parent="Widget.Material3.TextInputEditText.OutlinedBox">

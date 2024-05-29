@@ -117,4 +117,23 @@ object FirebaseUtil {
                 Log.d("suscripcion", msg)
             }
     }
+
+    fun convertirTiempoAMilisegundos(tiempo: String): Long {
+        // Dividir la cadena en minutos y la parte restante
+        val partesMinuto = tiempo.split(":")
+        val minutos = partesMinuto[0].toInt()
+
+        // Dividir la parte restante en segundos y centisegundos
+        val partesSegundos = partesMinuto[1].split(".")
+        val segundos = partesSegundos[0].toInt()
+        val centisegundos = partesSegundos[1].toInt()
+
+        // Convertir cada parte a milisegundos
+        val minutosEnMilisegundos = minutos * 60 * 1000
+        val segundosEnMilisegundos = segundos * 1000
+        val centisegundosEnMilisegundos = centisegundos * 10
+
+        // Sumar todo para obtener el tiempo total en milisegundos
+        return (minutosEnMilisegundos + segundosEnMilisegundos + centisegundosEnMilisegundos).toLong()
+    }
 }

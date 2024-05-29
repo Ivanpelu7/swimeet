@@ -37,19 +37,15 @@ class UserRepository {
 
     suspend fun getUserMarks(onComplete: (List<Mark>) -> Unit) {
         val listMarks: MutableList<Mark> = mutableListOf()
-        var count = 0
 
         withContext(Dispatchers.IO) {
-            FirebaseUtil.getMarksRef().orderBy("date", Query.Direction.DESCENDING)
+            FirebaseUtil.getMarksRef().orderBy("date", Query.Direction.DESCENDING).limit(5)
                 .get().addOnSuccessListener {
                     if (!it.isEmpty) {
                         for (doc in it.documents) {
                             val mark = doc.toObject(Mark::class.java)
                             if (mark != null) {
                                 listMarks.add(mark)
-                                count++
-
-                                if (count == 5) break
                             }
                         }
                     }

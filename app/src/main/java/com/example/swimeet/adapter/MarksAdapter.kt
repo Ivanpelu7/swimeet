@@ -28,7 +28,7 @@ class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
     override fun getItemCount(): Int = marksList.size
 
     fun updateList(newList: List<Mark>) {
-        val diffResult = DiffUtil.calculateDiff(MarksDiffUtil(marksList, newList))
+        val diffResult = DiffUtil.calculateDiff(MarksDiffUtil(newList, marksList))
         marksList = newList
         diffResult.dispatchUpdatesTo(this)
     }

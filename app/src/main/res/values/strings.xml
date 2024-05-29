@@ -17,4 +17,24 @@
         <item>Junior</item>
         <item>Absoluto</item>
     </string-array>
+
+    <string-array name="pruebas_natacion">
+        <item>50 Libre</item>
+        <item>100 Libre</item>
+        <item>200 Libre</item>
+        <item>400 Libre</item>
+        <item>800 Libre</item>
+        <item>1500 Libre</item>
+        <item>50 Espalda</item>
+        <item>100 Espalda</item>
+        <item>200 Espalda</item>
+        <item>50 Braza</item>
+        <item>100 Braza</item>
+        <item>200 Braza</item>
+        <item>50 Mariposa</item>
+        <item>100 Mariposa</item>
+        <item>200 Mariposa</item>
+        <item>200 Estilos</item>
+        <item>400 Estilos</item>
+    </string-array>
 </resources>
