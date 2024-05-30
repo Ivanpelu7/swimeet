@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.R
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.swimeet.adapter.CommentsAdapter
 import com.example.swimeet.adapter.ParticipantsAdapter
 import com.example.swimeet.data.model.Comment
@@ -118,8 +119,11 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 FirebaseUtil.getCommentsRef(id, if (type == "0") "competitions" else "events")
                     .add(comment).addOnSuccessListener {
-                        compDetailViewModel.getComments(if (type == "0") "competitions" else "events", id)
-                }
+                        compDetailViewModel.getComments(
+                            if (type == "0") "competitions" else "events",
+                            id
+                        )
+                    }
 
                 binding.etComment.setText("")
                 hideKeyboard(binding.etComment)
@@ -149,6 +153,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                         )
 
                                         binding.tvNoParticipantes.visibility = View.GONE
+                                        val layoutParams =
+                                            binding.tvComentarios.layoutParams as ConstraintLayout.LayoutParams
+                                        layoutParams.topToBottom = binding.rvParticipantes.id
                                     }
                                 }
                         }
@@ -196,6 +203,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                     if (participants.size == 0) {
                                         binding.tvNoParticipantes.visibility = View.VISIBLE
+
+                                        val layoutParams =
+                                            binding.tvComentarios.layoutParams as ConstraintLayout.LayoutParams
+                                        layoutParams.topToBottom = binding.tvNoParticipantes.id
                                     }
                                     break
                                 }
@@ -262,6 +273,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                     binding.tvTitle.text = competition.name
                     binding.tvFecha.text = FirebaseUtil.parseFirebaseTimestamp(competition.date!!)
                     binding.tvLocation.text = competition.place
+                    binding.tvTime.text = FirebaseUtil.timestampToString(competition.date!!)
 
                     obtenerArrayDeFirebase(FirebaseUtil.getCompetitionsRef())
 
@@ -278,6 +290,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                     binding.tvTitle.text = event.name
                     binding.tvFecha.text = FirebaseUtil.parseFirebaseTimestamp(event.date!!)
                     binding.tvLocation.text = event.place
+                    binding.tvTime.text = FirebaseUtil.timestampToString(event.date!!)
 
                     obtenerArrayDeFirebase(FirebaseUtil.getEventsRef())
 
@@ -306,6 +319,14 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                             }
 
                             participantsAdapter.updateList(participants)
+
+                            if (participants.size == 0) {
+                                val layoutParams =
+                                    binding.tvComentarios.layoutParams as ConstraintLayout.LayoutParams
+                                layoutParams.topToBottom = binding.tvNoParticipantes.id
+                            }
+
+
 
                             binding.prgbar.visibility = View.INVISIBLE
                             binding.constraintLayout.visibility = View.VISIBLE

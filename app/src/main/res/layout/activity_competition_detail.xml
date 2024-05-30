@@ -131,6 +131,21 @@
                         tools:text="12 de junio de 2024" />
 
                     <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
+                        android:textSize="18sp"
+                        app:drawableTint="@color/md_theme_onSurfaceVariant"
+                        app:drawableStartCompat="@drawable/time"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFecha"
+                        tools:text="09:00" />
+
+                    <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -160,16 +175,13 @@
                         app:icon="@drawable/link"
                         app:layout_constraintStart_toStartOf="parent"
 
-                        app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
                     <com.google.android.material.materialswitch.MaterialSwitch
                         android:id="@+id/asistirSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="8dp"
-                        android:drawableStart="@drawable/asistir"
-                        android:drawablePadding="8dp"
-                        android:drawableTint="@color/md_theme_onSurfaceVariant"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Asistir"
                         android:textSize="18sp"

@@ -21,7 +21,7 @@ class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
         )
     }
 
-    override fun onBindViewHolder(holder: MarksAdapter.MarksViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MarksViewHolder, position: Int) {
         holder.render(marksList[position])
     }
 

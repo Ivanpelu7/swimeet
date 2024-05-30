@@ -2,21 +2,16 @@ package com.example.swimeet.ui
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -26,16 +21,11 @@ import com.example.swimeet.data.model.Mark
 import com.example.swimeet.databinding.ActivityPerfilBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.PerfilViewModel
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -45,6 +35,7 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var imageUri: Uri
     private lateinit var etCompetitions: AutoCompleteTextView
     private lateinit var etPrueba: AutoCompleteTextView
+    private lateinit var date: Timestamp
     private val perfilViewModel: PerfilViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,22 +55,22 @@ class PerfilActivity : AppCompatActivity() {
 
     private fun initDropDownMenu() {
         val compList = mutableListOf<String>()
-        FirebaseUtil.getCompetitionsRef().whereEqualTo("type", "Competición").get().addOnSuccessListener {
-            for (doc in it.documents) {
-                val name = doc.getString("name")
-                if (name != null) {
-                    compList.add(name)
+        FirebaseUtil.getCompetitionsRef().whereEqualTo("type", "Competición").get()
+            .addOnSuccessListener {
+                for (doc in it.documents) {
+                    val name = doc.getString("name")
+                    if (name != null) {
+                        compList.add(name)
+                    }
                 }
+
+                val adapter = ArrayAdapter(applicationContext, R.layout.list_item, compList)
+                etCompetitions.setAdapter(adapter)
+
+                val items = resources.getStringArray(R.array.pruebas_natacion).toList()
+                val eventsAdapter = ArrayAdapter(applicationContext, R.layout.list_item, items)
+                etPrueba.setAdapter(eventsAdapter)
             }
-
-            val adapter = ArrayAdapter(applicationContext, R.layout.list_item, compList)
-            etCompetitions.setAdapter(adapter)
-
-            val items = resources.getStringArray(R.array.pruebas_natacion).toList()
-            val eventsAdapter = ArrayAdapter(applicationContext, R.layout.list_item, items)
-            etPrueba.setAdapter(eventsAdapter)
-
-        }
     }
 
     private fun initRecyclerView() {
@@ -153,6 +144,15 @@ class PerfilActivity : AppCompatActivity() {
         val etMark = dialogView.findViewById<EditText>(R.id.etMark)
         val btnAccept = dialogView.findViewById<Button>(R.id.btnAccept)
 
+        etCompetitions.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position) as String
+
+            FirebaseUtil.getCompetitionsRef().whereEqualTo("name", selectedItem).get()
+                .addOnSuccessListener {
+                    date = it.documents[0].get("date") as Timestamp
+                }
+        }
+
         initDropDownMenu()
 
         val dialog = AlertDialog.Builder(this).setView(dialogView).create()
@@ -161,16 +161,18 @@ class PerfilActivity : AppCompatActivity() {
             val competitionName = etCompetitions.text.toString()
             val mark = FirebaseUtil.convertirTiempoAMilisegundos(etMark.text.toString())
             val swimEvent = etPrueba.text.toString()
-            saveData(competitionName, mark, swimEvent)
+
+            if (date != null) saveData(competitionName, mark, swimEvent, date)
+
             dialog.dismiss()
         }
 
         dialog.show()
     }
 
-    private fun saveData(competitionName: String, mark: Long, swimEvent: String) {
+    private fun saveData(competitionName: String, mark: Long, swimEvent: String, date: Timestamp) {
         val mark =
-            Mark(competition = competitionName, mark = mark, swimEvent = swimEvent)
+            Mark(competition = competitionName, mark = mark, swimEvent = swimEvent, date = date)
         val markId = FirebaseUtil.getMarksRef().document().id
         mark.idMark = markId
         FirebaseUtil.getMarksRef().document(markId).set(mark).addOnSuccessListener {

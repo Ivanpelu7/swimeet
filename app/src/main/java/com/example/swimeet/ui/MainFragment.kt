@@ -152,7 +152,7 @@ class MainFragment : Fragment() {
                     isScrolling = false
                     onScrollStopped()
                 }
-            }, 300)
+            }, 200)
         })
 
         binding.fabButton.setOnClickListener {
