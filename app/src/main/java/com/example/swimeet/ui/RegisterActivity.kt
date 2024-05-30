@@ -65,10 +65,11 @@ class RegisterActivity : AppCompatActivity() {
                 val email = binding.etRegisterEmail.text.toString()
                 val password = binding.etRegisterPassword.text.toString()
                 val name = binding.etName.text.toString()
-                //val category = binding.spinnerCategories.selectedItem.toString()
+                val category = binding.spinner.text.toString()
                 val username = binding.etUsername.text.toString()
+                val genre = binding.etGenre.text.toString()
 
-                // registerViewModel.signUp(email, username, password, name, category, applicationContext)
+                registerViewModel.signUp(email, username, password, name, category, genre, applicationContext)
 
             } else {
                 Toast.makeText(
@@ -87,7 +88,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initDropDownMenu() {
         val items = resources.getStringArray(R.array.categorias_edades_natacion).toList()
+        val genres = resources.getStringArray(R.array.genres).toList()
         val adapter = ArrayAdapter(applicationContext, R.layout.list_item, items)
+        val adapterGenres = ArrayAdapter(applicationContext, R.layout.list_item, genres)
         binding.spinner.setAdapter(adapter)
+        binding.etGenre.setAdapter(adapterGenres)
     }
 }

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,8 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var etCompetitions: AutoCompleteTextView
     private lateinit var etPrueba: AutoCompleteTextView
     private lateinit var date: Timestamp
+    private lateinit var username: String
+    private lateinit var userId: String
     private val perfilViewModel: PerfilViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,13 +91,53 @@ class PerfilActivity : AppCompatActivity() {
 
         perfilViewModel.loading.observe(this) {
             if (it) {
-                binding.progressCircular.visibility = View.INVISIBLE
+                binding.progressCircular.visibility = View.VISIBLE
                 binding.mainLayout.visibility = View.INVISIBLE
             } else {
                 binding.progressCircular.visibility = View.INVISIBLE
                 binding.mainLayout.visibility = View.VISIBLE
             }
         }
+
+        perfilViewModel.recordData.observe(this) {
+            if (it.isNotEmpty()) {
+                val time = it["time"] as Long
+                val mark = it["mark"] as Mark
+                val category = it["category"] as String
+                val genre = it["genre"] as String
+
+                if (time.toInt() == 0) {
+                    addMarkToRecords(mark, genre, category, username, userId)
+                    Toast.makeText(this, "Has batido el record en la prueba ${mark.swimEvent}", Toast.LENGTH_SHORT).show()
+                } else {
+                    if (time.toInt() > mark.mark) {
+                        updateRecord(mark, genre, category, username, userId)
+
+                        Toast.makeText(this, "Has batido el record en la prueba ${mark.swimEvent}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateRecord(
+        mark: Mark,
+        genre: String,
+        category: String,
+        username: String,
+        userId: String
+    ) {
+        perfilViewModel.updateRecord(mark, genre, category, username, userId)
+    }
+
+    private fun addMarkToRecords(
+        mark: Mark,
+        genre: String,
+        category: String,
+        username: String,
+        userId: String
+    ) {
+        perfilViewModel.addMark(mark, genre, category, username, userId)
     }
 
     private fun loadData() {
@@ -171,15 +214,33 @@ class PerfilActivity : AppCompatActivity() {
     }
 
     private fun saveData(competitionName: String, mark: Long, swimEvent: String, date: Timestamp) {
-        val mark =
-            Mark(competition = competitionName, mark = mark, swimEvent = swimEvent, date = date)
+        val mark = Mark(
+            competition = competitionName,
+            mark = mark,
+            swimEvent = swimEvent,
+            date = date
+        )
         val markId = FirebaseUtil.getMarksRef().document().id
         mark.idMark = markId
         FirebaseUtil.getMarksRef().document(markId).set(mark).addOnSuccessListener {
             perfilViewModel.getMarks()
+
+            checkIfIsRecord(mark)
         }
     }
 
+    private fun checkIfIsRecord(mark: Mark) {
+        perfilViewModel.getUserCategory {
+            val category = it["category"]
+            val genre = it["genre"]
+            userId = it["userId"].toString()
+            username = it["username"].toString()
+
+            perfilViewModel.getRecord(category, genre, mark)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {

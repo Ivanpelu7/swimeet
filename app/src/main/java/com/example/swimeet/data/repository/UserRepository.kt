@@ -39,7 +39,7 @@ class UserRepository {
         val listMarks: MutableList<Mark> = mutableListOf()
 
         withContext(Dispatchers.IO) {
-            FirebaseUtil.getMarksRef().orderBy("date", Query.Direction.DESCENDING).limit(5)
+            FirebaseUtil.getMarksRef().orderBy("registerDate", Query.Direction.DESCENDING).limit(5)
                 .get().addOnSuccessListener {
                     if (!it.isEmpty) {
                         for (doc in it.documents) {

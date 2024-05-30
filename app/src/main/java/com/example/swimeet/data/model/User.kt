@@ -8,4 +8,5 @@ data class User(
     var name: String = "",
     var category: String = "",
     var photo: String = "",
+    var genre: String = ""
 )

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.data.model.Record
+import androidx.activity.viewModels
 import com.example.swimeet.databinding.ActivitySwimEventDetailBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.SwimEventDetailViewModel
@@ -11,7 +12,7 @@ import com.example.swimeet.viewmodel.SwimEventDetailViewModel
 class SwimEventDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySwimEventDetailBinding
-    private val vm = SwimEventDetailViewModel()
+    private val vm: SwimEventDetailViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySwimEventDetailBinding.inflate(layoutInflater)
@@ -24,8 +25,9 @@ class SwimEventDetailActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         binding.tvCompetitionName.text = name
         setListeners()
-        loadRecords(name!!)
         setObservers()
+        loadRecords(name!!)
+
     }
 
     private fun setObservers() {

@@ -20,7 +20,8 @@ class AuthRepository {
         username: String,
         password: String,
         name: String,
-        category: String
+        category: String,
+        genre: String
     ): Boolean {
         var b = false
         withContext(Dispatchers.IO) {
@@ -28,7 +29,7 @@ class AuthRepository {
 
 
             if (auth.currentUser != null) {
-                val user = User(auth.uid, false, username, email, name, category)
+                val user = User(auth.uid, false, username, email, name, category, genre)
 
                 val storage = FirebaseStorage.getInstance()
                 val storageRef = storage.reference.child("usuario.png")

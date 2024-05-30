@@ -112,17 +112,32 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-<!--
-        <Spinner
-            android:id="@+id/spinnerCategories"
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:background="@drawable/edit_text_auth"
-            android:backgroundTint="@color/white"
-            android:padding="10dp"
-            android:spinnerMode="dialog" />
-            -->
+            app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/md_theme_onSurfaceVariant"
+            app:hintTextColor="@color/md_theme_onSurfaceVariant"
+            app:endIconTint="@color/md_theme_onSurfaceVariant"
+            app:startIconDrawable="@drawable/genre"
+            app:startIconTint="@color/md_theme_onSurfaceVariant"
+            app:boxStrokeColor="@color/md_theme_onSurfaceVariant">
+
+            <AutoCompleteTextView
+                android:id="@+id/etGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:hint="Género"
+                android:textColor="@color/md_theme_onSurfaceVariant"
+                android:fontFamily="@font/poppins_medium"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
 

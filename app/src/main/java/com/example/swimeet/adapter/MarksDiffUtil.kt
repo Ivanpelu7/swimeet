@@ -9,7 +9,7 @@ class MarksDiffUtil(val newList: List<Mark>, private val oldList: List<Mark>) : 
     override fun getNewListSize(): Int = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return newList[newItemPosition].date == oldList[oldItemPosition].date
+        return newList[newItemPosition].registerDate == oldList[oldItemPosition].registerDate
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -27,11 +27,12 @@ class RegisterViewModel : ViewModel() {
         password: String,
         name: String,
         category: String,
+        genre: String,
         context: Context
     ) {
         viewModelScope.launch {
             _isLoading.value = true
-            _isCreated.value = authRepository.signUp(email, username, password, name, category)
+            _isCreated.value = authRepository.signUp(email, username, password, name, category, genre)
             _isLoading.value = false
         }
     }

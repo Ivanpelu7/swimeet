@@ -7,5 +7,6 @@ data class Mark(
     var competition: String = "",
     var date: Timestamp? = Timestamp.now(),
     var mark: Long = 0,
-    var swimEvent: String = ""
+    var swimEvent: String = "",
+    var registerDate: Timestamp = Timestamp.now()
 )
