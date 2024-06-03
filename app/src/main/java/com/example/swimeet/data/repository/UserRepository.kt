@@ -35,12 +35,27 @@ class UserRepository {
             }
     }
 
-    suspend fun getUserMarks(onComplete: (List<Mark>) -> Unit) {
+    suspend fun getUserMarks(limit: Int = 0, onComplete: (List<Mark>) -> Unit) {
         val listMarks: MutableList<Mark> = mutableListOf()
 
         withContext(Dispatchers.IO) {
-            FirebaseUtil.getMarksRef().orderBy("registerDate", Query.Direction.DESCENDING).limit(5)
-                .get().addOnSuccessListener {
+            if (limit == 0) {
+                FirebaseUtil.getMarksRef().orderBy("registerDate", Query.Direction.DESCENDING)
+                    .get().addOnSuccessListener {
+                        if (!it.isEmpty) {
+                            for (doc in it.documents) {
+                                val mark = doc.toObject(Mark::class.java)
+                                if (mark != null) {
+                                    listMarks.add(mark)
+                                }
+                            }
+                        }
+
+                        onComplete(listMarks)
+                    }
+            } else {
+                FirebaseUtil.getMarksRef().orderBy("registerDate", Query.Direction.DESCENDING)
+                    .limit(5).get().addOnSuccessListener {
                     if (!it.isEmpty) {
                         for (doc in it.documents) {
                             val mark = doc.toObject(Mark::class.java)
@@ -52,6 +67,7 @@ class UserRepository {
 
                     onComplete(listMarks)
                 }
+            }
 
 
         }

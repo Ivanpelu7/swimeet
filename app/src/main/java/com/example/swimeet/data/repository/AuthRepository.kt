@@ -27,9 +27,8 @@ class AuthRepository {
         withContext(Dispatchers.IO) {
             auth.createUserWithEmailAndPassword(email, password).await()
 
-
             if (auth.currentUser != null) {
-                val user = User(auth.uid, false, username, email, name, category, genre)
+                val user = User(auth.uid, false, username, email, name, category, genre = genre)
 
                 val storage = FirebaseStorage.getInstance()
                 val storageRef = storage.reference.child("usuario.png")

@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             if ((binding.etRegisterEmail.text.toString() != "") && (binding.etRegisterPassword.text.toString() != "")
                 && (binding.etName.text.toString() != "") && (binding.etUsername.text.toString() != "")
-                && (binding.spinner.text.toString() != "Seleccionar categoria")
+                && (binding.spinner.text.toString() != "" && (binding.etGenre.text.toString() != ""))
             ) {
 
                 val email = binding.etRegisterEmail.text.toString()
@@ -69,7 +69,14 @@ class RegisterActivity : AppCompatActivity() {
                 val username = binding.etUsername.text.toString()
                 val genre = binding.etGenre.text.toString()
 
-                registerViewModel.signUp(email, username, password, name, category, genre, applicationContext)
+                registerViewModel.signUp(
+                    email,
+                    username,
+                    password,
+                    name,
+                    category,
+                    genre,
+                )
 
             } else {
                 Toast.makeText(

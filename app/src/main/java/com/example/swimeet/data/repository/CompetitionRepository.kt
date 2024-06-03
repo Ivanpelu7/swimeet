@@ -38,7 +38,8 @@ class CompetitionRepository {
                     .await()
 
             for (document in result.documents) {
-                competitionList.add(document.toObject(Competition::class.java)!!)
+                if (document["finished"] == false)
+                    competitionList.add(document.toObject(Competition::class.java)!!)
             }
 
         }
@@ -56,7 +57,7 @@ class CompetitionRepository {
                     .get().await()
 
             for (document in result.documents) {
-                document.reference.delete()
+                document.reference.update("finished", true)
             }
         }
     }
@@ -71,7 +72,7 @@ class CompetitionRepository {
                     .get().await()
 
             for (document in result.documents) {
-                document.reference.delete()
+                document.reference.update("finished", true)
             }
         }
     }
@@ -86,7 +87,8 @@ class CompetitionRepository {
                 FirebaseUtil.getEventsRef().orderBy("date", Query.Direction.ASCENDING).get().await()
 
             for (document in result.documents) {
-                eventList.add(document.toObject(Event::class.java)!!)
+                if (document["finished"] == false)
+                    eventList.add(document.toObject(Event::class.java)!!)
             }
 
         }

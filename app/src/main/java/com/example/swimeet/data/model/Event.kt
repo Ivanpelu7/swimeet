@@ -10,7 +10,8 @@ data class Event(
     var date: Timestamp? = null,
     var location: GeoPoint? = null,
     var place: String = "",
-    var participants: List<String> = emptyList(),
     var finished: Boolean = false,
+    var participants: List<String> = emptyList(),
+    var creatorUsername: String = "",
     var link: String = ""
 )

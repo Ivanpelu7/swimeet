@@ -79,9 +79,17 @@ class MainFragment : Fragment() {
             if (competitions.isEmpty()) {
                 competitionsAdapter.updateList(competitions)
                 binding.tvNoCompetitions.visibility = View.VISIBLE
+
+                val layoutParams =
+                    binding.tvNextMeetings.layoutParams as ConstraintLayout.LayoutParams
+                layoutParams.topToBottom = binding.tvNoCompetitions.id
             } else {
                 competitionsAdapter.updateList(competitions)
                 binding.tvNoCompetitions.visibility = View.GONE
+
+                val layoutParams =
+                    binding.tvNextMeetings.layoutParams as ConstraintLayout.LayoutParams
+                layoutParams.topToBottom = binding.rvNextEvents.id
             }
 
         }

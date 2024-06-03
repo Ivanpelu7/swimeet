@@ -28,7 +28,6 @@ class RegisterViewModel : ViewModel() {
         name: String,
         category: String,
         genre: String,
-        context: Context
     ) {
         viewModelScope.launch {
             _isLoading.value = true

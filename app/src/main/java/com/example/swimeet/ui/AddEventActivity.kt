@@ -33,7 +33,9 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.GeoPoint
+import com.google.firebase.ktx.Firebase
 import java.util.Calendar
 
 
@@ -279,7 +281,8 @@ class AddEventActivity : AppCompatActivity() {
                     name = name,
                     date = Timestamp(calendar.time),
                     distance = distance,
-                    link = link
+                    link = link,
+                    creatorUsername = Firebase.auth.currentUser!!.displayName!!
                 )
                 addEventViewModel.addCompetition(competition)
             } else {
@@ -289,7 +292,8 @@ class AddEventActivity : AppCompatActivity() {
                     type = type,
                     name = name,
                     date = Timestamp(calendar.time),
-                    link = link
+                    link = link,
+                    creatorUsername = Firebase.auth.currentUser!!.displayName!!
                 )
                 addEventViewModel.addEvent(event)
             }

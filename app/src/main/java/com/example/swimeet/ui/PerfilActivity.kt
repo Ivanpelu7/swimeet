@@ -86,7 +86,11 @@ class PerfilActivity : AppCompatActivity() {
 
     private fun initObservers() {
         perfilViewModel.markList.observe(this) {
-            marksAdapter.updateList(it)
+            if (it.isNotEmpty()) {
+                marksAdapter.updateList(it)
+                binding.btnVerTodas.visibility = View.VISIBLE
+            } else
+                binding.btnVerTodas.visibility = View.INVISIBLE
         }
 
         perfilViewModel.loading.observe(this) {
@@ -108,12 +112,20 @@ class PerfilActivity : AppCompatActivity() {
 
                 if (time.toInt() == 0) {
                     addMarkToRecords(mark, genre, category, username, userId)
-                    Toast.makeText(this, "Has batido el record en la prueba ${mark.swimEvent}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Has batido el record en la prueba ${mark.swimEvent}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     if (time.toInt() > mark.mark) {
                         updateRecord(mark, genre, category, username, userId)
 
-                        Toast.makeText(this, "Has batido el record en la prueba ${mark.swimEvent}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Has batido el record en la prueba ${mark.swimEvent}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -148,7 +160,7 @@ class PerfilActivity : AppCompatActivity() {
                 binding.tvUsername.text = Firebase.auth.currentUser!!.displayName
             }
 
-        perfilViewModel.getMarks()
+        perfilViewModel.getMarks(5)
     }
 
     private fun loadPhoto(uri: String) {
@@ -156,6 +168,10 @@ class PerfilActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        binding.btnVerTodas.setOnClickListener {
+            val intent = Intent(this, AllMarksActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.iconButton.setOnClickListener {
             val intent = Intent()

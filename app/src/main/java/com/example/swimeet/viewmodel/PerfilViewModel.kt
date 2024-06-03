@@ -25,9 +25,9 @@ class PerfilViewModel : ViewModel() {
     val recordData: LiveData<Map<String, Any?>> get() = _recordData
 
 
-    fun getMarks() {
+    fun getMarks(limit: Int = 0) {
         viewModelScope.launch {
-            userRepository.getUserMarks {
+            userRepository.getUserMarks(limit) {
                 _markList.value = it
                 _loading.value = false
             }

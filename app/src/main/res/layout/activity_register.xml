@@ -7,208 +7,208 @@
     android:background="@color/md_theme_surface"
     tools:context=".ui.RegisterActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="24dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/ocean"
-            app:tint="@color/md_theme_onSurface"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:fontFamily="@font/bebas_neue"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textAllCaps="false"
-            android:textColor="@color/md_theme_onSurface"
-            android:textSize="60sp"
-            android:textStyle="bold" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textField"
-            style="@style/loginFields"
-            android:layout_marginBottom="14dp"
-            android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
-            app:startIconDrawable="@drawable/email"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegisterEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/loginFields"
-            android:layout_marginBottom="14dp"
-            android:layout_height="wrap_content"
-            android:hint="Nombre de usuario"
-            app:startIconDrawable="@drawable/user"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPassword"
-            style="@style/passwordField"
-            android:layout_marginBottom="14dp"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            app:startIconDrawable="@drawable/password"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegisterPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
-                android:inputType="textPassword"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/loginFields"
-            android:layout_marginBottom="14dp"
-            android:layout_height="wrap_content"
-            android:hint="Nombre"
-            app:startIconDrawable="@drawable/name"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/black"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
-            android:layout_marginBottom="16dp"
-            android:textColorHint="@color/md_theme_onSurfaceVariant"
-            app:hintTextColor="@color/md_theme_onSurfaceVariant"
-            app:endIconTint="@color/md_theme_onSurfaceVariant"
-            app:startIconDrawable="@drawable/genre"
-            app:startIconTint="@color/md_theme_onSurfaceVariant"
-            app:boxStrokeColor="@color/md_theme_onSurfaceVariant">
-
-            <AutoCompleteTextView
-                android:id="@+id/etGenre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:hint="Género"
-                android:textColor="@color/md_theme_onSurfaceVariant"
-                android:fontFamily="@font/poppins_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
-            android:layout_marginBottom="16dp"
-            android:textColorHint="@color/md_theme_onSurfaceVariant"
-            app:hintTextColor="@color/md_theme_onSurfaceVariant"
-            app:endIconTint="@color/md_theme_onSurfaceVariant"
-            app:startIconDrawable="@drawable/category"
-            app:startIconTint="@color/md_theme_onSurfaceVariant"
-            app:boxStrokeColor="@color/md_theme_onSurfaceVariant">
-
-        <AutoCompleteTextView
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:hint="Categoría"
-            android:textColor="@color/md_theme_onSurfaceVariant"
-            android:fontFamily="@font/poppins_medium"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            style="?attr/materialButtonOutlinedStyle"
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="REGISTRARSE"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/md_theme_primary"
-            android:textAllCaps="false"
-            android:textColor="@color/md_theme_primary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ocean"
+                app:tint="@color/md_theme_onSurface" />
 
             <TextView
-                android:id="@+id/tvHaveAccount"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="¿Ya tienes una cuenta?"
-                android:textAlignment="center"
-                android:textColor="@color/md_theme_onSurface" />
-
-            <TextView
-                android:id="@+id/tvIniciaSesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:padding="4dp"
-                android:text="Inicia sesión"
-                android:textAlignment="center"
-                android:textColor="@color/md_theme_primary"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="@font/bebas_neue"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textAllCaps="false"
+                android:textColor="@color/md_theme_onSurface"
+                android:textSize="60sp"
                 android:textStyle="bold" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField"
+                style="@style/loginFields"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Correo electrónico"
+                app:startIconDrawable="@drawable/email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/loginFields"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Nombre de usuario"
+                app:startIconDrawable="@drawable/user">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldPassword"
+                style="@style/passwordField"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Contraseña"
+                app:startIconDrawable="@drawable/password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegisterPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textPassword"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/loginFields"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Nombre"
+                app:startIconDrawable="@drawable/name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColorHint="@color/md_theme_onSurfaceVariant"
+                app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
+                app:boxStrokeColor="@color/md_theme_onSurfaceVariant"
+                app:endIconTint="@color/md_theme_onSurfaceVariant"
+                app:hintTextColor="@color/md_theme_onSurfaceVariant"
+                app:startIconDrawable="@drawable/genre"
+                app:startIconTint="@color/md_theme_onSurfaceVariant">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etGenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="Género"
+                    android:inputType="none"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColorHint="@color/md_theme_onSurfaceVariant"
+                app:boxBackgroundColor="@color/md_theme_surfaceContainerHigh"
+                app:boxStrokeColor="@color/md_theme_onSurfaceVariant"
+                app:endIconTint="@color/md_theme_onSurfaceVariant"
+                app:hintTextColor="@color/md_theme_onSurfaceVariant"
+                app:startIconDrawable="@drawable/category"
+                app:startIconTint="@color/md_theme_onSurfaceVariant">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="Categoría"
+                    android:inputType="none"
+                    android:textColor="@color/md_theme_onSurfaceVariant" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnRegister"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="REGISTRARSE"
+                android:textAllCaps="false"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:strokeColor="@color/md_theme_primary"
+                app:strokeWidth="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvHaveAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="¿Ya tienes una cuenta?"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_theme_onSurface" />
+
+                <TextView
+                    android:id="@+id/tvIniciaSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="4dp"
+                    android:text="Inicia sesión"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_theme_primary"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
-
-    </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
