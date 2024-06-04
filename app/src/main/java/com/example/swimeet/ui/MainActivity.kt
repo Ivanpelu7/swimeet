@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 FirebaseUtil.subscribeToTopic("all")
             }
         }
+        FirebaseUtil.subscribeToTopic("all")
     }
 
     private fun requestNotificationPermission() {

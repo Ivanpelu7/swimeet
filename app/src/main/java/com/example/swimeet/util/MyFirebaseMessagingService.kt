@@ -1,15 +1,10 @@
 package com.example.swimeet.util
 
-import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.example.swimeet.R
 import com.example.swimeet.ui.ChatRoomActivity
@@ -72,14 +67,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
         notificationManager.createNotificationChannel(channel)
 
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-
         notificationManager.notify(0, notificationBuilder.build())
     }
 
@@ -118,14 +105,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             NotificationManager.IMPORTANCE_HIGH
         )
         notificationManager.createNotificationChannel(channel)
-
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
 
         notificationManager.notify(0, notificationBuilder.build())
     }
@@ -176,13 +155,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
         notificationManager.createNotificationChannel(channel)
 
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
 
         notificationManager.notify(0, notificationBuilder.build())
     }
@@ -237,13 +209,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         )
         notificationManager.createNotificationChannel(channel)
 
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
 
         notificationManager.notify(0, notificationBuilder.build())
 
