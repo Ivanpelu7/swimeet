@@ -7,6 +7,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.example.swimeet.R
@@ -20,6 +22,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 
@@ -37,6 +40,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendNotificationNewAdvertisement(title: String, body: String, data: Map<String, String>) {
         if (data["authorUsername"] == Firebase.auth.currentUser!!.displayName!!) {
             return
@@ -81,6 +85,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(0, notificationBuilder.build())
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendNotificationNewMessage(title: String, body: String, data: Map<String, String>) {
         if (data["userId"] == FirebaseUtil.getCurrentUserID()) {
             return
@@ -128,6 +133,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager.notify(0, notificationBuilder.build())
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendNotificationNewCompetition(
         title: String,
         body: String?,
@@ -189,6 +195,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         return location!!.split(",")
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sendNotificationNewComment(
         title: String?,
         message: String?,
