@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swimeet.R
 import com.example.swimeet.data.model.Mark
 import com.example.swimeet.util.FirebaseUtil
+import com.google.android.material.card.MaterialCardView
 
 class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
     RecyclerView.Adapter<MarksAdapter.MarksViewHolder>() {
@@ -43,6 +44,11 @@ class MarksAdapter(private var marksList: List<Mark> = emptyList()) :
             tvLocation.text = mark.competition
             tvDate.text = FirebaseUtil.parseFirebaseTimestamp(mark.date!!)
             tvMark.text = FirebaseUtil.milisecondsToSwimTime(mark.mark)
+
+            itemView.setOnLongClickListener { card ->
+                (card as MaterialCardView).isChecked = !card.isChecked
+                true
+            }
         }
 
     }

@@ -4,7 +4,6 @@ import com.google.firebase.Timestamp
 
 data class Advertisement(
     var advertisementId: String = "",
-    val authorId: String = "",
     val authorUsername: String = "",
     val message: String = "",
     val title: String = "",
