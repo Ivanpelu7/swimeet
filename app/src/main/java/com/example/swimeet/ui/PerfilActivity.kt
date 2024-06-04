@@ -23,6 +23,7 @@ import com.example.swimeet.databinding.ActivityPerfilBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.PerfilViewModel
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -193,6 +194,30 @@ class PerfilActivity : AppCompatActivity() {
 
         binding.btnAddMark.setOnClickListener {
             showCustomDialogue()
+        }
+
+        binding.btnDeleteUser.setOnClickListener {
+            try {
+                FirebaseAuth.getInstance().currentUser!!.delete().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        FirebaseUtil.getCurrentUserDocumentRef().delete().addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(
+                                    this,
+                                    "Usuario eliminado correctamente",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(this, LoginActivity::class.java)
+                                startActivity(intent)
+                                finishAffinity()
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error al eliminar el usuario", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
