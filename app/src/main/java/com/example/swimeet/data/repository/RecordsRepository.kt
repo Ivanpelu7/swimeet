@@ -3,9 +3,7 @@ package com.example.swimeet.data.repository
 import com.example.swimeet.data.model.Mark
 import com.example.swimeet.data.model.Record
 import com.example.swimeet.util.FirebaseUtil
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class RecordsRepository {
 

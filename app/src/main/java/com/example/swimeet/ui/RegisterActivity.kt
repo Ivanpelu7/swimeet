@@ -2,6 +2,7 @@ package com.example.swimeet.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -55,29 +56,46 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun isValidEmail(email: String): Boolean {
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
     private fun initListeners() {
         binding.btnRegister.setOnClickListener {
             if ((binding.etRegisterEmail.text.toString() != "") && (binding.etRegisterPassword.text.toString() != "")
                 && (binding.etName.text.toString() != "") && (binding.etUsername.text.toString() != "")
                 && (binding.spinner.text.toString() != "" && (binding.etGenre.text.toString() != ""))
             ) {
-
                 val email = binding.etRegisterEmail.text.toString()
-                val password = binding.etRegisterPassword.text.toString()
-                val name = binding.etName.text.toString()
-                val category = binding.spinner.text.toString()
-                val username = binding.etUsername.text.toString()
-                val genre = binding.etGenre.text.toString()
 
-                registerViewModel.signUp(
-                    email,
-                    username,
-                    password,
-                    name,
-                    category,
-                    genre,
-                )
+                if (isValidEmail(email)) {
+                    binding.etRegisterEmail.error = null
+                    val password = binding.etRegisterPassword.text.toString()
 
+                    if (password.length >= 6) {
+                        val name = binding.etName.text.toString()
+                        val category = binding.spinner.text.toString()
+                        val username = binding.etUsername.text.toString()
+                        val genre = binding.etGenre.text.toString()
+
+                        registerViewModel.signUp(
+                            email,
+                            username,
+                            password,
+                            name,
+                            category,
+                            genre,
+                        )
+                    } else {
+                        Toast.makeText(
+                            baseContext,
+                            "La contraseña debe tener mínimo 6 caracteres",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    }
+                } else {
+                    binding.etRegisterEmail.error = "Email no válido"
+                }
             } else {
                 Toast.makeText(
                     baseContext,

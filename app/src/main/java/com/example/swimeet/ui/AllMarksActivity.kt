@@ -1,14 +1,13 @@
 package com.example.swimeet.ui
 
 import android.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.EditText
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.R
 import com.example.swimeet.adapter.MarksAdapter
@@ -16,7 +15,6 @@ import com.example.swimeet.data.model.Mark
 import com.example.swimeet.databinding.ActivityAllMarksBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.PerfilViewModel
-import com.google.firebase.Timestamp
 
 class AllMarksActivity : AppCompatActivity() {
 

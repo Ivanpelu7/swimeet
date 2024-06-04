@@ -6,11 +6,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swimeet.R
-import androidx.activity.viewModels
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.swimeet.adapter.CommentsAdapter
 import com.example.swimeet.adapter.ParticipantsAdapter
 import com.example.swimeet.data.model.Comment

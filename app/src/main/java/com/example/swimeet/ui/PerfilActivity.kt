@@ -239,7 +239,7 @@ class PerfilActivity : AppCompatActivity() {
         val markId = FirebaseUtil.getMarksRef().document().id
         mark.idMark = markId
         FirebaseUtil.getMarksRef().document(markId).set(mark).addOnSuccessListener {
-            perfilViewModel.getMarks()
+            perfilViewModel.getMarks(5)
 
             checkIfIsRecord(mark)
         }

@@ -2,9 +2,9 @@ package com.example.swimeet.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swimeet.data.model.Record
-import androidx.activity.viewModels
 import com.example.swimeet.databinding.ActivitySwimEventDetailBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.example.swimeet.viewmodel.SwimEventDetailViewModel

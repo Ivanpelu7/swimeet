@@ -20,8 +20,8 @@
         android:layout_marginHorizontal="24dp">
 
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/ocean"
             android:layout_marginBottom="8dp"
             app:tint="@color/md_theme_onSurface"/>
@@ -30,13 +30,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="18dp"
             android:fontFamily="@font/bebas_neue"
             android:gravity="center"
             android:text="@string/app_name"
             android:textAllCaps="false"
             android:textColor="@color/md_theme_onSurface"
-            android:textSize="60sp"
+            android:textSize="50sp"
             android:textStyle="bold" />
 
 <!--
