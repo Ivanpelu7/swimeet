@@ -1,5 +1,6 @@
 package com.example.swimeet.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class CompetitionsAdapter(private var competitionsList: List<Competition> = empt
         private val eventPlace: TextView = itemView.findViewById(R.id.tvSitioVar)
         private val participants: TextView = itemView.findViewById(R.id.tvParticipantsVar)
         private val iconEvent: ImageView = itemView.findViewById(R.id.ivCompetitionIcon)
+        @SuppressLint("DefaultLocale")
         fun render(competition: Competition) {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, CompetitionDetailActivity::class.java)

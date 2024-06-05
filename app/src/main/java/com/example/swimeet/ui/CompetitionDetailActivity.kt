@@ -178,6 +178,9 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                                             previousSize,
                                             newSize - previousSize
                                         )
+                                        val layoutParams =
+                                            binding.tvComentarios.layoutParams as ConstraintLayout.LayoutParams
+                                        layoutParams.topToBottom = binding.rvParticipantes.id
 
                                         if (participants.size == 0) {
                                             binding.tvNoParticipantes.visibility = View.VISIBLE
@@ -229,6 +232,10 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                     if (participants.size == 0) {
                                         binding.tvNoParticipantes.visibility = View.VISIBLE
+
+                                        val layoutParams =
+                                            binding.tvComentarios.layoutParams as ConstraintLayout.LayoutParams
+                                        layoutParams.topToBottom = binding.tvNoParticipantes.id
                                     }
                                     break
                                 }
