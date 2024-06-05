@@ -168,9 +168,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         message: String?,
         data: Map<String, String>
     ) {
-        if (data["userId"] == FirebaseUtil.getCurrentUserID()) {
-            return
-        }
 
         val latitude: String = getLatLong(data["location"])[0]
         val longitude: String = getLatLong(data["location"])[1]

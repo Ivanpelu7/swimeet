@@ -118,6 +118,9 @@ class MainFragment : Fragment() {
                 vpAdapter.updateList(adv)
                 binding.viewPager.visibility = View.VISIBLE
                 binding.tvNoAdvertisements.visibility = View.GONE
+                val layoutParams =
+                    binding.tvNextEvents.layoutParams as ConstraintLayout.LayoutParams
+                layoutParams.topToBottom = binding.viewPager.id
             }
         }
     }

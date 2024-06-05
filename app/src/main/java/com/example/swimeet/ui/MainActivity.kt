@@ -22,6 +22,7 @@ import com.example.swimeet.R
 import com.example.swimeet.databinding.ActivityMainBinding
 import com.example.swimeet.util.FirebaseUtil
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -90,8 +91,12 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val token = task.result
-                    Log.d("mytoken", "Token: $token")
-                    // Aquí puedes enviar el token a tu servidor o hacer cualquier otra acción necesaria
+
+                    val tokenData = hashMapOf(
+                        "fcmToken" to token
+                    )
+
+                    FirebaseUtil.getCurrentUserDocumentRef().set(tokenData, SetOptions.merge())
                 } else {
                     Log.e("mytoken", "Error al obtener el token: ${task.exception}")
                 }
