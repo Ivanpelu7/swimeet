@@ -4,9 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.ContextThemeWrapper
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.annotation.MenuRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,6 +52,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var latitude: String
     private lateinit var type: String
     private lateinit var link: String
+    private lateinit var creatorId: String
     private var participants: MutableList<User> = mutableListOf()
     private var participantsAdapter = ParticipantsAdapter()
     private lateinit var commentsAdapter: CommentsAdapter
@@ -65,6 +73,7 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         initObservers()
         initListeners()
         setMap()
+        getCreatorId()
 
         if (type == "0") {
             compDetailViewModel.getCompetitionInfo(id)
@@ -76,6 +85,21 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
         if (link == "") {
             binding.enlace.isEnabled = false
+        }
+    }
+
+    private fun getCreatorId() {
+        when (type) {
+            "0" -> {
+                FirebaseUtil.getCompetitionsRef().document(id).get().addOnSuccessListener {
+                    creatorId = it.get("userId").toString()
+                }
+            }
+            "1" -> {
+                FirebaseUtil.getEventsRef().document(id).get().addOnSuccessListener {
+                    creatorId = it.get("userId").toString()
+                }
+            }
         }
     }
 
@@ -94,7 +118,68 @@ class CompetitionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun showMenu(v: View, @MenuRes menuRes: Int) {
+        val popup = PopupMenu(ContextThemeWrapper(v.context, R.style.CustomPopupMenu), v)
+        popup.menuInflater.inflate(menuRes, popup.menu)
+
+        popup.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.delete -> {
+                    val dialogView = layoutInflater.inflate(R.layout.alert_dialog_delete, null)
+                    val dialogBuilder = AlertDialog.Builder(this)
+                        .setView(dialogView)
+                        .create()
+
+                    val text = dialogView.findViewById<TextView>(R.id.text)
+                    val btnYes = dialogView.findViewById<Button>(R.id.btnYes)
+                    val btnNo = dialogView.findViewById<Button>(R.id.btnNo)
+
+                    btnYes.setOnClickListener {
+                        deleteItem(id, type)
+                        dialogBuilder.dismiss()
+                    }
+
+                    btnNo.setOnClickListener {
+                        dialogBuilder.dismiss()
+                    }
+
+
+                    if (creatorId != FirebaseUtil.getCurrentUserID()) {
+                        text.text = "Solo el creador puede eliminar el evento"
+                        btnYes.visibility = View.GONE
+                        btnNo.text = "Aceptar"
+                    }
+
+                    dialogBuilder.show()
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popup.setOnDismissListener {
+            // Respond to popup being dismissed.
+        }
+        // Show the popup menu.
+        popup.show()
+    }
+
+    private fun deleteItem(id: String, type: String) {
+        when (type) {
+            "0" -> FirebaseUtil.getCompetitionsRef().document(id).delete()
+            "1" -> FirebaseUtil.getEventsRef().document(id).delete()
+        }
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finishAffinity()
+    }
+
     private fun initListeners() {
+        binding.btnOptions.setOnClickListener {
+            showMenu(it, R.menu.popup_menu)
+        }
+
         binding.btnBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }

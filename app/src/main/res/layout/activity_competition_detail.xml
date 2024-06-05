@@ -40,24 +40,36 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Travesía Clara Morales" />
 
+        <Button
+            android:id="@+id/btnOptions"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/options"
+            app:iconTint="@color/md_theme_onSurface"
+            app:iconSize="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/prgbar"
+        style="?attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:indeterminate="true"
-        style="?attr/progressBarStyle"
-        android:visibility="visible" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/constraintLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutActionBar">
 
@@ -139,8 +151,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:textColor="@color/md_theme_onSurfaceVariant"
                         android:textSize="18sp"
-                        app:drawableTint="@color/md_theme_onSurfaceVariant"
                         app:drawableStartCompat="@drawable/time"
+                        app:drawableTint="@color/md_theme_onSurfaceVariant"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvFecha"
                         tools:text="09:00" />
@@ -228,8 +240,8 @@
                 android:id="@+id/rvParticipantes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvParticipantes"
                 android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvParticipantes"
 
                 />
 
@@ -252,8 +264,8 @@
                 android:id="@+id/rvComentarios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvComentarios"
                 android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvComentarios"
 
                 />
 
@@ -280,10 +292,10 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Publicar"
                 android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins_medium"
                 android:padding="0dp"
+                android:text="Publicar"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -291,9 +303,7 @@
                 app:layout_constraintTop_toTopOf="@id/etComment" />
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.core.widget.NestedScrollView>
