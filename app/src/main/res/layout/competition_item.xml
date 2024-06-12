@@ -37,16 +37,13 @@
             app:layout_constraintStart_toEndOf="@+id/ivCompetitionIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tvFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Fecha:"
-            android:textStyle="bold"
-            android:textColor="@color/md_theme_onSurfaceVariant"
-            android:textSize="14sp"
             android:layout_marginTop="4dp"
+            android:src="@drawable/calendar"
+            app:tint="@color/md_theme_onSurfaceVariant"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@id/tvNameCompetition" />
 
@@ -63,15 +60,12 @@
             app:layout_constraintTop_toTopOf="@+id/tvFecha"
             tools:text="16/02/2024" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tvSitio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Lugar:"
-            android:textStyle="bold"
-            android:textColor="@color/md_theme_onSurfaceVariant"
-            android:textSize="14sp"
+            android:src="@drawable/distance"
+            android:tint="@color/md_theme_onSurfaceVariant"
             app:layout_constraintStart_toStartOf="@+id/tvNameCompetition"
             app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
 
@@ -101,15 +95,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvFechaVar" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tvParticipants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Participantes:"
-            android:textColor="@color/md_theme_onSurfaceVariant"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:src="@drawable/meeting"
+            android:tint="@color/md_theme_onSurfaceVariant"
             app:layout_constraintStart_toStartOf="@+id/tvSitio"
             app:layout_constraintTop_toBottomOf="@+id/tvSitio" />
 

@@ -184,6 +184,8 @@ class MainFragment : Fragment() {
             }
 
             dialog.dismiss()
+
+            mainViewModel.init()
         }
 
         dialog.show()
